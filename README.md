@@ -32,6 +32,8 @@ Ink&Read is a website for avid readers to be part of a vibrant community of read
 
 Admins can upload new books, approve reviews and create content for each book page, including details about the book (and author). Admins can also create content for the About page of the website.
 
+Members of the websites can also create a wishlist for books they'd like to read. In the member profile page, logged in users can view and manage their ratings and reviews, as well as view their wishlist.
+
 ## Design & Planning:
 [Back To The Top](#table-of-contents)
 
@@ -114,9 +116,9 @@ The agile approach for my project was to create a kanban board to track the stat
 
 The Kanban board was structured into three different stages:
 
-- To Do: Tasks that I have planned to do.
-- In Progress: Tasks that are in progress, that I am working on.
-- Done: Tasks that are complete and working as they should.
+- To Do
+- In Progress
+- Done
 
 Link to the project [Kanban Board](https://github.com/users/GurpritK/projects/9/views/1) 
 
