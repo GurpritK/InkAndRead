@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home import views as index_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include("home.urls"), name="home-urls"),
+    path('', include("home.urls"), name="home-urls"),  # Landing page at root
+    path('books/', include("books.urls"), name="books-urls"),  # Books functionality
+    path('summernote/', include('django_summernote.urls')),
 ]
