@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - Ink & Read</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav aria-label="Breadcrumb navigation">
+            <a href="/" class="back-link" aria-label="Return to home page">← Back to Home</a>
+        </nav>
+        
+        <header>
+            <h1 id="page-title">Our Book Collection</h1>
+        </header>
+        
+        <main role="main" aria-labelledby="page-title">
+        {% if books %}
+            <section class="books-grid" aria-label="Book collection grid">
+                {% for book in books %}
+                    <article class="book-card" role="article" tabindex="0">
+                        <!-- Book Cover Image with Accessibility -->
+                        {% if book.cover_image and book.cover_image != 'placeholder' %}
+                            <img src="{{ book.cover_image.url }}" 
+                                 alt="{{ book.cover_image_alt|default:'Cover of '|add:book.book_title }}" 
+                                 class="book-cover"
+                                 loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="book-cover-placeholder" style="display: none;" role="img" 
+                                 aria-label="Cover image not available for {{ book.book_title }}">
+                                📚<br>Image Not Available
+                            </div>
+                        {% else %}
+                            <div class="book-cover-placeholder" role="img" 
+                                 aria-label="Cover image not available for {{ book.book_title }}">
+                                📚<br>Image Not Available
+                            </div>
+                        {% endif %}
+                        
+                        <!-- Book Information -->
+                        <h2 class="book-title">{{ book.book_title }}</h2>
+                        <p class="book-author">by {{ book.author }}</p>
+                        <p class="book-description">{{ book.book_description|truncatewords:30 }}</p>
+                        <div class="book-rating" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
+                            Rating: {{ book.average_rating }}/5
+                        </div>
+                    </article>
+                {% endfor %}
+            </section>
+        {% else %}
+            <section class="no-books" role="status" aria-live="polite">
+                <p>No books available at the moment.</p>
+                <p>Check back later for our latest collection!</p>
+            </section>
+        {% endif %}
+        </main>
+    </div>
+</body>
+</html>

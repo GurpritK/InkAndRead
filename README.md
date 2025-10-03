@@ -73,14 +73,14 @@ I  used [Balsamiq](https://balsamiq.com/) to make wireframes for different scree
   <details>
   <summary>Home Page - Not Logged In</summary>
 
-  ![Home Page - Not Logged In](images/readme-images/mobile-wireframe-notloggedin.jpeg)
+  ![Home Page - Not Logged In](static/images/readme-images/mobile-wireframe-notloggedin.jpeg)
   
   </details>
 
   <details>
   <summary>Home Page - Logged In</summary>
 
-  ![Home Page - Logged In](images/readme-images/mobile-wireframe-loggedin.jpeg)
+  ![Home Page - Logged In](static/images/readme-images/mobile-wireframe-loggedin.jpeg)
   
   </details>
 
@@ -89,21 +89,21 @@ I  used [Balsamiq](https://balsamiq.com/) to make wireframes for different scree
   <details>
   <summary>Home Page - Not Logged In</summary>
 
-  ![Home Page - Not Logged In](images/readme-images/desktop-wireframe-notloggedin.jpeg)
+  ![Home Page - Not Logged In](static/images/readme-images/desktop-wireframe-notloggedin.jpeg)
   
   </details>
 
   <details>
   <summary>Home Page - Logged In</summary>
 
-  ![Home Page - Logged In](images/readme-images/desktop-wireframe-loggedin.jpeg)
+  ![Home Page - Logged In](static/images/readme-images/desktop-wireframe-loggedin.jpeg)
   
   </details>
 
    <details>
   <summary>My Profile - Logged In</summary>
 
-  ![My Profile Page - Logged In](images/readme-images/desktop-wireframe-myprofile.jpeg)
+  ![My Profile Page - Logged In](static/images/readme-images/desktop-wireframe-myprofile.jpeg)
   
   </details>
 
@@ -135,7 +135,7 @@ I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Rela
 <details>
   <summary>Entity Relationship Diagram</summary>
 
-  ![Image of Entity Relationship Diagram](images/readme-images/ERD.png)
+  ![Image of Entity Relationship Diagram](static/images/readme-images/ERD.png)
   
   </details>
 
