@@ -22,23 +22,22 @@ def books(request):
 
 def book_detail(request, slug):
     """
-    Display an individual :model:`book.Book`.
+    Display an individual :model:`books.Book`.
 
     **Context**
 
-    ``post``
-        An instance of :model:`book.Book`.
+    ``book``
+        An instance of :model:`books.Book`.
 
     **Template:**
 
     :template:`books/book_detail.html`
     """
 
-    queryset = Book.objects.filter(status=1)
-    books = get_object_or_404(queryset, slug=slug)
+    book = get_object_or_404(Book, slug=slug)
 
     return render(
         request,
-        "book/book_detail.html",
-        {"book": books},
+        "books/book_detail.html",
+        {"book": book},
     )

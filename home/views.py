@@ -1,8 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 
 
 def index(request):
-    return HttpResponse("Welcome to Ink & Read - Your Literary Journey Starts Here!")
+    """
+    Display the home page.
+    
+    **Template:**
+    :template:`home/index.html`
+    """
+    return render(request, 'home/index.html')

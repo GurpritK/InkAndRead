@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Ink & Read{% endblock %}
+
+{% block meta_description %}Welcome to Ink & Read - Your Literary Journey Starts Here. Discover amazing books, read reviews, and immerse yourself in countless stories.{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Ink & Read</h1>
+            <p class="hero-subtitle">Your Literary Journey Starts Here</p>
+            <p class="hero-description">
+                Discover amazing books, explore detailed reviews, and immerse yourself in countless stories. 
+                Whether you're looking for your next great read or want to dive deep into book details, 
+                we've got you covered.
+            </p>
+            <div class="hero-actions">
+                <a href="/books/" class="btn btn-primary">
+                    📚 <span>Explore Books</span>
+                </a>
+                <a href="/admin/" class="btn btn-secondary">
+                    ⚙️ <span>Admin Panel</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="book-stack">
+                <div class="book-item book-1">📖</div>
+                <div class="book-item book-2">📚</div>
+                <div class="book-item book-3">📗</div>
+                <div class="book-item book-4">📘</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2>What You'll Find Here</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Rich Book Details</h3>
+                <p>Get comprehensive information about each book including descriptions, ratings, and beautiful cover images.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Rating System</h3>
+                <p>See how books are rated and find the highest-rated reads to add to your collection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Beautiful Design</h3>
+                <p>Enjoy a clean, accessible, and responsive design that works perfectly on all devices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">♿</div>
+                <h3>Fully Accessible</h3>
+                <p>Built with accessibility in mind, ensuring everyone can enjoy browsing our book collection.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
