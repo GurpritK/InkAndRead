@@ -6,6 +6,16 @@ from .models import Book
 # Create your views here.
 
 
+def index(request):
+    """
+    Display the home page.
+
+    **Template:**
+    :template:`books/index.html`
+    """
+    return render(request, 'books/index.html')
+
+
 def books(request):
     """
     Display all books.
