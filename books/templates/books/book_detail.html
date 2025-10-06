@@ -94,16 +94,6 @@
                             <span class="sr-only">({{ book.average_rating }} out of 5 stars)</span>
                         </div>
                     </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-title">Availability</div>
-                        <div class="detail-content">Available for Reading</div>
-                    </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-title">Book ID</div>
-                        <div class="detail-content">#{{ book.id }}</div>
-                    </div>
                 </div>
 
                 <form method="post">
@@ -114,53 +104,10 @@
                 </form>
             </section>
 
-            <!-- Action Buttons -->
-            <div class="book-actions">
-                <button class="btn btn-primary" type="button">
-                    📖 <span>Start Reading</span>
-                </button>
-                <button class="btn btn-secondary" type="button">
-                    ❤️ <span>Add to Wishlist</span>
-                </button>
-                <button class="btn btn-secondary" type="button">
-                    📤 <span>Share Book</span>
-                </button>
-            </div>
         </div>
     </article>
 {% endblock %}
 
-{% block extra_js %}
-    <script>
-        // Handle action buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const action = this.textContent.trim();
-                
-                // Add visual feedback
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-                
-                // You can add actual functionality here
-                console.log(`Action: ${action} for book: {{ book.book_title }}`);
-                
-                // Example: Show a message (you can replace with actual functionality)
-                alert(`"${action}" functionality coming soon!`);
-            });
-        });
-
-        // Keyboard navigation enhancement
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                // Go back to books list
-                window.location.href = '/books/';
-            }
-        });
-    </script>
-{% endblock %}
         * {
             margin: 0;
             padding: 0;
@@ -370,51 +317,7 @@
             color: #555;
             font-size: 1em;
         }
-        
-        /* Action Buttons */
-        .book-actions {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            justify-content: center;
-        }
-        
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: #3498db;
-            color: white;
-        }
-        
-        .btn-primary:hover, .btn-primary:focus {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        }
-        
-        .btn-secondary {
-            background: #95a5a6;
-            color: white;
-        }
-        
-        .btn-secondary:hover, .btn-secondary:focus {
-            background: #7f8c8d;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(149, 165, 166, 0.3);
-        }
+    
         
         /* Focus Indicators for Accessibility */
         .btn:focus, a:focus {
@@ -545,67 +448,9 @@
                     </div>
                 </section>
 
-                <!-- Action Buttons -->
-                <div class="book-actions">
-                    <button class="btn btn-primary" type="button">
-                        📖 <span>Start Reading</span>
-                    </button>
-                    <button class="btn btn-secondary" type="button">
-                        ❤️ <span>Add to Wishlist</span>
-                    </button>
-                    <button class="btn btn-secondary" type="button">
-                        📤 <span>Share Book</span>
-                    </button>
-                </div>
             </div>
         </article>
     </div>
 
-    <!-- JavaScript for Enhanced Functionality -->
-    <script>
-        // Handle action buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const action = this.textContent.trim();
-                
-                // Add visual feedback
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-                
-                // You can add actual functionality here
-                console.log(`Action: ${action} for book: {{ book.book_title }}`);
-                
-                // Example: Show a message (you can replace with actual functionality)
-                alert(`"${action}" functionality coming soon!`);
-            });
-        });
-
-        // Keyboard navigation enhancement
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                // Go back to books list
-                window.location.href = '/books/';
-            }
-        });
-
-        // Add skip link for screen readers
-        const skipLink = document.createElement('a');
-        skipLink.href = '#main-content';
-        skipLink.textContent = 'Skip to main content';
-        skipLink.className = 'sr-only';
-        skipLink.style.position = 'absolute';
-        skipLink.style.top = '10px';
-        skipLink.style.left = '10px';
-        skipLink.style.zIndex = '1000';
-        skipLink.addEventListener('focus', function() {
-            this.style.position = 'static';
-            this.style.width = 'auto';
-            this.style.height = 'auto';
-        });
-        document.body.insertBefore(skipLink, document.body.firstChild);
-    </script>
 </body>
 </html>

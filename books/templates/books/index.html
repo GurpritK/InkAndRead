@@ -7,22 +7,24 @@
 {% block content %}
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to Ink & Read</h1>
-            <p class="hero-subtitle">Your Literary Journey Starts Here</p>
-            <p class="hero-description">
-                Discover amazing books, explore detailed reviews, and immerse yourself in countless stories. 
-                Whether you're looking for your next great read or want to dive deep into book details, 
-                we've got you covered.
-            </p>
-            <div class="hero-actions">
-                <a href="/books/" class="btn btn-primary">
-                    <span>Explore Books</span>
-                </a>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-title">Ink & Read</h1>
+                <p class="hero-subtitle">Your Literary Journey Starts Here</p>
+                <p class="hero-description">
+                    Discover amazing books, explore detailed reviews, and immerse yourself in countless stories. 
+                    Whether you're looking for your next great read or want to dive deep into book details, 
+                    we've got you covered.
+                </p>
+                <div class="hero-actions">
+                    <a href="/books/" class="btn btn-primary">
+                        <span>Explore Books</span>
+                    </a>
+                    <a href="{% url 'account_signup' %}" class="btn btn-primary">
+                        <span>Sign Up</span>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-
         </div>
     </section>
 
