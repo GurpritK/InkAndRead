@@ -7,6 +7,6 @@ from .models import Book
 class MyModelAdmin(SummernoteModelAdmin):
     list_display = ('book_title', 'slug', 'author')
     search_fields = ['book_title', 'author']
-    list_filter = ('book_title', 'average_rating')
+    list_filter = ('author',)
     prepopulated_fields = {'slug': ('book_title',)}
-    summernote_fields = ('content',)
+    summernote_fields = ('book_description',)

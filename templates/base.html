@@ -22,6 +22,7 @@
     
     <!-- Stylesheets -->
     {% load static %}
+    {% load crispy_forms_tags %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
     <!-- Additional Head Content -->
@@ -52,11 +53,6 @@
                             <li role="none">
                                 <a href="/books/" role="menuitem" class="nav-link {% if '/books' in request.path %}active{% endif %}">
                                     Books
-                                </a>
-                            </li>
-                            <li role="none">
-                                <a href="/admin/" role="menuitem" class="nav-link">
-                                    Admin
                                 </a>
                             </li>
                         </ul>
@@ -98,7 +94,6 @@
                         <ul class="footer-links">
                             <li><a href="/">Home</a></li>
                             <li><a href="/books/">Books</a></li>
-                            <li><a href="/admin/">Admin</a></li>
                         </ul>
                     </div>
                     

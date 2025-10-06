@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}{{ book.book_title }} - Ink & Read{% endblock %}
 
@@ -103,15 +105,19 @@
                         <div class="detail-content">#{{ book.id }}</div>
                     </div>
                 </div>
+
+                <form method="post">
+                    {{ book_rating_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton"
+                    type="submit">Submit</button>
+                </form>
             </section>
 
             <!-- Action Buttons -->
             <div class="book-actions">
                 <button class="btn btn-primary" type="button">
                     📖 <span>Start Reading</span>
-                </button>
-                <button class="btn btn-secondary" type="button">
-                    💾 <span>Add to Library</span>
                 </button>
                 <button class="btn btn-secondary" type="button">
                     ❤️ <span>Add to Wishlist</span>
@@ -543,9 +549,6 @@
                 <div class="book-actions">
                     <button class="btn btn-primary" type="button">
                         📖 <span>Start Reading</span>
-                    </button>
-                    <button class="btn btn-secondary" type="button">
-                        💾 <span>Add to Library</span>
                     </button>
                     <button class="btn btn-secondary" type="button">
                         ❤️ <span>Add to Wishlist</span>

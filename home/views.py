@@ -6,7 +6,7 @@ from django.shortcuts import render
 def index(request):
     """
     Display the home page.
-    
+
     **Template:**
     :template:`home/index.html`
     """

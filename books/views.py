@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .forms import BookRatingForm
 from .models import Book
 
 # Create your views here.
@@ -35,9 +36,13 @@ def book_detail(request, slug):
     """
 
     book = get_object_or_404(Book, slug=slug)
+    book_rating_form = BookRatingForm()
 
     return render(
         request,
         "books/book_detail.html",
-        {"book": book},
+        {
+            "book": book,
+            "book_rating_form": book_rating_form,
+        },
     )
