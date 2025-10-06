@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('', include("home.urls"), name="home-urls"),  # Landing page at root
     path('books/', include("books.urls"), name="books-urls"),  # Books functionality
