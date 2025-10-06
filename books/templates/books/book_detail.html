@@ -96,361 +96,49 @@
                     </div>
                 </div>
 
-                <form method="post">
-                    {{ book_rating_form | crispy }}
-                    {% csrf_token %}
-                    <button id="submitButton"
-                    type="submit">Submit</button>
-                </form>
+                <!-- Rating Form Section (Only for authenticated users) -->
+                {% if user.is_authenticated %}
+                    <h2 class="section-title">
+                        ⭐ <span>Rate This Book</span>
+                    </h2>
+                    
+                    {% if user_rating %}
+                        <div class="alert alert-info">
+                            <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
+                        </div>
+                    {% endif %}
+                    
+                    <form method="post" class="rating-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ book_rating_form.score.label_tag }}
+                            {{ book_rating_form.score }}
+                            {% if book_rating_form.score.help_text %}
+                                <small class="form-text text-muted">{{ book_rating_form.score.help_text }}</small>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
+                        </button>
+                    </form>
+                    
+                    <!-- Delete Rating Button (Only show if user has rated the book) -->
+                    {% if user_rating %}
+                        <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form mt-2">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger btn-sm" 
+                                    onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
+                                🗑️ Delete My Rating
+                            </button>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <div class="alert alert-warning">
+                        <strong>Please <a href="{% url 'account_login' %}">log in</a> to rate this book.</strong>
+                    </div>
+                {% endif %}
             </section>
 
         </div>
     </article>
 {% endblock %}
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Navigation */
-        .breadcrumb-nav {
-            background: white;
-            padding: 15px 0;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9em;
-        }
-        
-        .breadcrumb a {
-            color: #3498db;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .breadcrumb a:hover, .breadcrumb a:focus {
-            background-color: #e3f2fd;
-            text-decoration: underline;
-        }
-        
-        .breadcrumb-separator {
-            color: #666;
-            font-weight: bold;
-        }
-        
-        /* Main Content Layout */
-        .book-detail-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        
-        .book-header {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            padding: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .book-header {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-                text-align: center;
-            }
-        }
-        
-        /* Book Cover */
-        .book-cover-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .book-cover-large {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
-        }
-        
-        .book-cover-placeholder-large {
-            width: 300px;
-            height: 400px;
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3em;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
-        @media (max-width: 768px) {
-            .book-cover-large, .book-cover-placeholder-large {
-                max-width: 250px;
-                width: 250px;
-                height: 350px;
-            }
-        }
-        
-        /* Book Info */
-        .book-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .book-title-large {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
-        }
-        
-        .book-author-large {
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            font-style: italic;
-        }
-        
-        .book-rating-large {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .stars {
-            color: #ffd700;
-            font-size: 1.5em;
-        }
-        
-        .rating-text {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        
-        /* Book Content */
-        .book-content {
-            padding: 40px;
-        }
-        
-        .section-title {
-            font-size: 1.8em;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #3498db;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .book-description-full {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 40px;
-            text-align: justify;
-        }
-        
-        /* Book Details Grid */
-        .book-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .detail-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .detail-title {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        
-        .detail-content {
-            color: #555;
-            font-size: 1em;
-        }
-    
-        
-        /* Focus Indicators for Accessibility */
-        .btn:focus, a:focus {
-            outline: 3px solid #3498db;
-            outline-offset: 2px;
-        }
-        
-        /* Screen Reader Only Content */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        /* Print Styles */
-        @media print {
-            .breadcrumb-nav, .book-actions {
-                display: none;
-            }
-            
-            .book-detail-container {
-                box-shadow: none;
-                border: 1px solid #ccc;
-            }
-            
-            .book-header {
-                background: white !important;
-                color: black !important;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-nav" aria-label="Breadcrumb navigation">
-            <div class="breadcrumb">
-                <a href="/" aria-label="Go to home page">🏠 Home</a>
-                <span class="breadcrumb-separator" aria-hidden="true">›</span>
-                <a href="/books/" aria-label="Go to books collection">📚 Books</a>
-                <span class="breadcrumb-separator" aria-hidden="true">›</span>
-                <span aria-current="page">{{ book.book_title }}</span>
-            </div>
-        </nav>
-
-        <!-- Main Book Detail Container -->
-        <article class="book-detail-container" role="main">
-            <!-- Book Header with Cover and Basic Info -->
-            <header class="book-header">
-                <div class="book-cover-section">
-                    {% if book.cover_image and book.cover_image != 'placeholder' %}
-                        <img src="{{ book.cover_image.url }}" 
-                             alt="{{ book.cover_image_alt|default:'Cover of '|add:book.book_title }}" 
-                             class="book-cover-large"
-                             loading="eager">
-                    {% else %}
-                        <div class="book-cover-placeholder-large" 
-                             role="img" 
-                             aria-label="Cover image not available for {{ book.book_title }}">
-                            📖
-                        </div>
-                    {% endif %}
-                </div>
-                
-                <div class="book-info">
-                    <h1 class="book-title-large">{{ book.book_title }}</h1>
-                    <p class="book-author-large">by {{ book.author }}</p>
-                    
-                    <div class="book-rating-large">
-                        <span class="stars" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
-                            {% for i in "12345" %}
-                                {% if book.average_rating >= forloop.counter %}⭐{% else %}☆{% endif %}
-                            {% endfor %}
-                        </span>
-                        <span class="rating-text">{{ book.average_rating }}/5</span>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Book Content -->
-            <div class="book-content">
-                <!-- Description Section -->
-                <section>
-                    <h2 class="section-title">
-                        📖 <span>About This Book</span>
-                    </h2>
-                    <div class="book-description-full">
-                        {{ book.book_description|linebreaks }}
-                    </div>
-                </section>
-
-                <!-- Book Details -->
-                <section>
-                    <h2 class="section-title">
-                        📋 <span>Book Details</span>
-                    </h2>
-                    
-                    <div class="book-details">
-                        <div class="detail-card">
-                            <div class="detail-title">Author</div>
-                            <div class="detail-content">{{ book.author }}</div>
-                        </div>
-                        
-                        <div class="detail-card">
-                            <div class="detail-title">Average Rating</div>
-                            <div class="detail-content">
-                                {{ book.average_rating }}/5.0 
-                                <span class="sr-only">({{ book.average_rating }} out of 5 stars)</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-card">
-                            <div class="detail-title">Availability</div>
-                            <div class="detail-content">Available for Reading</div>
-                        </div>
-                        
-                        <div class="detail-card">
-                            <div class="detail-title">Book ID</div>
-                            <div class="detail-content">#{{ book.id }}</div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-        </article>
-    </div>
-
-</body>
-</html>

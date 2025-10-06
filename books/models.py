@@ -36,9 +36,9 @@ class BookRating(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # class Meta:
-    #     unique_together = ('user', 'book') 
-    #     ordering = ['-updated_at']
+    class Meta:
+        unique_together = ('user', 'book')
+        ordering = ['-updated_at']
 
     def __str__(self):
-        return f"{self.user.username} → {self.book.title}: {self.score}"
+        return f"{self.user.username} → {self.book.book_title}: {self.score}"
