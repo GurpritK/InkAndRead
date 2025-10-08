@@ -40,6 +40,13 @@ Members of the websites can also create a wishlist for books they'd like to read
 ### User Stories
 Write your user stories in this section
 
+  <details>
+  <summary>GitHub Project User Stories</summary>
+
+  ![Kanban Board](static/images/readme-images/kanban_board.jpeg)
+  
+  </details>
+
 ### User Goals
 
 ### Site Owner Goals
