@@ -42,3 +42,22 @@ class BookRating(models.Model):
 
     def __str__(self):
         return f"{self.user.username} → {self.book.book_title}: {self.score}"
+    
+
+class BookReview(models.Model):
+    """
+    Stores reviews for each book
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviewer')
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviewed_book')
+    review = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('user', 'book')
+        ordering = ['-updated_at']
+
+    def __str__(self):
+        return f"{self.user.username} → {self.book.book_title}: {self.review}"
