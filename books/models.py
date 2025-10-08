@@ -24,6 +24,24 @@ class Book(models.Model):
     def average_rating(self):
         qs = self.ratings.all()
         return round(qs.aggregate(models.Avg('score'))['score__avg'] or 0, 2)
+    
+    def is_favorited_by(self, user):
+        """Check if this book is favorited by the given user"""
+        if not user.is_authenticated:
+            return False
+        return self.user_lists.filter(user=user, is_favorite=True).exists()
+    
+    def is_read_by(self, user):
+        """Check if this book is marked as read by the given user"""
+        if not user.is_authenticated:
+            return False
+        return self.user_lists.filter(user=user, is_read=True).exists()
+    
+    def get_user_book_status(self, user):
+        """Get the UserBookList object for this user, or None"""
+        if not user.is_authenticated:
+            return None
+        return self.user_lists.filter(user=user).first()
 
 
 class BookRating(models.Model):

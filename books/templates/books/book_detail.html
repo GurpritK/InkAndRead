@@ -63,6 +63,43 @@
             </div>
         </header>
 
+        <!-- User Actions (Favorites & Read Status) -->
+        {% if user.is_authenticated %}
+            <div class="user-actions">
+                <div class="book-actions">
+                    <!-- Favorite Button -->
+                    <form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn {% if user_book_status and user_book_status.is_favorite %}btn-primary{% else %}btn-secondary{% endif %}">
+                            {% if user_book_status and user_book_status.is_favorite %}
+                                ❤️ Favorited
+                            {% else %}
+                                🤍 Add to Favorites
+                            {% endif %}
+                        </button>
+                    </form>
+                    
+                    <!-- Read Status Button -->
+                    <form method="post" action="{% url 'toggle_read' book.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn {% if user_book_status and user_book_status.is_read %}btn-primary{% else %}btn-secondary{% endif %}">
+                            {% if user_book_status and user_book_status.is_read %}
+                                ✅ Read
+                            {% else %}
+                                📖 Mark as Read
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="user-actions">
+                <div class="alert alert-info">
+                    <strong><a href="{% url 'account_login' %}">Log in</a> to add to favorites and track your reading!</strong>
+                </div>
+            </div>
+        {% endif %}
+
         <!-- Book Content -->
         <div class="book-content">
             <!-- Description Section -->

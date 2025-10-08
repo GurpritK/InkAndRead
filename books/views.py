@@ -73,6 +73,9 @@ def book_detail(request, slug):
     # Get current user's review if they're authenticated
     user_review = get_user_review(request.user, book)
     
+    # Get user's favorite and read status
+    user_book_status = get_user_book_status(request.user, book)
+    
     # Get all approved reviews for this book
     approved_reviews = book.reviewed_book.filter(
         approved=True
@@ -87,6 +90,7 @@ def book_detail(request, slug):
             "book_review_form": book_review_form,
             "user_rating": user_rating,
             "user_review": user_review,
+            "user_book_status": user_book_status,
             "approved_reviews": approved_reviews,
         },
     )
@@ -230,6 +234,25 @@ def get_user_review(user, book):
     """
     if user.is_authenticated:
         return book.reviewed_book.filter(user=user).first()
+    return None
+
+
+def get_user_book_status(user, book):
+    """
+    Get the current user's favorite and read status for a specific book.
+    
+    **Parameters:**
+    ``user``
+        The user object
+    ``book``
+        The book instance
+    
+    **Returns:**
+    ``UserBookList`` or ``None``
+        The user's book status if it exists, None otherwise
+    """
+    if user.is_authenticated:
+        return book.user_lists.filter(user=user).first()
     return None
 
 
