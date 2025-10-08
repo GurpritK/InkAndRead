@@ -817,7 +817,7 @@ p {
 
 .hero-section {
     position: relative;
-    background-image: url('/static/images/hero-image.png');
+    background-image: url('/static/images/hero_final.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
