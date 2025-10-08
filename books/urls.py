@@ -10,4 +10,9 @@ urlpatterns = [
         views.delete_rating_view,
         name='delete_rating'
     ),
+    path(
+        'books/<slug:slug>/delete-review/',
+        views.delete_review_view,
+        name='delete_review'
+    ),
 ]

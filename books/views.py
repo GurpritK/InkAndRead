@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from .forms import BookRatingForm
-from .models import Book
+from .forms import BookRatingForm, BookReviewForm
+from .models import Book, BookReview
 
 # Create your views here.
 
@@ -49,16 +49,34 @@ def book_detail(request, slug):
     book = get_object_or_404(Book, slug=slug)
     
     if request.method == "POST":
-        book_rating_form = BookRatingForm(data=request.POST)
-        if book_rating_form.is_valid():
-            # Handle the rating using the separate method
-            if handle_book_rating(request, book, book_rating_form):
-                return redirect('book_detail', slug=slug)
+        # Check which form was submitted
+        if 'rating_submit' in request.POST:
+            book_rating_form = BookRatingForm(data=request.POST)
+            if book_rating_form.is_valid():
+                # Handle the rating using the separate method
+                if handle_book_rating(request, book, book_rating_form):
+                    return redirect('book_detail', slug=slug)
+        
+        elif 'review_submit' in request.POST:
+            book_review_form = BookReviewForm(data=request.POST)
+            if book_review_form.is_valid():
+                # Handle the review using the separate method
+                if handle_book_review(request, book, book_review_form):
+                    return redirect('book_detail', slug=slug)
 
     book_rating_form = BookRatingForm()
+    book_review_form = BookReviewForm()
     
     # Get current user's rating if they're authenticated
     user_rating = get_user_rating(request.user, book)
+    
+    # Get current user's review if they're authenticated
+    user_review = get_user_review(request.user, book)
+    
+    # Get all approved reviews for this book
+    approved_reviews = book.reviewed_book.filter(
+        approved=True
+    ).order_by('-created_at')
 
     return render(
         request,
@@ -66,7 +84,10 @@ def book_detail(request, slug):
         {
             "book": book,
             "book_rating_form": book_rating_form,
+            "book_review_form": book_review_form,
             "user_rating": user_rating,
+            "user_review": user_review,
+            "approved_reviews": approved_reviews,
         },
     )
 
@@ -144,48 +165,127 @@ def handle_book_rating(request, book, book_rating_form):
         return False
     
 
-def delete_book_rating(request, book):
+def delete_review_view(request, slug):
     """
-    Delete a user's rating for a specific book.
+    View to handle deletion of a book review.
+    
+    **Parameters:**
+    ``request``
+        The HTTP request object
+    ``slug``
+        The book slug
+    
+    **Template:**
+    Redirects to book detail page
+    """
+    book = get_object_or_404(Book, slug=slug)
+    
+    if request.method == "POST":
+        if not request.user.is_authenticated:
+            messages.add_message(
+                request, messages.ERROR,
+                'You must be logged in to delete reviews.'
+            )
+        else:
+            # Find the user's existing review
+            existing_review = book.reviewed_book.filter(
+                user=request.user
+            ).first()
+            
+            if not existing_review:
+                messages.add_message(
+                    request, messages.WARNING,
+                    'No review found to delete.'
+                )
+            else:
+                try:
+                    existing_review.delete()
+                    messages.add_message(
+                        request, messages.SUCCESS,
+                        'Your review has been deleted successfully!'
+                    )
+                except Exception:
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'An error occurred while deleting your review. '
+                        'Please try again.'
+                    )
+    
+    return redirect('book_detail', slug=slug)
+
+
+def get_user_review(user, book):
+    """
+    Get the current user's review for a specific book.
+    
+    **Parameters:**
+    ``user``
+        The user object
+    ``book``
+        The book instance
+    
+    **Returns:**
+    ``BookReview`` or ``None``
+        The user's review if it exists, None otherwise
+    """
+    if user.is_authenticated:
+        return book.reviewed_book.filter(user=user).first()
+    return None
+
+
+def handle_book_review(request, book, book_review_form):
+    """
+    Handle the creation or update of a book review.
     
     **Parameters:**
     ``request``
         The HTTP request object
     ``book``
-        The book instance whose rating should be deleted
+        The book instance being reviewed
+    ``book_review_form``
+        The validated review form
     
     **Returns:**
     ``bool``
-        True if rating was deleted successfully, False otherwise
+        True if review was processed successfully, False otherwise
     """
     if not request.user.is_authenticated:
         messages.add_message(
             request, messages.ERROR,
-            'You must be logged in to delete ratings.'
+            'You must be logged in to write reviews.'
         )
         return False
     
-    # Find the user's existing rating
-    existing_rating = book.ratings.filter(user=request.user).first()
-    
-    if not existing_rating:
-        messages.add_message(
-            request, messages.WARNING,
-            'No rating found to delete.'
-        )
-        return False
+    # Check if user already reviewed this book
+    existing_review = book.reviewed_book.filter(user=request.user).first()
     
     try:
-        existing_rating.delete()
-        messages.add_message(
-            request, messages.SUCCESS,
-            'Your rating has been deleted successfully!'
-        )
+        if existing_review:
+            # Update existing review (resets approval status)
+            existing_review.review = book_review_form.cleaned_data['review']
+            existing_review.approved = False  # Needs re-approval
+            existing_review.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Your review has been updated and submitted for approval!'
+            )
+        else:
+            # Create new review
+            book_review = book_review_form.save(commit=False)
+            book_review.user = request.user
+            book_review.book = book
+            book_review.approved = False  # Needs approval
+            book_review.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Review submitted successfully! '
+                'It will be visible after approval.'
+            )
         return True
     except Exception:
         messages.add_message(
             request, messages.ERROR,
-            'An error occurred while deleting your rating. Please try again.'
+            'An error occurred while saving your review. Please try again.'
         )
         return False
 
@@ -206,10 +306,32 @@ def delete_rating_view(request, slug):
     book = get_object_or_404(Book, slug=slug)
     
     if request.method == "POST":
-        if delete_book_rating(request, book):
-            return redirect('book_detail', slug=slug)
+        if not request.user.is_authenticated:
+            messages.add_message(
+                request, messages.ERROR,
+                'You must be logged in to delete ratings.'
+            )
         else:
-            return redirect('book_detail', slug=slug)
+            # Find the user's existing rating
+            existing_rating = book.ratings.filter(user=request.user).first()
+            
+            if not existing_rating:
+                messages.add_message(
+                    request, messages.WARNING,
+                    'No rating found to delete.'
+                )
+            else:
+                try:
+                    existing_rating.delete()
+                    messages.add_message(
+                        request, messages.SUCCESS,
+                        'Your rating has been deleted successfully!'
+                    )
+                except Exception:
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'An error occurred while deleting your rating. '
+                        'Please try again.'
+                    )
     
-    # If not POST, redirect to book detail
     return redirect('book_detail', slug=slug)

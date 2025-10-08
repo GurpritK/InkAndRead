@@ -44,3 +44,40 @@ class BookRatingAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """Optimize queries by selecting related objects"""
         return super().get_queryset(request).select_related('user', 'book')
+    
+
+@admin.register(BookReview)
+class BookReviewAdmin(SummernoteModelAdmin):
+
+    list_display = ('book', 'user', 'review_excerpt', 'approved', 'created_at')
+    list_filter = ('approved', 'created_at', 'updated_at', 'book')
+    search_fields = ['book__book_title', 'user__username', 'review']
+    list_editable = ('approved',)
+    date_hierarchy = 'created_at'
+    list_per_page = 50
+    summernote_fields = ('review',)
+    readonly_fields = ('created_at', 'updated_at')
+    
+    fieldsets = (
+        ('Review Information', {
+            'fields': ('user', 'book', 'review', 'approved')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def review_excerpt(self, obj):
+        """Display clean text excerpt of the review without HTML"""
+        import re
+        # Remove HTML tags and get first 80 characters
+        clean_text = re.sub('<[^<]+?>', '', obj.review)
+        return clean_text[:80] + '...' if len(clean_text) > 80 else clean_text
+    review_excerpt.short_description = 'Review Preview'
+    
+    def get_queryset(self, request):
+        """Optimize queries by selecting related objects"""
+        return super().get_queryset(request).select_related('user', 'book')
+
+

@@ -117,7 +117,7 @@
                                 <small class="form-text text-muted">{{ book_rating_form.score.help_text }}</small>
                             {% endif %}
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" name="rating_submit" class="btn btn-primary">
                             {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
                         </button>
                     </form>
@@ -128,7 +128,7 @@
                             {% csrf_token %}
                             <button type="submit" class="btn btn-outline-danger btn-sm" 
                                     onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
-                                Delete My Rating
+                                🗑️ Delete My Rating
                             </button>
                         </form>
                     {% endif %}

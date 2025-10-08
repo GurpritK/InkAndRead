@@ -1,8 +1,25 @@
 from django import forms
-from .models import BookRating
+from .models import BookRating, BookReview
 
 
 class BookRatingForm(forms.ModelForm):
     class Meta:
         model = BookRating
         fields = ('score',)
+
+
+class BookReviewForm(forms.ModelForm):
+    class Meta:
+        model = BookReview
+        fields = ('review',)
+        widgets = {
+            'review': forms.Textarea(attrs={
+                'rows': 5,
+                'cols': 50,
+                'placeholder': 'Write your review here...',
+                'class': 'form-control'
+            })
+        }
+        labels = {
+            'review': 'Your Review'
+        }
