@@ -51,32 +51,32 @@
                         <ul class="nav-menu" role="menubar">
                             <li role="none">
                                 <a href="/" role="menuitem" class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
-                                    Home
+                                    HOME
                                 </a>
                             </li>
                             <li role="none">
                                 <a href="/books/" role="menuitem" class="nav-link {% if '/books' in request.path %}active{% endif %}">
-                                    Books
+                                    BOOKS
                                 </a>
                             </li>
                             
                             {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link {% if '/profile' in request.path %}active{% endif %}" aria-current="page"
-                                    href="/profile/">{{ user.username|capfirst }}'s Profile</a>
+                                    href="/profile/">{{ user.username| upper }}'S PROFILE</a>
                             </li>
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Log Out</a>
+                                <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">LOG OUT</a>
                             </li>
                             {% else %}
                             <li class="nav-item">
                                 <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                                    href="{% url 'account_signup' %}">Sign Up</a>
+                                    href="{% url 'account_signup' %}">SIGN UP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Log In</a>
+                                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">LOG IN</a>
                             </li>
                             {% endif %}
 
@@ -89,7 +89,7 @@
                             <span class="hamburger-line"></span>
                         </button>
                     </div>
-                </div>
+                
             </nav>
         {% endblock %}
     </header>
@@ -99,7 +99,7 @@
     
     <!-- Main Content -->
     <main id="main-content" role="main" class="main-content">
-        <div class="container">
+        
             <!-- Messages -->
             {% if messages %}
                 <div class="messages-container">
@@ -113,7 +113,7 @@
             {% endif %}
             
             {% block content %}{% endblock %}
-        </div>
+        
     </main>
     
     <!-- Footer -->

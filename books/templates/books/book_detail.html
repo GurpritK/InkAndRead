@@ -63,18 +63,18 @@
             </div>
         </header>
 
-        <!-- User Actions (Favorites & Read Status) -->
+        <!-- User Actions (Wishlist & Read Status) -->
         {% if user.is_authenticated %}
             <div class="user-actions">
                 <div class="book-actions">
-                    <!-- Favorite Button -->
+                    <!-- Wishlist Button -->
                     <form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn {% if user_book_status and user_book_status.is_favorite %}btn-primary{% else %}btn-secondary{% endif %}">
                             {% if user_book_status and user_book_status.is_favorite %}
-                                ❤️ Favorited
+                                In Wishlist
                             {% else %}
-                                🤍 Add to Favorites
+                                Add to Wishlist
                             {% endif %}
                         </button>
                     </form>
@@ -84,9 +84,9 @@
                         {% csrf_token %}
                         <button type="submit" class="btn {% if user_book_status and user_book_status.is_read %}btn-primary{% else %}btn-secondary{% endif %}">
                             {% if user_book_status and user_book_status.is_read %}
-                                ✅ Read
+                                Read
                             {% else %}
-                                📖 Mark as Read
+                                Mark as Read
                             {% endif %}
                         </button>
                     </form>
@@ -95,7 +95,7 @@
         {% else %}
             <div class="user-actions">
                 <div class="alert alert-info">
-                    <strong><a href="{% url 'account_login' %}">Log in</a> to add to favorites and track your reading!</strong>
+                    <strong><a href="{% url 'account_login' %}">Log in</a> to add to wishlist and track your reading!</strong>
                 </div>
             </div>
         {% endif %}
@@ -108,7 +108,7 @@
                     📖 <span>About This Book</span>
                 </h2>
                 <div class="book-description-full">
-                    {{ book.book_description|linebreaks }}
+                    {{ book.book_description|safe|linebreaks }}
                 </div>
             </section>
 

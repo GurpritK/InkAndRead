@@ -14,7 +14,43 @@ def index(request):
     **Template:**
     :template:`books/index.html`
     """
-    return render(request, 'books/index.html')
+    from datetime import datetime, timedelta
+    from django.db.models import Avg, Count
+    
+    # Get current week's start (Monday)
+    today = datetime.now().date()
+    week_start = today - timedelta(days=today.weekday())
+    
+    # Try to get book with highest rating from this week
+    book_of_week = None
+    
+    # First, try books rated this week
+    books_this_week = Book.objects.filter(
+        ratings__created_at__date__gte=week_start
+    ).annotate(
+        avg_rating=Avg('ratings__score'),
+        rating_count=Count('ratings')
+    ).filter(
+        rating_count__gt=0  # Must have at least one rating
+    ).order_by('-avg_rating', '-rating_count')
+    
+    if books_this_week.exists():
+        book_of_week = books_this_week.first()
+    else:
+        # Fallback: get highest rated book overall
+        all_books = Book.objects.annotate(
+            avg_rating=Avg('ratings__score'),
+            rating_count=Count('ratings')
+        ).filter(
+            rating_count__gt=0  # Must have at least one rating
+        ).order_by('-avg_rating', '-rating_count')
+        
+        if all_books.exists():
+            book_of_week = all_books.first()
+    
+    return render(request, 'books/index.html', {
+        'book_of_week': book_of_week,
+    })
 
 
 def books(request):

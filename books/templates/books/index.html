@@ -10,11 +10,9 @@
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1 class="hero-title">Ink & Read</h1>
-                <p class="hero-subtitle">Welcome to the Ink & Read community</p>
+                <p class="hero-subtitle"> Discover highly rated books, explore detailed reviews, and immerse yourself in finding new stories</p>
                 <p class="hero-description">
-                    Discover amazing books, explore detailed reviews, and immerse yourself in countless stories. 
-                    Whether you're looking for your next great read or want to dive deep into book details, 
-                    we've got you covered.
+                    Welcome to the Ink & Read community! Here you can share your thoughts on books, give book ratings, add books to your wishlist and track your reading.
                 </p>
                 <div class="hero-actions">
                     <a href="/books/" class="btn btn-primary">
@@ -40,8 +38,46 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Book of the Week Section -->
     <section class="features-section">
+        <h2>Book of the Week</h2>
+        {% if book_of_week %}
+            <div class="book-of-week">
+                <div class="featured-book-horizontal">
+                    <a href="{% url 'book_detail' book_of_week.slug %}" class="book-link-horizontal">
+                        <div class="book-cover-section">
+                            {% if book_of_week.cover_image %}
+                                <img src="{{ book_of_week.cover_image.url }}" 
+                                     alt="{{ book_of_week.cover_image_alt }}" 
+                                     class="book-cover-large-featured">
+                            {% else %}
+                                <div class="book-cover-placeholder-large-featured">
+                                    {{ book_of_week.book_title }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="book-details-section">
+                            <div class="featured-badge">⭐ Book of the Week</div>
+                            <h3 class="book-title-featured">{{ book_of_week.book_title }}</h3>
+                            <p class="book-author-featured">by {{ book_of_week.author }}</p>
+                            <div class="book-rating-featured">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">{{ book_of_week.average_rating }}/5.0</span>
+                            </div>
+                            <p class="book-description-featured">{{ book_of_week.book_description|safe|truncatewords:35 }}</p>
+                            <div class="book-cta">
+                                <span class="cta-text">Click to read more →</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="no-books">
+                <p>No rated books available yet. Be the first to rate a book!</p>
+                <a href="{% url 'books-list' %}" class="btn btn-primary">Browse Books</a>
+            </div>
+        {% endif %}
         <h2>What You'll Find Here</h2>
         <div class="features-grid">
             <div class="feature-card">

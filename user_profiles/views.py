@@ -13,7 +13,7 @@ def index(request):
     # Get user's book lists
     user_books = UserBookList.objects.filter(user=request.user)
     
-    # Separate favorites and read books
+    # Separate wishlist and read books
     favorite_books = user_books.filter(is_favorite=True).select_related('book')
     read_books = user_books.filter(is_read=True).select_related('book')
     
@@ -34,13 +34,13 @@ def index(request):
 
 
 def toggle_favorite(request, book_id):
-    """Toggle favorite status for a book"""
+    """Toggle wishlist status for a book"""
     if request.method != "POST":
         messages.error(request, 'Invalid request method.')
         return redirect('books')
     
     if not request.user.is_authenticated:
-        messages.error(request, 'You must be logged in to favorite books.')
+        messages.error(request, 'You must be logged in to add books to wishlist.')
         return redirect('account_login')
     
     book = get_object_or_404(Book, id=book_id)
@@ -49,13 +49,13 @@ def toggle_favorite(request, book_id):
         book=book
     )
     
-    # Toggle favorite status
+    # Toggle wishlist status
     user_book.is_favorite = not user_book.is_favorite
     user_book.save()
     
     # Show success message and redirect back
     action = 'added to' if user_book.is_favorite else 'removed from'
-    messages.success(request, f'"{book.book_title}" {action} favorites!')
+    messages.success(request, f'"{book.book_title}" {action} wishlist!')
     return redirect('book_detail', slug=book.slug)
 
 

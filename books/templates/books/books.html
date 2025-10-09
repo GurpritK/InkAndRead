@@ -3,8 +3,11 @@
 {% block meta_description %}Discover our amazing collection of books. Find your next great read with detailed descriptions, ratings, and cover images.{% endblock %}
 
 {% block content %}
-    <header>
-        <h1 id="page-title">Our Book Collection</h1>
+    <header class="page-header">
+        <div class="container">
+            <h1 class="books-collection">Our Book Collection</h1>
+            <p class="profile-subtitle">Welcome back, {{ user.get_full_name|default:user.username }}!</p>
+        </div>
     </header>
     
     {% if books %}
@@ -36,7 +39,7 @@
                         <!-- Book Information -->
                         <h2 class="book-title">{{ book.book_title }}</h2>
                         <p class="book-author">by {{ book.author }}</p>
-                        <p class="book-description">{{ book.book_description|truncatewords:30 }}</p>
+                        <p class="book-description">{{ book.book_description|striptags|truncatewords:30 }}</p>
                         <div class="book-rating" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
                             Rating: {{ book.average_rating }}/5
                         </div>

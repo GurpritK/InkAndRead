@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="profile-container">
-    <header class="profile-header">
+    <header class="page-header">
         <div class="container">
             <h1 class="profile-title">My Profile</h1>
             <p class="profile-subtitle">Welcome back, {{ user.get_full_name|default:user.username }}!</p>
@@ -18,26 +18,21 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">{{ favorites_count }}</div>
-                    <div class="stat-label">Favorite Books</div>
+                    <div class="stat-label">Wishlist Books</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">{{ read_count }}</div>
                     <div class="stat-label">Books Read</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">{{ total_books_count }}</div>
-                    <div class="stat-label">Total Books in Library</div>
                 </div>
             </div>
         </div>
 
         <!-- Book Lists -->
         <div class="book-lists">
-            <!-- Favorite Books Section -->
+            <!-- Wishlist Books Section -->
             <section class="book-list-section">
                 <h2 class="section-title">
-                    <span class="section-icon">❤️</span>
-                    My Favorite Books
+                    My Wishlist
                 </h2>
                 {% if favorite_books %}
                     <div class="books-grid">
@@ -58,9 +53,9 @@
                                         <p class="book-author">by {{ user_book.book.author }}</p>
                                         <div class="book-status">
                                             {% if user_book.is_read %}
-                                                <span class="status-badge read">✅ Read</span>
+                                                <span class="status-badge read">Read</span>
                                             {% endif %}
-                                            <span class="status-badge favorite">❤️ Favorite</span>
+                                            <span class="status-badge favorite">Wishlist</span>
                                         </div>
                                         {% if user_book.notes %}
                                             <div class="book-notes">
@@ -75,9 +70,8 @@
                     </div>
                 {% else %}
                     <div class="empty-state">
-                        <div class="empty-icon">📚</div>
-                        <h3>No favorite books yet</h3>
-                        <p>Start exploring our library and add books to your favorites!</p>
+                        <h3>No wishlist books yet</h3>
+                        <p>Start exploring our library and add books to your wishlist!</p>
                         <a href="{% url 'books-list' %}" class="btn btn-primary">Browse Books</a>
                     </div>
                 {% endif %}
@@ -86,7 +80,6 @@
             <!-- Read Books Section -->
             <section class="book-list-section">
                 <h2 class="section-title">
-                    <span class="section-icon">✅</span>
                     Books I've Read
                 </h2>
                 {% if read_books %}
@@ -107,9 +100,9 @@
                                         <h3 class="book-title">{{ user_book.book.book_title }}</h3>
                                         <p class="book-author">by {{ user_book.book.author }}</p>
                                         <div class="book-status">
-                                            <span class="status-badge read">✅ Read</span>
+                                            <span class="status-badge read">Read</span>
                                             {% if user_book.is_favorite %}
-                                                <span class="status-badge favorite">❤️ Favorite</span>
+                                                <span class="status-badge favorite">Wishlist</span>
                                             {% endif %}
                                         </div>
                                         {% if user_book.notes %}
@@ -118,9 +111,6 @@
                                                 <p>{{ user_book.notes|truncatewords:20 }}</p>
                                             </div>
                                         {% endif %}
-                                        <div class="book-date">
-                                            <small>Added: {{ user_book.created_at|date:"M d, Y" }}</small>
-                                        </div>
                                     </div>
                                 </a>
                             </div>
@@ -128,7 +118,6 @@
                     </div>
                 {% else %}
                     <div class="empty-state">
-                        <div class="empty-icon">📖</div>
                         <h3>No books read yet</h3>
                         <p>Mark books as read to track your reading progress!</p>
                         <a href="{% url 'books-list' %}" class="btn btn-primary">Browse Books</a>

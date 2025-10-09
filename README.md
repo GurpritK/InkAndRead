@@ -133,9 +133,18 @@ Link to the project [Kanban Board](https://github.com/users/GurpritK/projects/9/
 Explain font you've used for your project
 ### Colour Scheme and Design Choices
 
-I wanted to create a cosy library nook feeling on this virtual website and employed colours and wooden textures to evoke this. The primary colours used were browns, and the font colours were creams and contrasted against the browns. I kept the colours warm, and generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers. 
+I wanted to create a cosy library nook feeling on this virtual website and employed warm neutral tone colours and wooden textures to evoke this. The primary colours used were browns, and the font colours were creams and contrasted against the browns. I generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers, with elements of all those colours in one image to tie the website together.
 
 I shifted the navbar to the left hand side of the page, rather than keep it at the top, to create the imagery of a bookshelf. By removing the navbar from the top, my aim was to create website which would feel less corporate.
+
+The colour palette was generated using [Coolors](https://www.coolors.co).
+
+<details>
+  <summary>Colour Palette</summary>
+
+  ![Colour Palette](static/images/readme-images/colour-palette.png)
+  
+  </details>
 
 ### DataBase Diagram
 Image of the database diagram for your project, you can name your database models as well and how they are connected
@@ -315,6 +324,10 @@ Although the transfer of all these files and data, and deleting the old app was 
 - I was making changes to the CSS files, but these were not appearing in the local web development browser. My initial thinking was that the CSS file was not properly connected to the html template files, and perhaps the script paths were incorrect but this was not the case. I did some further investigation to find what was missing (and a lot of hard refreshes!), AI also suggested some changes to make but I knew from my previous projects that the additional settings AI was recommending were not required. Finally, I found that the debug settings was set to FALSE (from my last commit to deploy the app to Heroku), hence the CSS was no longer showing on my local browser. Once I set it to TRUE, the CSS changes were immediately reflected in my local browser.
 
 - When I deployed the app on Heroku, the styling was not being applied. I realised I had missed the step to deploy static files. The 'staticfiles' folder was missing from the project and some additional static file settings needed to be set in the settings.py folder. The whitenoise package had to be installed too. Finally, to collect static files I ran the collectstatic command in my terminal and these files were added to the base directory and folder name specifed when I set this in the settings.py using the STATIC_ROOT variable. 
+
+- As I created more books for the book collection from the admin pages, by manually adding the book covers and details, I found that the display in the website was showing the HTML code within the descriptions for each book. This issue did not occur when I added the first book. By using 'safe' and 'striptags' tags in the HTML for book descriptions, I was able to fix this issue.
+
+- I decided instead of a favourites list, I wanted to create a wishlist instead. I updated all the frontend code to reflect this in the text on the website, but since it used the same functionality in the backend code I decided to keep the model table the same, and keep the field 'is_favourite' to use for the wishlist. I could've updated the table, and migrated once and transferred existing data but since there was no fundamental change to the backend functionality, it made sense to keep the table name as is.
 
 ## Deployment
 [Back To The Top](#table-of-contents)
