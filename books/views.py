@@ -169,9 +169,9 @@ def handle_book_rating(request, book, book_rating_form):
         return False
     
 
-def delete_review_view(request, slug):
+def delete_rating_view(request, slug):
     """
-    View to handle deletion of a book review.
+    View to handle deletion of a book rating.
     
     **Parameters:**
     ``request``
@@ -188,30 +188,28 @@ def delete_review_view(request, slug):
         if not request.user.is_authenticated:
             messages.add_message(
                 request, messages.ERROR,
-                'You must be logged in to delete reviews.'
+                'You must be logged in to delete ratings.'
             )
         else:
-            # Find the user's existing review
-            existing_review = book.reviewed_book.filter(
-                user=request.user
-            ).first()
+            # Find the user's existing rating
+            existing_rating = book.ratings.filter(user=request.user).first()
             
-            if not existing_review:
+            if not existing_rating:
                 messages.add_message(
                     request, messages.WARNING,
-                    'No review found to delete.'
+                    'No rating found to delete.'
                 )
             else:
                 try:
-                    existing_review.delete()
+                    existing_rating.delete()
                     messages.add_message(
                         request, messages.SUCCESS,
-                        'Your review has been deleted successfully!'
+                        'Your rating has been deleted successfully!'
                     )
                 except Exception:
                     messages.add_message(
                         request, messages.ERROR,
-                        'An error occurred while deleting your review. '
+                        'An error occurred while deleting your rating. '
                         'Please try again.'
                     )
     
@@ -234,25 +232,6 @@ def get_user_review(user, book):
     """
     if user.is_authenticated:
         return book.reviewed_book.filter(user=user).first()
-    return None
-
-
-def get_user_book_status(user, book):
-    """
-    Get the current user's favorite and read status for a specific book.
-    
-    **Parameters:**
-    ``user``
-        The user object
-    ``book``
-        The book instance
-    
-    **Returns:**
-    ``UserBookList`` or ``None``
-        The user's book status if it exists, None otherwise
-    """
-    if user.is_authenticated:
-        return book.user_lists.filter(user=user).first()
     return None
 
 
@@ -313,9 +292,9 @@ def handle_book_review(request, book, book_review_form):
         return False
 
 
-def delete_rating_view(request, slug):
+def delete_review_view(request, slug):
     """
-    View to handle deletion of a book rating.
+    View to handle deletion of a book review.
     
     **Parameters:**
     ``request``
@@ -332,29 +311,50 @@ def delete_rating_view(request, slug):
         if not request.user.is_authenticated:
             messages.add_message(
                 request, messages.ERROR,
-                'You must be logged in to delete ratings.'
+                'You must be logged in to delete reviews.'
             )
         else:
-            # Find the user's existing rating
-            existing_rating = book.ratings.filter(user=request.user).first()
+            # Find the user's existing review
+            existing_review = book.reviewed_book.filter(
+                user=request.user
+            ).first()
             
-            if not existing_rating:
+            if not existing_review:
                 messages.add_message(
                     request, messages.WARNING,
-                    'No rating found to delete.'
+                    'No review found to delete.'
                 )
             else:
                 try:
-                    existing_rating.delete()
+                    existing_review.delete()
                     messages.add_message(
                         request, messages.SUCCESS,
-                        'Your rating has been deleted successfully!'
+                        'Your review has been deleted successfully!'
                     )
                 except Exception:
                     messages.add_message(
                         request, messages.ERROR,
-                        'An error occurred while deleting your rating. '
+                        'An error occurred while deleting your review. '
                         'Please try again.'
                     )
     
     return redirect('book_detail', slug=slug)
+
+
+def get_user_book_status(user, book):
+    """
+    Get the current user's favorite and read status for a specific book.
+    
+    **Parameters:**
+    ``user``
+        The user object
+    ``book``
+        The book instance
+    
+    **Returns:**
+    ``UserBookList`` or ``None``
+        The user's book status if it exists, None otherwise
+    """
+    if user.is_authenticated:
+        return book.user_lists.filter(user=user).first()
+    return None

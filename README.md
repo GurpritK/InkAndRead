@@ -131,8 +131,12 @@ Link to the project [Kanban Board](https://github.com/users/GurpritK/projects/9/
 
 ### Typography
 Explain font you've used for your project
-### Colour Scheme
-Screenshoot of the colour scheme for your project
+### Colour Scheme and Design Choices
+
+I wanted to create a cosy library nook feeling on this virtual website and employed colours and wooden textures to evoke this. The primary colours used were browns, and the font colours were creams and contrasted against the browns. I kept the colours warm, and generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers. 
+
+I shifted the navbar to the left hand side of the page, rather than keep it at the top, to create the imagery of a bookshelf. By removing the navbar from the top, my aim was to create website which would feel less corporate.
+
 ### DataBase Diagram
 Image of the database diagram for your project, you can name your database models as well and how they are connected
 
@@ -155,6 +159,15 @@ Explain your features on the website,(navigation, pages, links, forms, input fie
 ### Footer
 ### Home-page
 ### CRUD
+
+- Registered users can add a rating, update their rating and delete their rating for a book. When the user navigates the book page, they can also view the rating they submitted. When a user makes any of these changes, they are notified with an alert whether their action was successful. Each user is limited to one rating per book, and the option to 'update' their rating is available only.
+
+- Registered users can create reviews, update their reviews and delete their reviews for a book. When the user submits or updates a review, it is sent for approval to the admin. The user is notified that their review has been submitted for approval. When a user deletes their review, this change is applied immediately and the review will no longer be seen on the page. All reviews from all users are visible on the book page. Each user is limited to one review per book, and the option to 'update' their review is available only.
+
+- To personalise the user experience further, registered users can navigate to a book page and 'favourite' a book. This will add the book to their favourites collection in their personal profile section. Users can easily 'unfavourite' a book by toggling the favourites button. The change is reflected immediately on the book page too, and a heart icon is filled or unfilled depending on the action (assuming they are logged in). The user is notified for each action. This feature is available to logged in users only.
+
+- Similarly, as part of the personalised user experience, registered users can navigate to a book page and mark the book as 'read'. This will add the book to their 'read' books collection in their personal profile section. Users can easily mark the same book as 'unread' by toggling the 'read' button. The change is reflected immediately on the book page, and an icon is filled or unfilled depending on the action (assuming they are logged in). The user is notified for each action. This feature is available to logged in users only.
+
 ### Authentication-Authorisation 
 ## Technologies Used
 [Back To The Top](#table-of-contents)
@@ -295,6 +308,13 @@ Alongside the built in Bootstrap responsive CSS, Chrome dev tools were used freq
 [Back To The Top](#table-of-contents)
 
 List of bugs and how did you fix them
+- I decided to rename an app from 'my_profile' to 'user_profiles' as this naming made more sense from the admin perspective when managing different user profiles. This involved creating the new app, moving models, views and existing templates across from the old app, and transferring any migration tables and data within the tables. 
+
+Although the transfer of all these files and data, and deleting the old app was successful, the site was crashing with errors like 'not found'. When navigating to the profile page, there were errors referencing the old app. This suggested there were some stil some references to the old app remaining in the project. I looked through all the files, and eventually decided to lean on AI to find the remaining references and update them. Copilot AI was quick to identify that the URL paths in urls.py hadn't been updated. 
+
+- I was making changes to the CSS files, but these were not appearing in the local web development browser. My initial thinking was that the CSS file was not properly connected to the html template files, and perhaps the script paths were incorrect but this was not the case. I did some further investigation to find what was missing (and a lot of hard refreshes!), AI also suggested some changes to make but I knew from my previous projects that the additional settings AI was recommending were not required. Finally, I found that the debug settings was set to FALSE (from my last commit to deploy the app to Heroku), hence the CSS was no longer showing on my local browser. Once I set it to TRUE, the CSS changes were immediately reflected in my local browser.
+
+- When I deployed the app on Heroku, the styling was not being applied. I realised I had missed the step to deploy static files. The 'staticfiles' folder was missing from the project and some additional static file settings needed to be set in the settings.py folder. The whitenoise package had to be installed too. Finally, to collect static files I ran the collectstatic command in my terminal and these files were added to the base directory and folder name specifed when I set this in the settings.py using the STATIC_ROOT variable. 
 
 ## Deployment
 [Back To The Top](#table-of-contents)
