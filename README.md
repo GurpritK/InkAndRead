@@ -167,6 +167,17 @@ I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Rela
 
 Explain your features on the website,(navigation, pages, links, forms, input fields, CRUD....)
 ### Navigation
+
+For larger screens like laptops and desktops, there is a fixed navbar on the left hand side of the website. The navbar is accessible and visible from all screens.
+
+For smaller screens, like mobiles and tablets, there is a fixed navbar the the top of the screen with a hamburger icon for the menu dropdown. This navbar is accessible on all pages.
+
+From the navbar, users can navigate to the book collection and their own profiles. If they are logged in, they have the link to 'log out'. If they are not signed in, the navbar updates to provide links to 'sign up' and 'log in'.
+
+From the book collection page, users can navigate to individual books to read more about each book, as well as add ratings and reviews. Within each book page, the user can also add the book to a 'wishlist' or mark it as 'read'. 
+
+Similarly, users can navigate to books from their own profile. 
+
 ### Footer
 ### Home-page
 ### CRUD

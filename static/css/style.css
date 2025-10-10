@@ -1560,12 +1560,70 @@ p {
 }
 
 /* ===================================
+   BOOTSTRAP NAVBAR STYLES
+   =================================== */
+
+/* Bootstrap mobile navbar positioning and styling */
+.navbar.fixed-top {
+    z-index: 1030;
+    background-color: var(--color-sidebar) !important;
+}
+
+.navbar.fixed-top .navbar-brand {
+    color: #f5e0b5 !important;
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.navbar.fixed-top .navbar-brand:hover {
+    color: #f5e0b5 !important;
+}
+
+.navbar.fixed-top .navbar-toggler {
+    border: none;
+    color: #f5e0b5;
+}
+
+.navbar.fixed-top .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar.fixed-top .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f5e0b5' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar.fixed-top .nav-link {
+    color: #f5e0b5 !important;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+}
+
+.navbar.fixed-top .nav-link:hover,
+.navbar.fixed-top .nav-link:focus {
+    color: #f5e0b5 !important;
+    background-color: rgba(101, 109, 74, 0.15);
+    border-radius: 4px;
+}
+
+.navbar.fixed-top .nav-link.active {
+    color: #f5e0b5 !important;
+    background-color: rgba(71, 77, 52, 0.3);
+    border-radius: 4px;
+}
+
+/* ===================================
    RESPONSIVE DESIGN & MEDIA QUERIES
    =================================== */
 
 @media (max-width: 768px) {
     body {
         margin-left: 0;
+        padding-top: 60px; /* Add space for fixed navbar */
+    }
+
+    .main-content {
+        margin-top: 0;
     }
 
     .mobile-menu-toggle {

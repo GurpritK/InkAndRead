@@ -37,10 +37,59 @@
     
     
 
+    <!-- Bootstrap Navbar for Mobile/Tablet -->
+    <nav class="navbar navbar-expand-lg fixed-top d-lg-none">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Ink&Read</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="/">
+                            HOME
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/books' in request.path %}active{% endif %}" href="/books/">
+                            BOOKS
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/profile' in request.path %}active{% endif %}" href="/profile/">
+                            {{ user.username| upper }}'S PROFILE
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}">
+                            LOG OUT
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}">
+                            SIGN UP
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}">
+                            LOG IN
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Navigation -->
     <header class="site-header" role="banner">
         {% block header %}
-            <nav class="main-nav" aria-label="Main navigation">
+            <!-- Desktop Sidebar Navigation -->
+            <nav class="main-nav d-none d-lg-block" aria-label="Main navigation">
                 <div class="container">
                     <div class="nav-content">
                         <a href="/" class="site-logo" aria-label="Ink & Read - Go to homepage">
@@ -79,17 +128,9 @@
                                 <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">LOG IN</a>
                             </li>
                             {% endif %}
-
                         </ul>
-                        
-                        <!-- Mobile menu button -->
-                        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                            <span class="hamburger-line"></span>
-                            <span class="hamburger-line"></span>
-                            <span class="hamburger-line"></span>
-                        </button>
                     </div>
-                
+                </div>
             </nav>
         {% endblock %}
     </header>
