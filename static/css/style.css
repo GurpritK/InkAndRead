@@ -1719,7 +1719,7 @@ p {
 }
 
 @media (max-width: 480px) {
-    .books-grid {
+    .books-grid, .book-of-week {
         grid-template-columns: 1fr;
     }
     

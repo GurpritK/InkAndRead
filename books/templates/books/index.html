@@ -6,33 +6,35 @@
 
 {% block content %}
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section w-100">
         <div class="hero-overlay">
-            <div class="hero-content">
-                <h1 class="hero-title">Ink&Read</h1>
-                <p class="hero-subtitle"> Discover highly rated books, explore detailed reviews, and immerse yourself in finding new stories</p>
-                <!-- <p class="hero-description">
-                    Welcome to the Ink & Read community! Here you can share your thoughts on books, give book ratings, add books to your wishlist and track your reading.
-                </p> -->
-                <div class="hero-actions">
-                    <a href="/books/" class="btn btn-primary">
-                        <span>Explore Books</span>
-                    </a>
-                     {% if user.is_authenticated %}
-                        <a class="btn btn-primary {% if request.path == logout_url %}active{% endif %}" 
-                        aria-current="page" href="{% url 'account_logout' %}">
-                        <span>Log Out</span></a>
-                            
-                        {% else %}
-                        <a class="btn btn-primary {% if request.path == signup_url %}active{% endif %}" 
-                        aria-current="page" href="{% url 'account_signup' %}" class="btn btn-primary">
-                        <span>Sign Up</span></a>
-                        
-                        <a class="btn btn-primary {% if request.path == login_url %}active{% endif %}" 
-                        aria-current="page" href="{% url 'account_login' %}" class="btn btn-primary">
-                        <span>Log In</span></a>
-                            {% endif %}
-                    </a>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <div class="hero-content text-center">
+                            <h1 class="hero-title">Ink&Read</h1>
+                            <p class="hero-subtitle px-2"> Discover highly rated books, explore detailed reviews, and immerse yourself in finding new stories</p>
+                            <div class="hero-actions d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center">
+                                <a href="/books/" class="btn btn-primary">
+                                    <span>Explore Books</span>
+                                </a>
+                                 {% if user.is_authenticated %}
+                                    <a class="btn btn-primary {% if request.path == logout_url %}active{% endif %}" 
+                                    aria-current="page" href="{% url 'account_logout' %}">
+                                    <span>Log Out</span></a>
+                                        
+                                    {% else %}
+                                    <a class="btn btn-primary {% if request.path == signup_url %}active{% endif %}" 
+                                    aria-current="page" href="{% url 'account_signup' %}">
+                                    <span>Sign Up</span></a>
+                                    
+                                    <a class="btn btn-primary {% if request.path == login_url %}active{% endif %}" 
+                                    aria-current="page" href="{% url 'account_login' %}">
+                                    <span>Log In</span></a>
+                                        {% endif %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,14 +79,14 @@
                 <a href="{% url 'books-list' %}" class="btn btn-primary">Browse Books</a>
             </div>
         {% endif %}
-        </section>
-        <section class="about-section">
+    </section>
+    <section class="about-section">
         <h2>What You'll Find Here</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">📖</div>
                 <h3>Rich Book Details</h3>
-                <p>Get comprehensive information about each book including descriptions, ratings, and beautiful cover images.</p>
+                <p>Get comprehensive information about each book including descriptions, ratings, beautiful cover images.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⭐</div>
