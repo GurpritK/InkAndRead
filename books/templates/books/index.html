@@ -9,11 +9,11 @@
     <section class="hero-section">
         <div class="hero-overlay">
             <div class="hero-content">
-                <h1 class="hero-title">Ink & Read</h1>
+                <h1 class="hero-title">Ink&Read</h1>
                 <p class="hero-subtitle"> Discover highly rated books, explore detailed reviews, and immerse yourself in finding new stories</p>
-                <p class="hero-description">
+                <!-- <p class="hero-description">
                     Welcome to the Ink & Read community! Here you can share your thoughts on books, give book ratings, add books to your wishlist and track your reading.
-                </p>
+                </p> -->
                 <div class="hero-actions">
                     <a href="/books/" class="btn btn-primary">
                         <span>Explore Books</span>
@@ -57,7 +57,6 @@
                             {% endif %}
                         </div>
                         <div class="book-details-section">
-                            <div class="featured-badge">⭐ Book of the Week</div>
                             <h3 class="book-title-featured">{{ book_of_week.book_title }}</h3>
                             <p class="book-author-featured">by {{ book_of_week.author }}</p>
                             <div class="book-rating-featured">
@@ -66,7 +65,7 @@
                             </div>
                             <p class="book-description-featured">{{ book_of_week.book_description|safe|truncatewords:35 }}</p>
                             <div class="book-cta">
-                                <span class="cta-text">Click to read more →</span>
+                                <span class="btn btn-primary">Click to read more →</span>
                             </div>
                         </div>
                     </a>
@@ -78,6 +77,8 @@
                 <a href="{% url 'books-list' %}" class="btn btn-primary">Browse Books</a>
             </div>
         {% endif %}
+        </section>
+        <section class="about-section">
         <h2>What You'll Find Here</h2>
         <div class="features-grid">
             <div class="feature-card">

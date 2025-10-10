@@ -11,41 +11,45 @@
     </header>
     
     {% if books %}
-        <section class="books-grid" aria-label="Book collection grid">
-            {% for book in books %}
-                <article class="book-card" role="article">
-                    <a href="{% url 'book_detail' slug=book.slug %}" 
-                       class="book-link" 
-                       aria-label="View details for {{ book.book_title }} by {{ book.author }}">
-                        
-                        <!-- Book Cover Image with Accessibility -->
-                        {% if book.cover_image and book.cover_image != 'placeholder' %}
-                            <img src="{{ book.cover_image.url }}" 
-                                 alt="{{ book.cover_image_alt|default:'Cover of '|add:book.book_title }}" 
-                                 class="book-cover"
-                                 loading="lazy"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="book-cover-placeholder" style="display: none;" role="img" 
-                                 aria-label="Cover image not available for {{ book.book_title }}">
-                                📚<br>Image Not Available
-                            </div>
-                        {% else %}
-                            <div class="book-cover-placeholder" role="img" 
-                                 aria-label="Cover image not available for {{ book.book_title }}">
-                                📚<br>Image Not Available
-                            </div>
-                        {% endif %}
-                        
-                        <!-- Book Information -->
-                        <h2 class="book-title">{{ book.book_title }}</h2>
-                        <p class="book-author">by {{ book.author }}</p>
-                        <p class="book-description">{{ book.book_description|striptags|truncatewords:30 }}</p>
-                        <div class="book-rating" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
-                            Rating: {{ book.average_rating }}/5
-                        </div>
-                    </a>
-                </article>
-            {% endfor %}
+        <section class="container" aria-label="Book collection grid">
+            <div class="row g-4">
+                {% for book in books %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="book-card h-100" role="article">
+                            <a href="{% url 'book_detail' slug=book.slug %}" 
+                               class="book-link h-100 d-flex flex-column" 
+                               aria-label="View details for {{ book.book_title }} by {{ book.author }}">
+                                
+                                <!-- Book Cover Image with Accessibility -->
+                                {% if book.cover_image and book.cover_image != 'placeholder' %}
+                                    <img src="{{ book.cover_image.url }}" 
+                                         alt="{{ book.cover_image_alt|default:'Cover of '|add:book.book_title }}" 
+                                         class="book-cover"
+                                         loading="lazy"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="book-cover-placeholder" style="display: none;" role="img" 
+                                         aria-label="Cover image not available for {{ book.book_title }}">
+                                        📚<br>Image Not Available
+                                    </div>
+                                {% else %}
+                                    <div class="book-cover-placeholder" role="img" 
+                                         aria-label="Cover image not available for {{ book.book_title }}">
+                                        📚<br>Image Not Available
+                                    </div>
+                                {% endif %}
+                                
+                                <!-- Book Information -->
+                                <h2 class="book-title">{{ book.book_title }}</h2>
+                                <p class="book-author">by {{ book.author }}</p>
+                                <p class="book-description flex-grow-1">{{ book.book_description|striptags|truncatewords:30 }}</p>
+                                <div class="book-rating mt-auto" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
+                                    Rating: {{ book.average_rating }}/5
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
         </section>
     {% else %}
         <section class="no-books" role="status" aria-live="polite">

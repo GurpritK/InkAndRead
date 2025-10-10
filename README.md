@@ -7,7 +7,6 @@
     * [Agile Methodology](#agile-methodology)
     * [Typography](#typography)
     * [Colour Scheme](#colour-scheme)
-    * [Database Diagram](#database-diagram)
     * [Entity Relationship Diagram Diagram](#entity-relationship-diagram)    
     
 3. [Features](#features)
@@ -28,11 +27,11 @@
 ## About
 [Back To The Top](#table-of-contents)
 
-Ink&Read is a website for avid readers to be part of a vibrant community of readers. The members can view books available on the website, learn more about each book and see what the community members are rating it. Members of the community can also submit their reviews for books, whilst non-members have view-only access to the ratings and reviews.
+Ink&Read is a website for avid readers to be part of a vibrant community of readers. The members can view books available on the website, learn more about each book and see what the community members are rating and reviewing it. Members of the community can also submit their reviews for books, whilst non-members have view-only access to the ratings and reviews.
 
-Admins can upload new books, approve reviews and create content for each book page, including details about the book (and author). Admins can also create content for the About page of the website.
+Admins can upload new books, approve reviews and create content for each book page, including details about the book. 
 
-Members of the websites can also create a wishlist for books they'd like to read. In the member profile page, logged in users can view and manage their ratings and reviews, as well as view their wishlist.
+Members of the website can also create a wishlist for books they'd like to read or mark books as 'read'. In the member profile page, logged in users can view their wishlist and track the books they have read. Users can also see this on each individual book page whether they have previously added the book to their wishlist or marked that book as read. Admins can manage user profile lists, including the 'wishlist' and 'read' list.
 
 ## Design & Planning:
 [Back To The Top](#table-of-contents)
@@ -130,7 +129,13 @@ The Kanban board was structured into three different stages:
 Link to the project [Kanban Board](https://github.com/users/GurpritK/projects/9/views/1) 
 
 ### Typography
-Explain font you've used for your project
+
+For the logo and main headings of Ink&Read, I chose the Cedarville Cursive font. Its handwritten, flowing style evokes the warmth and personality of classic handwritten notes or vintage book inscriptions, giving the site a touch of literary charm and nostalgia.
+
+For the body text and general content, I selected EB Garamond, a timeless serif typeface known for its elegance, readability, and historical connection to traditional print. Together, these two fonts create a balanced aesthetic — the cursive lends character and creativity, while Garamond ensures clarity and a polished, modern reading experience.
+
+This pairing was carefully chosen after testing several options; the goal was to capture the feeling of an inviting library or cherished personal bookshelf, while maintaining a professional and accessible interface that supports effortless navigation and reading.
+
 ### Colour Scheme and Design Choices
 
 I wanted to create a cosy library nook feeling on this virtual website and employed warm neutral tone colours and wooden textures to evoke this. The primary colours used were browns, and the font colours were creams and contrasted against the browns. I generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers, with elements of all those colours in one image to tie the website together.
@@ -145,9 +150,6 @@ The colour palette was generated using [Coolors](https://www.coolors.co).
   ![Colour Palette](static/images/readme-images/colour-palette.png)
   
   </details>
-
-### DataBase Diagram
-Image of the database diagram for your project, you can name your database models as well and how they are connected
 
 ### Entity Relationship Diagram
 I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Relationship Diagram (ERD). The relationships between the tables are drawn. The About table is completely independent (they have no connection to any other table). A picture of the ERD is below.
@@ -178,12 +180,21 @@ Explain your features on the website,(navigation, pages, links, forms, input fie
 - Similarly, as part of the personalised user experience, registered users can navigate to a book page and mark the book as 'read'. This will add the book to their 'read' books collection in their personal profile section. Users can easily mark the same book as 'unread' by toggling the 'read' button. The change is reflected immediately on the book page, and an icon is filled or unfilled depending on the action (assuming they are logged in). The user is notified for each action. This feature is available to logged in users only.
 
 ### Authentication-Authorisation 
+
+- Django AllAuth used...
+
+Admin users, and registered user are authenticated? authorised?
+Admin can remove users from the admin page.
+
 ## Technologies Used
 [Back To The Top](#table-of-contents)
 
 Used Gemini AI to generate hero image used on website homepage.
 
 List of technologies used for your project
+
+## Libraries 
+
 ## Testing
 [Back To The Top](#table-of-contents)
 
@@ -361,7 +372,22 @@ This website is deployed to Heroku from a GitHub repository, the following steps
 ## Credits
 [Back To The Top](#table-of-contents)
 
-* Gemini AI for image generation 
+* Gemini AI for hero image generation 
+* Google Images and Amazon for book cover photos
+* Goodreads for book descriptions
 * Eraser.io for ERD 
+* Copilot AI with development, testing and debugging assistance with the project
+* Coolors.co for colour palette selection
+* Miro board by Marko Tot for comprehensive and helpful tools, lists, guides, project examples and tutorial videos
+* Django Setup & Deployment Guidebook 2025 by CodeInstitute [link here](https://docs.google.com/document/d/16UKi7H0DSL2ih-OSz_VixomKxY2wp1DIoGUO8EZaRyU/edit?tab=t.0#heading=h.5s9novsydyp1)
+* Django cheat sheet [link here](https://codeinstitute.s3.eu-west-1.amazonaws.com/PDF/Django%2BCheat%2BSheet.pdf)
+* Bootstrap5 to create responsive designs and layouts
+* Google Fonts for fonts used within website
+* FontAwesome for icons used within website
+* All the shared projects on GitHub to guide the project including code file structuring, and readme.md structuring
+* YouTube tutorial for implementing review and rating systems [link here](https://www.youtube.com/watch?v=Zkmu93lMLPs)
+
+
+
 
 List of used resources for your website (text, images, snippets of code, projects....)

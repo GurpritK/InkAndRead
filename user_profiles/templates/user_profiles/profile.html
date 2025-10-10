@@ -35,36 +35,38 @@
                     My Wishlist
                 </h2>
                 {% if favorite_books %}
-                    <div class="books-grid">
+                    <div class="row g-4">
                         {% for user_book in favorite_books %}
-                            <div class="book-card">
-                                <a href="{% url 'book_detail' user_book.book.slug %}" class="book-link">
-                                    {% if user_book.book.cover_image %}
-                                        <img src="{{ user_book.book.cover_image.url }}" 
-                                             alt="{{ user_book.book.cover_image_alt }}" 
-                                             class="book-cover">
-                                    {% else %}
-                                        <div class="book-cover-placeholder">
-                                            {{ user_book.book.book_title }}
-                                        </div>
-                                    {% endif %}
-                                    <div class="book-info">
-                                        <h3 class="book-title">{{ user_book.book.book_title }}</h3>
-                                        <p class="book-author">by {{ user_book.book.author }}</p>
-                                        <div class="book-status">
-                                            {% if user_book.is_read %}
-                                                <span class="status-badge read">Read</span>
-                                            {% endif %}
-                                            <span class="status-badge favorite">Wishlist</span>
-                                        </div>
-                                        {% if user_book.notes %}
-                                            <div class="book-notes">
-                                                <strong>My Notes:</strong>
-                                                <p>{{ user_book.notes|truncatewords:20 }}</p>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="book-card h-100">
+                                    <a href="{% url 'book_detail' user_book.book.slug %}" class="book-link h-100 d-flex flex-column">
+                                        {% if user_book.book.cover_image %}
+                                            <img src="{{ user_book.book.cover_image.url }}" 
+                                                 alt="{{ user_book.book.cover_image_alt }}" 
+                                                 class="book-cover">
+                                        {% else %}
+                                            <div class="book-cover-placeholder">
+                                                {{ user_book.book.book_title }}
                                             </div>
                                         {% endif %}
-                                    </div>
-                                </a>
+                                        <div class="book-info flex-grow-1 d-flex flex-column">
+                                            <h3 class="book-title">{{ user_book.book_title }}</h3>
+                                            <p class="book-author">by {{ user_book.book.author }}</p>
+                                            <div class="book-status">
+                                                {% if user_book.is_read %}
+                                                    <span class="status-badge read">Read</span>
+                                                {% endif %}
+                                                <span class="status-badge favorite">Wishlist</span>
+                                            </div>
+                                            {% if user_book.notes %}
+                                                <div class="book-notes">
+                                                    <strong>My Notes:</strong>
+                                                    <p>{{ user_book.notes|truncatewords:20 }}</p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
@@ -83,36 +85,38 @@
                     Books I've Read
                 </h2>
                 {% if read_books %}
-                    <div class="books-grid">
+                    <div class="row g-4">
                         {% for user_book in read_books %}
-                            <div class="book-card">
-                                <a href="{% url 'book_detail' user_book.book.slug %}" class="book-link">
-                                    {% if user_book.book.cover_image %}
-                                        <img src="{{ user_book.book.cover_image.url }}" 
-                                             alt="{{ user_book.book.cover_image_alt }}" 
-                                             class="book-cover">
-                                    {% else %}
-                                        <div class="book-cover-placeholder">
-                                            {{ user_book.book.book_title }}
-                                        </div>
-                                    {% endif %}
-                                    <div class="book-info">
-                                        <h3 class="book-title">{{ user_book.book.book_title }}</h3>
-                                        <p class="book-author">by {{ user_book.book.author }}</p>
-                                        <div class="book-status">
-                                            <span class="status-badge read">Read</span>
-                                            {% if user_book.is_favorite %}
-                                                <span class="status-badge favorite">Wishlist</span>
-                                            {% endif %}
-                                        </div>
-                                        {% if user_book.notes %}
-                                            <div class="book-notes">
-                                                <strong>My Notes:</strong>
-                                                <p>{{ user_book.notes|truncatewords:20 }}</p>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="book-card h-100">
+                                    <a href="{% url 'book_detail' user_book.book.slug %}" class="book-link h-100 d-flex flex-column">
+                                        {% if user_book.book.cover_image %}
+                                            <img src="{{ user_book.book.cover_image.url }}" 
+                                                 alt="{{ user_book.book.cover_image_alt }}" 
+                                                 class="book-cover">
+                                        {% else %}
+                                            <div class="book-cover-placeholder">
+                                                {{ user_book.book.book_title }}
                                             </div>
                                         {% endif %}
-                                    </div>
-                                </a>
+                                        <div class="book-info flex-grow-1 d-flex flex-column">
+                                            <h3 class="book-title">{{ user_book.book.book_title }}</h3>
+                                            <p class="book-author">by {{ user_book.book.author }}</p>
+                                            <div class="book-status">
+                                                <span class="status-badge read">Read</span>
+                                                {% if user_book.is_favorite %}
+                                                    <span class="status-badge favorite">Wishlist</span>
+                                                {% endif %}
+                                            </div>
+                                            {% if user_book.notes %}
+                                                <div class="book-notes">
+                                                    <strong>My Notes:</strong>
+                                                    <p>{{ user_book.notes|truncatewords:20 }}</p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>

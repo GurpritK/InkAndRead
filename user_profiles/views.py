@@ -40,7 +40,7 @@ def toggle_favorite(request, book_id):
         return redirect('books')
     
     if not request.user.is_authenticated:
-        messages.error(request, 'You must be logged in to add books to wishlist.')
+        messages.error(request, 'You must be logged in to add books to wish list.')
         return redirect('account_login')
     
     book = get_object_or_404(Book, id=book_id)
