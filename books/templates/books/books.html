@@ -6,7 +6,7 @@
     <header class="page-header">
         <div class="container">
             <h1 class="books-collection">Our Book Collection</h1>
-            <p class="profile-subtitle">Welcome back, {{ user.get_full_name|default:user.username }}!</p>
+            <p class="profile-subtitle">Browse the book collection here {{ user.get_full_name|default:user.username|capfirst }}!</p>
         </div>
     </header>
     

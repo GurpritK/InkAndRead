@@ -29,10 +29,17 @@
 {% endblock %}
 
 {% block content %}
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="books-collection">Book details</h1>
+            <p class="profile-subtitle">Learn more about this book here {{ user.get_full_name|default:user.username|capfirst }}!</p>
+        </div>
+    </header>
     <!-- Main Book Detail Container -->
     <article class="book-detail-container" role="main">
         <!-- Book Header with Cover and Basic Info -->
-        <header class="book-header">
+        <section class="book-header">
             <div class="book-cover-section">
                 {% if book.cover_image and book.cover_image != 'placeholder' %}
                     <img src="{{ book.cover_image.url }}" 
@@ -60,15 +67,13 @@
                     </span>
                     <span class="rating-text">{{ book.average_rating }}/5</span>
                 </div>
-            </div>
-        </header>
+            
+
 
         <!-- User Actions (Wishlist & Read Status) -->
         {% if user.is_authenticated %}
-            <div class="user-actions">
-                <div class="book-actions">
                     <!-- Wishlist Button -->
-                    <form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
+                    <span><form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn {% if user_book_status and user_book_status.is_favorite %}btn-primary{% else %}btn-secondary{% endif %}">
                             {% if user_book_status and user_book_status.is_favorite %}
@@ -89,16 +94,17 @@
                                 Mark as Read
                             {% endif %}
                         </button>
-                    </form>
-                </div>
-            </div>
+                    </form></span>
         {% else %}
-            <div class="user-actions">
+   
                 <div class="alert alert-info">
                     <strong><a href="{% url 'account_login' %}">Log in</a> to add to wishlist and track your reading!</strong>
                 </div>
-            </div>
         {% endif %}
+        </div>
+
+
+        </section>
 
         <!-- Book Content -->
         <div class="book-content">
@@ -112,27 +118,7 @@
                 </div>
             </section>
 
-            <!-- Book Details -->
             <section>
-                <h2 class="section-title">
-                    📋 <span>Book Details</span>
-                </h2>
-                
-                <div class="book-details">
-                    <div class="detail-card">
-                        <div class="detail-title">Author</div>
-                        <div class="detail-content">{{ book.author }}</div>
-                    </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-title">Average Rating</div>
-                        <div class="detail-content">
-                            {{ book.average_rating }}/5.0 
-                            <span class="sr-only">({{ book.average_rating }} out of 5 stars)</span>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Rating Form Section (Only for authenticated users) -->
                 {% if user.is_authenticated %}
                     <h2 class="section-title">

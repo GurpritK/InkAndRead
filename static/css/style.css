@@ -540,7 +540,6 @@ p {
 
 .book-detail-container {
     background: #faf8f3;
-    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(139, 69, 19, 0.15);
     overflow: hidden;
     margin-bottom: 40px;
@@ -551,7 +550,7 @@ p {
     grid-template-columns: 1fr 2fr;
     gap: 40px;
     padding: 40px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--color-sidebar-dark);
     color: white;
 }
 
