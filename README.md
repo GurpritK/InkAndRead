@@ -36,6 +36,31 @@ Members of the website can also create a wishlist for books they'd like to read 
 ## Design & Planning:
 [Back To The Top](#table-of-contents)
 
+### User Goals
+
+#### Site Owner Goals
+- Display a website with information on books
+- Manage ratings and reviews for books
+- Manage the About page
+- Manage a list of highly rated books
+- Create a responsive and intuitive design
+
+#### External Registered User Goals
+- Read detailed book information
+- Register for an account
+- Log in securely
+- Edit saved user details
+- Submit reviews on books
+- Edit and delete reviews
+- Rate books using a star rating system
+- Enquire/register for upcoming book events
+
+#### External Non-Registered User Goals
+- Read detailed book information
+- View reviews on books
+- View ratings on books
+
+
 ### User Stories
 Write your user stories in this section
 
@@ -46,33 +71,25 @@ Write your user stories in this section
   
   </details>
 
-### User Goals
 
-### Site Owner Goals
-- Display a website with information on books
-- Manage ratings and reviews for books
-- Manage the About page
-- Manage a list of highly rated books
-- Create a responsive and intuitive design
 
-### External Registered User Goals
-- Read detailed book information
-- Register for an account
-- Log in securely
-- Edit saved user details
-- Submit reviews on books
-- Edit and delete reviews
-- Rate books using a star rating system
-- Enquire/register for upcoming book events
+#### User Stories - Site Visitors 
+ADDING STRUCTURE EXAMPLE HERE - UPDATE WITH OWN USER STORIES!
+- **List added books:**
+  - As a Site Visitor, I can see added books compiled in a list (with a picture of the book and author name) so that I can easily see which books have been added.
+- **View information about a book:**
+  - As a Site Visitor, I can click on a book so that I can get more information about it.
 
-### External Non-Registered User Goals
-- Read detailed book information
-- View reviews on books
-- View ratings on books
+#### User Stories - Administrator(s)
+- **Manage content:**
+  - As Site Administrator, I can add, read, update, and delete books so that I can manage the site's content.
+- **Approve comments:**
+  - As a Site Administrator, I can approve or disapprove comments so that I can filter comments that, for example, contain offensive language.
+
 
 ### Wireframes
 
-I  used [Balsamiq](https://balsamiq.com/) to make wireframes for different screen layouts for my website design, and created mockups for mobile screen and laptop/desktop screen users. The wireframes helped to create an initial vision of how the website would look and feel. The finished website took inspiration from the mockups and built on top of it, hence the final result may differ from the wireframes  constructed in the initial planning stages.
+I  used [Balsamiq](https://balsamiq.com/) to make wireframes for different screen layouts for my website design, and create mockups for mobile screen and laptop/desktop screen users. The wireframes helped to create an initial vision of how the website would look and feel. The finished website took inspiration from the mockups and built on top of it, hence the final result may differ from the wireframes constructed in the initial planning stages.
 
 #### Mobile Wireframes
 
@@ -166,6 +183,9 @@ I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Rela
 [Back To The Top](#table-of-contents)
 
 Explain your features on the website,(navigation, pages, links, forms, input fields, CRUD....)
+ 
+Add screenshots! 
+
 ### Navigation
 
 For larger screens like laptops and desktops, there is a fixed navbar on the left hand side of the website. The navbar is accessible and visible from all screens.
@@ -179,16 +199,45 @@ From the book collection page, users can navigate to individual books to read mo
 Similarly, users can navigate to books from their own profile. 
 
 ### Footer
+
+In the footer, there are some quick links to the homepage, and the book collection page. There is a small description about the Ink&Read website, and social media links. Currently there are empty links which simply navigate to the hompages of the social media websites. 
+
+
 ### Home-page
+
+The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in', these update if the user is logged in.
+
+Below the hero section, there is a section for 'book of the week' which updates according to the most recent highly rated book. 
+
+Near the bottom of the homepage, there is more information about the site and everything you can use the site for. This information is split and displayed in cards.
+
+### Book-collection-page
+
+The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author is visible. Additionally, a rating display for each book is also visible. It is possible to click on any book, and navigate to the book details page.
+
+### Book-detail-page
+
+The book detail page is where you can see the full description of each book, and also the other details like author and title. On this page, you will find the average rating of a book and reviews left by other users. Logged in users can also give a rating and submit a review. The reviews are only displayed after approval. If the logged in user has previously submitted either a review or rating, it can be updated or deleted from this page too.
+
+On this page, logged in users can add a book to their own wishlist, or mark a book as read.
+
+
+### User-profile-page
+
+Logged in users have their own member area, which they can navigate to directly from the navbar. The link is personalised with the user's name e.g. "Joe's Profile". Within the user profile, members can view their wishlist of books, and track their reading by viewing books they have marked as 'read'. 
+
+This profile area can be further improved in the future by allowing users to directly manage their lists from this page. However, they can make changes to their lists by clicking on a book from the profile area, and toggling the 'add to wishlist' or 'mark as read' buttons. This change will automatically update and reflect in the user profile page.
+
 ### CRUD
 
-- Registered users can add a rating, update their rating and delete their rating for a book. When the user navigates the book page, they can also view the rating they submitted. When a user makes any of these changes, they are notified with an alert whether their action was successful. Each user is limited to one rating per book, and the option to 'update' their rating is available only.
+- Registered users can add a rating, update their rating and delete their rating for a book. When the user navigates the book page, they can also view the rating they submitted. When a user makes any of these changes, they are notified with an alert whether their action was successful. Each user is limited to one rating per book, and the option to 'update' their rating is available if a rating has already been submitted.
 
 - Registered users can create reviews, update their reviews and delete their reviews for a book. When the user submits or updates a review, it is sent for approval to the admin. The user is notified that their review has been submitted for approval. When a user deletes their review, this change is applied immediately and the review will no longer be seen on the page. All reviews from all users are visible on the book page. Each user is limited to one review per book, and the option to 'update' their review is available only.
 
-- To personalise the user experience further, registered users can navigate to a book page and 'favourite' a book. This will add the book to their favourites collection in their personal profile section. Users can easily 'unfavourite' a book by toggling the favourites button. The change is reflected immediately on the book page too, and a heart icon is filled or unfilled depending on the action (assuming they are logged in). The user is notified for each action. This feature is available to logged in users only.
+- To personalise the user experience further, registered users can navigate to a book page and 'add to wishlist'. This will add the book to their wishlist in their personal profile page. Users can easily remove a book from their wishlist by toggling the button on the book page. The change is reflected immediately on the book details page and in the user profile page too. The user is notified for each action. This feature is available to logged in users only.
 
-- Similarly, as part of the personalised user experience, registered users can navigate to a book page and mark the book as 'read'. This will add the book to their 'read' books collection in their personal profile section. Users can easily mark the same book as 'unread' by toggling the 'read' button. The change is reflected immediately on the book page, and an icon is filled or unfilled depending on the action (assuming they are logged in). The user is notified for each action. This feature is available to logged in users only.
+- Similarly, as part of the personalised user experience, registered users can navigate to a book page and mark the book as 'read'. This will add the book to their 'read' books collection in their personal profile section. Users can easily mark the same book as 'unread' by toggling the 'read' button on the book details page. The change is reflected immediately on the book page. The user is notified for each action. This feature is available to logged in users only.
+
 
 ### Authentication-Authorisation 
 
@@ -200,14 +249,50 @@ Admin can remove users from the admin page.
 ## Technologies Used
 [Back To The Top](#table-of-contents)
 
-Used Gemini AI to generate hero image used on website homepage.
-
 List of technologies used for your project
 
-## Libraries 
+### Languages
+
+* Python
+* Django
+* HTML
+* CSS
+* JavaScript
+
+### Frameworks, Libraries, and Tools
+
+* **Django**: The main web framework used for building the application.
+* **Bootstrap**: For responsive design and styling.
+* **AllAuth**: For user authentication
+* **Crispy Forms**: For all forms
+* **Heroku**: For application deployment.
+* **Git**: For version control.
+* **Visual Studio Code**
+* **Cloudinary**: Dynamic assets hosting (images)
+* **Favicon.io**: For manifest and favicon creation
+* **Balsamiq**: Wireframes creation
+* **Fontawesome** Social media icons (Facebook, Instagram, X and Youtube)
+* **Google Fonts** Import fonts to CSS
+
+### AI tools
+* **Gemini** : AI image generation
+* **ChatGPT** : Coding with Django steps to follow
+* **Eraser.io** : ERD generation
+* **Copilot** : Code development and debugging assistance
+
 
 ## Testing
 [Back To The Top](#table-of-contents)
+
+### Testing tools
+- [Responsinator](http://www.responsinator.com/) - Used to check how the site looks on different devices and how responsive it is.
+- [Am I Responsive](https://ui.dev/amiresponsive) - Used to check how the site looks on different devices and how responsive it is.
+- [Responsive Web Design Checker](https://responsivedesignchecker.com/) - Used to see how my website looks on different types of devices and screen sizes.
+- [HTML Validator](https://validator.w3.org/nu/) - Used to validate the HTML files.
+- [CSS Validator](https://jigsaw.w3.org/css-validator/) - Used to validate the JavaScript code.
+- [Site24x7's JavaScript validator](https://www.site24x7.com/tools/javascript-validator.html) - Used to validate the JavaScript code.
+- [JShint](https://jshint.com/) - Used to validate the JavaScript Code.
+- [ColorMagic Contrast Checker](https://colormagic.app/contrast-checker) - Was used to check the constrast of the colors that I have chosen
 
 Important part of your README!!!
 ### Google's Lighthouse Performance
@@ -223,6 +308,12 @@ Test all your user stories, you an create table
 User Story |  Test | Pass
 --- | --- | :---:
 paste here you user story | what is visible to the user and what action they should perform | &check;
+attach screenshot
+### Manual Testing features
+Test all your features, you can use the same approach 
+| Feature | Action | Status | 
+|:-------:|:--------| :--------|
+| description | user steps | &check; |
 attach screenshot
 
 ### Manual Testing
@@ -305,6 +396,11 @@ The site was tested using Lighthouse with the following results:
 
 Alongside the built in Bootstrap responsive CSS, Chrome dev tools were used frequently to test the site at standard screen sizes and the site was manually viewed on laptops, tablets and phones.
 
+|   Test	|  Mobile Screen Result 	|  Desktop Screen  Result	|
+|---	|---	|---	|
+|   Click Home menu	|  success 	|  success 	|
+|   Click About menu	|  success 	|  success 	|
+
 
 ### Validator Testing
 
@@ -339,9 +435,7 @@ Alongside the built in Bootstrap responsive CSS, Chrome dev tools were used freq
 [Back To The Top](#table-of-contents)
 
 List of bugs and how did you fix them
-- I decided to rename an app from 'my_profile' to 'user_profiles' as this naming made more sense from the admin perspective when managing different user profiles. This involved creating the new app, moving models, views and existing templates across from the old app, and transferring any migration tables and data within the tables. 
-
-Although the transfer of all these files and data, and deleting the old app was successful, the site was crashing with errors like 'not found'. When navigating to the profile page, there were errors referencing the old app. This suggested there were some stil some references to the old app remaining in the project. I looked through all the files, and eventually decided to lean on AI to find the remaining references and update them. Copilot AI was quick to identify that the URL paths in urls.py hadn't been updated. 
+- I decided to rename an app from 'my_profile' to 'user_profiles' as this naming made more sense from the admin perspective when managing different user profiles. This involved creating the new app, moving models, views and existing templates across from the old app, and transferring any migration tables and data within the tables. Although the transfer of all these files and data, and deleting the old app was successful, the site was crashing with errors like 'not found'. When navigating to the profile page, there were errors referencing the old app. This suggested there were some stil some references to the old app remaining in the project. I looked through all the files, and eventually decided to lean on AI to find the remaining references and update them. Copilot AI was quick to identify that the URL paths in urls.py hadn't been updated. 
 
 - I was making changes to the CSS files, but these were not appearing in the local web development browser. My initial thinking was that the CSS file was not properly connected to the html template files, and perhaps the script paths were incorrect but this was not the case. I did some further investigation to find what was missing (and a lot of hard refreshes!), AI also suggested some changes to make but I knew from my previous projects that the additional settings AI was recommending were not required. Finally, I found that the debug settings was set to FALSE (from my last commit to deploy the app to Heroku), hence the CSS was no longer showing on my local browser. Once I set it to TRUE, the CSS changes were immediately reflected in my local browser.
 
@@ -349,7 +443,9 @@ Although the transfer of all these files and data, and deleting the old app was 
 
 - As I created more books for the book collection from the admin pages, by manually adding the book covers and details, I found that the display in the website was showing the HTML code within the descriptions for each book. This issue did not occur when I added the first book. By using 'safe' and 'striptags' tags in the HTML for book descriptions, I was able to fix this issue.
 
-- I decided instead of a favourites list, I wanted to create a wishlist instead. I updated all the frontend code to reflect this in the text on the website, but since it used the same functionality in the backend code I decided to keep the model table the same, and keep the field 'is_favourite' to use for the wishlist. I could've updated the table, and migrated once and transferred existing data but since there was no fundamental change to the backend functionality, it made sense to keep the table name as is.
+- I decided instead of a favourites list, I wanted to create a wishlist instead. I updated all the frontend code to reflect this in the text on the website, but since it used the same functionality in the backend code I decided to keep the model table the same, and keep the field 'is_favourite' to use for the wishlist. I could've updated the table, and migrated once and transferred existing data but since there was no fundamental change to the backend functionality, it made sense to keep the table name as is owing to time constraints. 
+
+- A lot of issues using CSS and Bootstrap5 for responsive designing, with grids not displaying the book covers and descriptions clearly. In particular, on a mobile screen device, on the homepage the 'book of the week' section was cut in half. This same issue was not showing for the other pages, and the books were displaying correctly. I had created the book of the week grid differently to the other pages, as it displayed the book cover on the left hand side, and the description and ratings on the right. It was created this way to create a better flow for the homepage, and a more horizontal surface area, instead of vertical like the book collection page. To fix this, I...
 
 ## Deployment
 [Back To The Top](#table-of-contents)
@@ -386,7 +482,7 @@ This website is deployed to Heroku from a GitHub repository, the following steps
 * Gemini AI for hero image generation 
 * Google Images and Amazon for book cover photos
 * Goodreads for book descriptions
-* Eraser.io for ERD 
+* Eraser.io for ERD generation
 * Copilot AI with development, testing and debugging assistance with the project
 * Coolors.co for colour palette selection
 * Miro board by Marko Tot for comprehensive and helpful tools, lists, guides, project examples and tutorial videos
