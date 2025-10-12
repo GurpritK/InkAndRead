@@ -75,7 +75,7 @@
                     <!-- Wishlist Button -->
                     <span><form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn {% if user_book_status and user_book_status.is_favorite %}btn-primary{% else %}btn-secondary{% endif %}">
+                        <button type="submit" class="btn btn-primary">
                             {% if user_book_status and user_book_status.is_favorite %}
                                 In Wishlist
                             {% else %}
@@ -87,7 +87,7 @@
                     <!-- Read Status Button -->
                     <form method="post" action="{% url 'toggle_read' book.id %}" style="display: inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn {% if user_book_status and user_book_status.is_read %}btn-primary{% else %}btn-secondary{% endif %}">
+                        <button type="submit" class="btn btn-primary">
                             {% if user_book_status and user_book_status.is_read %}
                                 Read
                             {% else %}
@@ -111,7 +111,7 @@
             <!-- Description Section -->
             <section>
                 <h2 class="section-title">
-                    📖 <span>About This Book</span>
+                    <span>About This Book</span>
                 </h2>
                 <div class="book-description-full">
                     {{ book.book_description|safe|linebreaks }}
@@ -125,14 +125,9 @@
                         <span>Rate This Book</span>
                     </h2>
                     
-                    {% if user_rating %}
-                        <div class="alert alert-info">
-                            <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
-                        </div>
-                    {% endif %}
-                    
                     <form method="post" class="rating-form">
                         {% csrf_token %}
+                        
                         <div class="form-group">
                             {{ book_rating_form.score.label_tag }}
                             {{ book_rating_form.score }}
@@ -140,21 +135,31 @@
                                 <small class="form-text text-muted">{{ book_rating_form.score.help_text }}</small>
                             {% endif %}
                         </div>
-                        <button type="submit" name="rating_submit" class="btn btn-primary">
-                            {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
-                        </button>
-                    </form>
-                    
-                    <!-- Delete Rating Button (Only show if user has rated the book) -->
-                    {% if user_rating %}
-                        <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form mt-2">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-danger btn-sm" 
-                                    onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
-                                 Delete My Rating
+
+                        {% if user_rating %}
+                        <div class="alert alert-info">
+                            <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
+                        </div>
+                        {% endif %}
+
+                        <div class="d-flex gap-2 align-items-stretch">
+                            <button type="submit" name="rating_submit" class="btn btn-primary">
+                                {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
                             </button>
-                        </form>
-                    {% endif %}
+                    </form>
+                            
+                            <!-- Delete Rating Button (Only show if user has rated the book) -->
+                            {% if user_rating %}
+                                <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form d-flex" style="margin: 0;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary" 
+                                            onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
+                                         Delete My Rating
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    
                 {% else %}
                     <div class="alert alert-warning">
                         <strong>Please <a href="{% url 'account_login' %}">log in</a> to rate this book.</strong>
@@ -166,7 +171,7 @@
                 {% if approved_reviews %}
                     <section>
                         <h2 class="section-title">
-                            📚 <span>Reader Reviews</span>
+                            <span>Reader Reviews</span>
                         </h2>
                         
                         <div class="reviews-section">
@@ -189,19 +194,9 @@
                 <section>
                     {% if user.is_authenticated %}
                         <h2 class="section-title">
-                            💬 <span>Review This Book</span>
+                            <span>Review This Book</span>
                         </h2>
                         
-                        {% if user_review %}
-                            <div class="alert alert-info">
-                                <strong>Your review status:</strong> 
-                                {% if user_review.approved %}
-                                    Published
-                                {% else %}
-                                    Pending approval
-                                {% endif %}
-                            </div>
-                        {% endif %}
                         
                         <form method="post" class="review-form">
                             {% csrf_token %}
@@ -212,21 +207,35 @@
                                     <small class="form-text text-muted">{{ book_review_form.review.help_text }}</small>
                                 {% endif %}
                             </div>
-                            <button type="submit" name="review_submit" class="btn btn-primary">
-                                {% if user_review %}Update Review{% else %}Submit Review{% endif %}
-                            </button>
-                        </form>
-                        
-                        <!-- Delete Review Button (Only show if user has written a review) -->
-                        {% if user_review %}
-                            <form method="post" action="{% url 'delete_review' slug=book.slug %}" class="delete-review-form mt-2">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-danger btn-sm" 
-                                        onclick="return confirm('Are you sure you want to delete your review? This action cannot be undone.')">
-                                    🗑️ Delete My Review
-                                </button>
-                            </form>
+                            {% if user_review %}
+                            <div class="alert alert-info">
+                                <strong>Your review status:</strong> 
+                                {% if user_review.approved %}
+                                    Published
+                                {% else %}
+                                    Pending approval
+                                {% endif %}
+                            </div>
                         {% endif %}
+
+                            <div class="d-flex gap-2 align-items-stretch">
+                                <button type="submit" name="review_submit" class="btn btn-primary">
+                                    {% if user_review %}Update Review{% else %}Submit Review{% endif %}
+                                </button>
+                        </form>
+
+                                <!-- Delete Review Button (Only show if user has written a review) -->
+                                {% if user_review %}
+                                    <form method="post" action="{% url 'delete_review' slug=book.slug %}" class="delete-review-form d-flex" style="margin: 0;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary" 
+                                                onclick="return confirm('Are you sure you want to delete your review? This action cannot be undone.')">
+                                            Delete My Review
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        
                     {% else %}
                         <div class="alert alert-warning">
                             <strong>Please <a href="{% url 'account_login' %}">log in</a> to review this book.</strong>
