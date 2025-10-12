@@ -1124,7 +1124,7 @@ p {
 
 .hero-section {
     position: relative;
-    background-image: url('/static/images/hero_final.png');
+    background-image: url("/static/images/hero_final.cfae7429f6c4.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
