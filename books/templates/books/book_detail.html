@@ -34,6 +34,7 @@
         <div class="container">
             <h1 class="books-collection">Book details</h1>
             <p class="profile-subtitle">Learn more about this book here {{ user.get_full_name|default:user.username|capfirst }}!</p>
+            <div class="decorative-line"></div>
         </div>
     </header>
 
@@ -119,7 +120,7 @@
 
             <!-- Rating and Review Forms in Horizontal Layout -->
             {% if user.is_authenticated %}
-                <section class="row g-4 mt-4">
+                <section class="row g-4 mt-4 mb-5">
                     <!-- Rating Form Column -->
                     <div class="col-md-6 content-padding-left">
                         <h2 class="section-title">
@@ -208,7 +209,7 @@
                     </div>
                 </section>
             {% else %}
-                <section class="mt-4">
+                <section class="mt-4 mb-5">
                     <div class="alert alert-warning">
                         <strong>Please <a href="{% url 'account_login' %}">log in</a> to rate and review this book.</strong>
                     </div>

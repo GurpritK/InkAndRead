@@ -781,6 +781,26 @@ p {
     margin-bottom: 0;
 }
 
+.decorative-line {
+    width: 75%;
+    height: 2px;
+    margin: var(--spacing-lg) auto 0;
+    background: linear-gradient(to right, transparent, var(--color-sidebar-dark) 20%, var(--color-sidebar-dark) 80%, transparent);
+    position: relative;
+}
+
+.decorative-line::before {
+    content: '❧';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-background);
+    color: var(--color-sidebar-dark);
+    font-size: 1.2rem;
+    padding: 0 var(--spacing-sm);
+}
+
 .profile-stats {
     margin-bottom: var(--spacing-xxl);
 }
