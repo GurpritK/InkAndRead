@@ -1140,6 +1140,19 @@ p {
     justify-content: center;
 }
 
+/* Make hero buttons longer on laptop and desktop screens */
+@media (min-width: 992px) {
+    .hero-actions .btn {
+        min-width: 200px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        text-align: center;
+        justify-content: center;
+    }
+    
+
+}
+
 .btn-primary {
     background: linear-gradient(145deg, var(--color-accent), var(--color-accent-light), var(--color-accent-lighter));
     background-size: 300% 300%;
