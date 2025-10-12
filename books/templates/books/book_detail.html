@@ -67,44 +67,42 @@
                     </span>
                     <span class="rating-text">{{ book.average_rating }}/5</span>
                 </div>
-            
 
-
-        <!-- User Actions (Wishlist & Read Status) -->
-        {% if user.is_authenticated %}
-                    <!-- Wishlist Button -->
-                    <span><form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">
-                            {% if user_book_status and user_book_status.is_favorite %}
-                                In Wishlist
-                            {% else %}
-                                Add to Wishlist
-                            {% endif %}
-                        </button>
-                    </form>
-                    
-                    <!-- Read Status Button -->
-                    <form method="post" action="{% url 'toggle_read' book.id %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">
-                            {% if user_book_status and user_book_status.is_read %}
-                                Read
-                            {% else %}
-                                Mark as Read
-                            {% endif %}
-                        </button>
-                    </form></span>
-        {% else %}
-   
-                <div class="alert alert-info">
-                    <strong><a href="{% url 'account_login' %}">Log in</a> to add to wishlist and track your reading!</strong>
-                </div>
-        {% endif %}
-        </div>
-
-
+                <!-- User Actions (Wishlist & Read Status) -->
+                {% if user.is_authenticated %}
+                    <div class="d-flex gap-2 mt-3">
+                        <!-- Wishlist Button -->
+                        <form method="post" action="{% url 'toggle_favorite' book.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">
+                                {% if user_book_status and user_book_status.is_favorite %}
+                                    In Wishlist
+                                {% else %}
+                                    Add to Wishlist
+                                {% endif %}
+                            </button>
+                        </form>
+                        
+                        <!-- Read Status Button -->
+                        <form method="post" action="{% url 'toggle_read' book.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">
+                                {% if user_book_status and user_book_status.is_read %}
+                                    Read
+                                {% else %}
+                                    Mark as Read
+                                {% endif %}
+                            </button>
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info mt-3">
+                        <strong><a href="{% url 'account_login' %}">Log in</a> to add to wishlist and track your reading!</strong>
+                    </div>
+                {% endif %}
+            </div>
         </section>
+
 
         <!-- Book Content -->
         <div class="book-content">
@@ -146,18 +144,18 @@
                             <button type="submit" name="rating_submit" class="btn btn-primary">
                                 {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
                             </button>
-                    </form>
+                        </form>
                             
-                            <!-- Delete Rating Button (Only show if user has rated the book) -->
-                            {% if user_rating %}
-                                <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form d-flex" style="margin: 0;">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary" 
-                                            onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
-                                         Delete My Rating
-                                    </button>
-                                </form>
-                            {% endif %}
+                        <!-- Delete Rating Button (Only show if user has rated the book) -->
+                        {% if user_rating %}
+                            <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form d-flex" style="margin: 0;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary" 
+                                        onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
+                                     Delete My Rating
+                                </button>
+                            </form>
+                        {% endif %}
                         </div>
                     
                 {% else %}
@@ -222,18 +220,18 @@
                                 <button type="submit" name="review_submit" class="btn btn-primary">
                                     {% if user_review %}Update Review{% else %}Submit Review{% endif %}
                                 </button>
-                        </form>
+                            </form>
 
-                                <!-- Delete Review Button (Only show if user has written a review) -->
-                                {% if user_review %}
-                                    <form method="post" action="{% url 'delete_review' slug=book.slug %}" class="delete-review-form d-flex" style="margin: 0;">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary" 
-                                                onclick="return confirm('Are you sure you want to delete your review? This action cannot be undone.')">
-                                            Delete My Review
-                                        </button>
-                                    </form>
-                                {% endif %}
+                            <!-- Delete Review Button (Only show if user has written a review) -->
+                            {% if user_review %}
+                                <form method="post" action="{% url 'delete_review' slug=book.slug %}" class="delete-review-form d-flex" style="margin: 0;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary" 
+                                            onclick="return confirm('Are you sure you want to delete your review? This action cannot be undone.')">
+                                        Delete My Review
+                                    </button>
+                                </form>
+                            {% endif %}
                             </div>
                         
                     {% else %}
