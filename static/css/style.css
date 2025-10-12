@@ -1525,7 +1525,33 @@ p {
     line-height: 1.5;
 }
 
-/* Star rating CSS removed - using simple number input */
+/* Make both forms exactly the same height */
+.col-md-6.content-padding-left,
+.col-md-6.content-padding-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-form,
+.review-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+}
+
+.rating-form .form-group,
+.review-form .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.rating-form .d-flex,
+.review-form .d-flex {
+    margin-top: auto;
+}
 
 .reviews-section {
     margin-top: var(--spacing-xl);
@@ -1772,6 +1798,15 @@ p {
         min-width: 0;
     }
     
+    /* Center star rating and wishlist/read buttons on mobile */
+    .book-rating-large {
+        justify-content: center;
+    }
+    
+    .book-info .d-flex.gap-2.mt-3 {
+        justify-content: center;
+    }
+    
     /* Hero section mobile styles */
     .hero-section {
         min-height: 60vh;
@@ -1853,6 +1888,65 @@ p {
 
     .hero-overlay {
         padding: var(--spacing-xl) var(--spacing-sm);
+    }
+}
+
+/* Very small screens (below 375px) */
+@media (max-width: 374px) {
+    .book-header {
+        padding: 15px;
+        margin: 0 5px;
+    }
+    
+    .book-cover-large,
+    .book-cover-placeholder-large {
+        max-width: 180px;
+        width: 180px;
+        height: 260px;
+    }
+    
+    .book-title-large {
+        font-size: 1.4rem;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    
+    .book-author-large {
+        font-size: 1rem;
+    }
+    
+    .book-rating-large {
+        font-size: 1rem;
+    }
+    
+    .book-content {
+        padding: 15px;
+    }
+    
+    /* Ensure buttons don't overflow */
+    .d-flex.gap-2 {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    /* Fix content padding for very small screens */
+    .content-padding,
+    .content-padding-left,
+    .content-padding-right {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    .row .col-md-6.content-padding-left,
+    .row .col-md-6.content-padding-right {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
     }
 }
 

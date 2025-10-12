@@ -135,13 +135,13 @@
                                 {% if book_rating_form.score.help_text %}
                                     <small class="form-text text-muted">{{ book_rating_form.score.help_text }}</small>
                                 {% endif %}
+                                
+                                {% if user_rating %}
+                                <div class="alert alert-info mt-3">
+                                    <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
+                                </div>
+                                {% endif %}
                             </div>
-
-                            {% if user_rating %}
-                            <div class="alert alert-info">
-                                <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
-                            </div>
-                            {% endif %}
 
                             <div class="d-flex gap-2 align-items-stretch">
                                 <button type="submit" name="rating_submit" class="btn btn-primary">
