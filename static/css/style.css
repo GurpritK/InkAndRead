@@ -1327,17 +1327,19 @@ p {
     opacity: 0.8;
 }
 
-/* Cross lines with center gap - using multiple pseudo-elements */
+/* Cross lines with center gap and faded ends */
 .cross-layout::before {
     content: '';
     position: absolute;
     background: linear-gradient(to bottom, 
+        transparent 0%, 
         var(--color-font) 8%, 
-        var(--color-font) 45%, 
+        var(--color-font) 42%, 
         transparent 45%, 
         transparent 55%, 
-        var(--color-font) 55%, 
-        var(--color-font) 92%);
+        var(--color-font) 58%, 
+        var(--color-font) 92%, 
+        transparent 100%);
     left: 50%;
     top: 0;
     bottom: 0;
@@ -1350,12 +1352,14 @@ p {
     content: '';
     position: absolute;
     background: linear-gradient(to right, 
+        transparent 0%, 
         var(--color-font) 5%, 
-        var(--color-font) 45%, 
+        var(--color-font) 42%, 
         transparent 45%, 
         transparent 55%, 
-        var(--color-font) 55%, 
-        var(--color-font) 95%);
+        var(--color-font) 58%, 
+        var(--color-font) 95%, 
+        transparent 100%);
     top: 50%;
     left: 0;
     right: 0;
