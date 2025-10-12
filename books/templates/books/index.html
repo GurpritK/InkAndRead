@@ -90,8 +90,21 @@
                             <h3 class="book-title-featured">{{ book_of_week.book_title }}</h3>
                             <p class="book-author-featured">by {{ book_of_week.author }}</p>
                             <div class="book-rating-featured">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-text">{{ book_of_week.average_rating }}/5.0</span>
+                                {% if book_of_week.average_rating and book_of_week.average_rating > 0 %}
+                                    <span class="stars" aria-label="Rating: {{ book_of_week.average_rating }} out of 5 stars">
+                                        {% for i in "12345" %}
+                                            {% if book_of_week.average_rating >= forloop.counter %}★{% else %}☆{% endif %}
+                                        {% endfor %}
+                                    </span>
+                                    <span class="rating-text">{{ book_of_week.average_rating }}/5</span>
+                                {% else %}
+                                    <span class="stars" aria-label="No ratings yet">
+                                        {% for i in "12345" %}
+                                            ☆
+                                        {% endfor %}
+                                    </span>
+                                    <span class="rating-text">No ratings yet</span>
+                                {% endif %}
                             </div>
                             <p class="book-description-featured">{{ book_of_week.book_description|safe|truncatewords:35 }}</p>
                             <div class="book-cta">

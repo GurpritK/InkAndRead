@@ -622,6 +622,10 @@ p {
     font-size: 1.5em;
 }
 
+.book-rating-large .stars{
+    color: var(--color-background-card);
+}
+
 .rating-text {
     background: rgba(255,255,255,0.2);
     padding: 8px 15px;
