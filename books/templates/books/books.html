@@ -43,8 +43,8 @@
                                 <h2 class="book-title">{{ book.book_title }}</h2>
                                 <p class="book-author">by {{ book.author }}</p>
                                 <p class="book-description flex-grow-1">{{ book.book_description|striptags|truncatewords:30 }}</p>
-                                <div class="book-rating mt-auto" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
-                                    Rating: {{ book.average_rating }}/5
+                                <div class="book-rating mt-auto" aria-label=" Rating: {{ book.average_rating }} out of 5 stars">
+                                    ★ Rating: {{ book.average_rating }}/5 
                                 </div>
                             </a>
                         </article>
