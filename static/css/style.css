@@ -1800,7 +1800,7 @@ p {
     }
     
     .book-content {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-xl);
     }
     
     .book-details {
@@ -1940,7 +1940,7 @@ p {
     }
     
     .book-content {
-        padding: 15px;
+        padding: 20px;
     }
     
     /* Ensure buttons don't overflow */
