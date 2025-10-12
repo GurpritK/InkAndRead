@@ -6,6 +6,17 @@ class BookRatingForm(forms.ModelForm):
     class Meta:
         model = BookRating
         fields = ('score',)
+        widgets = {
+            'score': forms.NumberInput(attrs={
+                'min': 1,
+                'max': 5,
+                'class': 'form-control',
+                'placeholder': 'Rate from 1 to 5 stars'
+            })
+        }
+        labels = {
+            'score': 'Rating'
+        }
 
 
 class BookReviewForm(forms.ModelForm):

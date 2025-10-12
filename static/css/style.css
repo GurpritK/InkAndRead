@@ -1525,6 +1525,8 @@ p {
     line-height: 1.5;
 }
 
+/* Star rating CSS removed - using simple number input */
+
 .reviews-section {
     margin-top: var(--spacing-xl);
 }
@@ -1612,6 +1614,23 @@ p {
 }
 
 /* ===================================
+   RESPONSIVE CONTENT PADDING
+   =================================== */
+
+.content-padding {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.content-padding-left {
+    padding-left: 40px;
+}
+
+.content-padding-right {
+    padding-right: 40px;
+}
+
+/* ===================================
    RESPONSIVE DESIGN & MEDIA QUERIES
    =================================== */
 
@@ -1623,7 +1642,37 @@ p {
 
     .main-content {
         margin-top: 0;
+    }
 
+    /* Responsive content padding for mobile */
+    .content-padding,
+    .content-padding-left,
+    .content-padding-right {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Override Bootstrap column padding on mobile for better edge spacing */
+    .row .col-md-6.content-padding-left,
+    .row .col-md-6.content-padding-right {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    /* Additional mobile spacing fix for forms inside columns */
+    .col-md-6.content-padding-left .section-title,
+    .col-md-6.content-padding-right .section-title,
+    .col-md-6.content-padding-left .rating-form,
+    .col-md-6.content-padding-right .review-form {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    /* Reduce form padding on mobile to prevent overflow */
+    .col-md-6.content-padding-left .rating-form,
+    .col-md-6.content-padding-right .review-form {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
     }
 
     .mobile-menu-toggle {

@@ -36,7 +36,21 @@
             <p class="profile-subtitle">Learn more about this book here {{ user.get_full_name|default:user.username|capfirst }}!</p>
         </div>
     </header>
-    <!-- Main Book Detail Container -->
+
+
+        <!-- Book Content -->
+        <div class="book-content">
+            <!-- Description Section -->
+            <section>
+                <h2 class="section-title">
+                    <span>About This Book</span>
+                </h2>
+                <div class="book-description-full">
+                    {{ book.book_description|safe|linebreaks }}
+                </div>
+            </section>
+
+              <!-- Main Book Detail Container -->
     <article class="book-detail-container" role="main">
         <!-- Book Header with Cover and Basic Info -->
         <section class="book-header">
@@ -103,98 +117,56 @@
             </div>
         </section>
 
-
-        <!-- Book Content -->
-        <div class="book-content">
-            <!-- Description Section -->
-            <section>
-                <h2 class="section-title">
-                    <span>About This Book</span>
-                </h2>
-                <div class="book-description-full">
-                    {{ book.book_description|safe|linebreaks }}
-                </div>
-            </section>
-
-            <section>
-                <!-- Rating Form Section (Only for authenticated users) -->
-                {% if user.is_authenticated %}
-                    <h2 class="section-title">
-                        <span>Rate This Book</span>
-                    </h2>
-                    
-                    <form method="post" class="rating-form">
-                        {% csrf_token %}
-                        
-                        <div class="form-group">
-                            {{ book_rating_form.score.label_tag }}
-                            {{ book_rating_form.score }}
-                            {% if book_rating_form.score.help_text %}
-                                <small class="form-text text-muted">{{ book_rating_form.score.help_text }}</small>
-                            {% endif %}
-                        </div>
-
-                        {% if user_rating %}
-                        <div class="alert alert-info">
-                            <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
-                        </div>
-                        {% endif %}
-
-                        <div class="d-flex gap-2 align-items-stretch">
-                            <button type="submit" name="rating_submit" class="btn btn-primary">
-                                {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
-                            </button>
-                        </form>
-                            
-                        <!-- Delete Rating Button (Only show if user has rated the book) -->
-                        {% if user_rating %}
-                            <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form d-flex" style="margin: 0;">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-primary" 
-                                        onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
-                                     Delete My Rating
-                                </button>
-                            </form>
-                        {% endif %}
-                        </div>
-                    
-                {% else %}
-                    <div class="alert alert-warning">
-                        <strong>Please <a href="{% url 'account_login' %}">log in</a> to rate this book.</strong>
-                    </div>
-                {% endif %}
-
-
-                <!-- Display Approved Reviews -->
-                {% if approved_reviews %}
-                    <section>
+            <!-- Rating and Review Forms in Horizontal Layout -->
+            {% if user.is_authenticated %}
+                <section class="row g-4 mt-4">
+                    <!-- Rating Form Column -->
+                    <div class="col-md-6 content-padding-left">
                         <h2 class="section-title">
-                            <span>Reader Reviews</span>
+                            <span>Rate This Book</span>
                         </h2>
                         
-                        <div class="reviews-section">
-                            {% for review in approved_reviews %}
-                                <div class="review-card">
-                                    <div class="review-header">
-                                        <strong>{{ review.user.username|title }}</strong>
-                                        <small class="text-muted">{{ review.created_at|date:"F j, Y" }}</small>
-                                    </div>
-                                    <div class="review-content">
-                                        {{ review.review|safe }}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </section>
-                {% endif %}
+                        <form method="post" class="rating-form">
+                            {% csrf_token %}
+                            
+                            <div class="form-group">
+                                {{ book_rating_form.score.label_tag }}
+                                {{ book_rating_form.score }}
+                                {% if book_rating_form.score.help_text %}
+                                    <small class="form-text text-muted">{{ book_rating_form.score.help_text }}</small>
+                                {% endif %}
+                            </div>
 
-                <!-- Review Form Section (Only for authenticated users) -->
-                <section>
-                    {% if user.is_authenticated %}
+                            {% if user_rating %}
+                            <div class="alert alert-info">
+                                <strong>Your current rating:</strong> {{ user_rating.score }}/5 stars
+                            </div>
+                            {% endif %}
+
+                            <div class="d-flex gap-2 align-items-stretch">
+                                <button type="submit" name="rating_submit" class="btn btn-primary">
+                                    {% if user_rating %}Update Rating{% else %}Submit Rating{% endif %}
+                                </button>
+                            </form>
+                                
+                            <!-- Delete Rating Button (Only show if user has rated the book) -->
+                            {% if user_rating %}
+                                <form method="post" action="{% url 'delete_rating' slug=book.slug %}" class="delete-rating-form d-flex" style="margin: 0;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary" 
+                                            onclick="return confirm('Are you sure you want to delete your rating? This action cannot be undone.')">
+                                         Delete My Rating
+                                    </button>
+                                </form>
+                            {% endif %}
+                            </div>
+                    </div>
+
+                    <!-- Review Form Column -->
+                    <div class="col-md-6 content-padding-right">
                         <h2 class="section-title">
                             <span>Review This Book</span>
                         </h2>
-                        
                         
                         <form method="post" class="review-form">
                             {% csrf_token %}
@@ -214,7 +186,7 @@
                                     Pending approval
                                 {% endif %}
                             </div>
-                        {% endif %}
+                            {% endif %}
 
                             <div class="d-flex gap-2 align-items-stretch">
                                 <button type="submit" name="review_submit" class="btn btn-primary">
@@ -233,14 +205,38 @@
                                 </form>
                             {% endif %}
                             </div>
-                        
-                    {% else %}
-                        <div class="alert alert-warning">
-                            <strong>Please <a href="{% url 'account_login' %}">log in</a> to review this book.</strong>
-                        </div>
-                    {% endif %}
+                    </div>
                 </section>
-            </section>
+            {% else %}
+                <section class="mt-4">
+                    <div class="alert alert-warning">
+                        <strong>Please <a href="{% url 'account_login' %}">log in</a> to rate and review this book.</strong>
+                    </div>
+                </section>
+            {% endif %}
+
+            <!-- Display Approved Reviews -->
+            {% if approved_reviews %}
+                <section class="mt-5 content-padding">
+                    <h2 class="section-title">
+                        <span>Reader Reviews</span>
+                    </h2>
+                    
+                    <div class="reviews-section">
+                        {% for review in approved_reviews %}
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <strong>{{ review.user.username|title }}</strong>
+                                    <small class="text-muted">{{ review.created_at|date:"F j, Y" }}</small>
+                                </div>
+                                <div class="review-content">
+                                    {{ review.review|safe }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
 
         </div>
     </article>
