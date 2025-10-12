@@ -75,12 +75,21 @@
                 <p class="book-author-large">by {{ book.author }}</p>
                 
                 <div class="book-rating-large">
-                    <span class="stars" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
-                        {% for i in "12345" %}
-                            {% if book.average_rating >= forloop.counter %}⭐{% else %}☆{% endif %}
-                        {% endfor %}
-                    </span>
-                    <span class="rating-text">{{ book.average_rating }}/5</span>
+                    {% if book.average_rating and book.average_rating > 0 %}
+                        <span class="stars" aria-label="Rating: {{ book.average_rating }} out of 5 stars">
+                            {% for i in "12345" %}
+                                {% if book.average_rating >= forloop.counter %}⭐{% else %}☆{% endif %}
+                            {% endfor %}
+                        </span>
+                        <span class="rating-text">{{ book.average_rating }}/5</span>
+                    {% else %}
+                        <span class="stars" aria-label="No ratings yet">
+                            {% for i in "12345" %}
+                                ☆
+                            {% endfor %}
+                        </span>
+                        <span class="rating-text">No ratings yet</span>
+                    {% endif %}
                 </div>
 
                 <!-- User Actions (Wishlist & Read Status) -->
