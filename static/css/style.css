@@ -1046,17 +1046,14 @@ p {
    MESSAGES & ALERTS
    =================================== */
 
-.messages-container {
-    margin-bottom: var(--spacing-xl);
-}
 
 .alert {
     border-radius: 0 var(--border-radius) 0 var(--border-radius);
     padding: var(--spacing-md) var(--spacing-lg);
-    margin-bottom: var(--spacing-md);
     border: 1px solid transparent;
     font-weight: 500;
     justify-content: flex-end;
+    margin-bottom: 0px;
 }
 
 .alert-success {
