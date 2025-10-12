@@ -1222,7 +1222,7 @@ p {
 }
 
 .features-section{
-    background: var(--color-font);
+    background: var(--color-background);
 }
 
 .features-grid {
@@ -1261,7 +1261,7 @@ p {
 .featured-book-horizontal {
     width: 100%;
     max-width: 900px;
-    background: var(--color-font);
+    background: var(--color-background-card);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
     overflow: hidden;
