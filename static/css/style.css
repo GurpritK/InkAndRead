@@ -1235,11 +1235,112 @@ p {
     background: var(--color-background);
 }
 
-.features-grid {
+/* Cross Layout for About Section */
+.cross-layout {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-xl);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 50px;
+}
+
+.cross-quadrant {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cross-quadrant h3 {
+    color: var(--color-font);
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.cross-quadrant p {
+    color: var(--color-font);
+    line-height: 1.6;
+}
+
+.cross-center-symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--color-font);
+    z-index: 10;
+    background: var(--color-sidebar-dark);
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+/* Cross lines to separate quadrants */
+.cross-layout::before,
+.cross-layout::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-font);
+    opacity: 0.3;
+}
+
+/* Vertical line */
+.cross-layout::before {
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+}
+
+/* Horizontal line */
+.cross-layout::after {
+    left: 10%;
+    right: 10%;
+    top: 50%;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+/* Mobile responsive - stack vertically */
+@media (max-width: 768px) {
+    .cross-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 0;
+    }
+    
+    .cross-quadrant {
+        margin: 0;
+        padding: 2rem 2rem;
+        position: relative;
+    }
+    
+    /* Add horizontal lines between quadrants on mobile (not after the last one) */
+    .cross-quadrant.top-left::after,
+    .cross-quadrant.top-right::after,
+    .cross-quadrant.bottom-left::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        right: 10%;
+        height: 1px;
+        background-color: var(--color-font);
+        opacity: 0.3;
+    }
+    
+    /* Hide cross lines and center symbol on mobile */
+    .cross-layout::before,
+    .cross-layout::after,
+    .cross-center-symbol {
+        display: none;
+    }
 }
 
 .feature-icon {
