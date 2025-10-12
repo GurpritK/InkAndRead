@@ -1109,7 +1109,7 @@ p {
     font-family: "Cedarville Cursive", cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
     color: #f5e0b5;
     font-weight: 700;
@@ -1195,7 +1195,7 @@ p {
 .features-section,
 .about-section {
     padding: 80px 0;
-    background: var(--color-background-card);
+    background: var(--color-sidebar-dark);
     /* margin-top: var(--spacing-xl); */
     /* border-radius: var(--border-radius); */
     /* box-shadow: var(--shadow-xl);
@@ -1214,15 +1214,15 @@ p {
 }
 
 .features-section h2{
-    color: var(--color-background);
+    color: var(--color-sidebar-dark);
 }
 
 .about-section h2{
-    color: var(--color-sidebar);
+    color: var(--color-font);
 }
 
 .features-section{
-    background: var(--color-sidebar-dark);
+    background: var(--color-font);
 }
 
 .features-grid {
@@ -1261,7 +1261,7 @@ p {
 .featured-book-horizontal {
     width: 100%;
     max-width: 900px;
-    background: var(--color-background);
+    background: var(--color-font);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
     overflow: hidden;
@@ -1842,7 +1842,7 @@ p {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         line-height: 1.3;
     }
 
@@ -1895,7 +1895,7 @@ p {
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .hero-subtitle {

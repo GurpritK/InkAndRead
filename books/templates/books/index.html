@@ -13,7 +13,7 @@
                     <div class="col-12 col-lg-10 col-xl-8">
                         <div class="hero-content text-center">
                             <h1 class="hero-title">Ink&Read</h1>
-                            <p class="hero-subtitle px-2"> Discover highly rated books, explore detailed reviews, and immerse yourself in finding new stories</p>
+                            <!-- <p class="hero-subtitle px-2"> Discover highly rated books, explore detailed reviews, and immerse yourself in finding new stories</p> -->
                             <div class="hero-actions d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center">
                                 <a href="/books/" class="btn btn-primary">
                                     <span>Explore Books</span>
@@ -40,6 +40,31 @@
         </div>
     </section>
 
+    <section class="about-section">
+        <h2>Discover what’s waiting for you</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Rich Book Details</h3>
+                <p>Get comprehensive information about each book including descriptions, ratings, beautiful cover images.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Rating System</h3>
+                <p>See how books are rated and find the highest-rated reads to add to your collection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Review System</h3>
+                <p>See how books are rated and find the highest-rated reads to add to your collection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Track your literary journey</h3>
+                <p>Create wishlists for books you want to read, and add read books to your read list.</p>
+            </div>
+        </div>
+    </section>
     <!-- Book of the Week Section -->
     <section class="features-section">
         <h2>Book of the Week</h2>
@@ -79,20 +104,5 @@
                 <a href="{% url 'books-list' %}" class="btn btn-primary">Browse Books</a>
             </div>
         {% endif %}
-    </section>
-    <section class="about-section">
-        <h2>What You'll Find Here</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📖</div>
-                <h3>Rich Book Details</h3>
-                <p>Get comprehensive information about each book including descriptions, ratings, beautiful cover images.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⭐</div>
-                <h3>Rating System</h3>
-                <p>See how books are rated and find the highest-rated reads to add to your collection.</p>
-            </div>
-        </div>
     </section>
 {% endblock %}
