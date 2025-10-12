@@ -124,6 +124,14 @@ body {
     box-shadow: 0 0 0 3px var(--color-sidebar-dark);
 }
 
+/* Override global focus for elements with their own focus styling */
+.book-card:focus,
+.book-link:focus,
+.rating-form select:focus,
+.review-form textarea:focus {
+    box-shadow: none;
+}
+
 /* ===================================
    LAYOUT COMPONENTS & UTILITIES
    =================================== */
@@ -1109,12 +1117,6 @@ p {
     transition: border-color 0.3s ease;
 }
 
-.rating-form select:focus {
-    outline: none;
-    border-color: var(--color-sidebar);
-    box-shadow: 0 0 0 3px rgba(71, 77, 52, 0.6);
-}
-
 .rating-form .btn {
     margin-top: 1rem;
 }
@@ -1726,11 +1728,16 @@ p {
     font-family: inherit;
 }
 
+select.form-control:focus,
+select:focus,
 .rating-form select:focus,
 .review-form textarea:focus {
-    outline: none;
-    border-color: var(--color-sidebar);
-    box-shadow: 0 0 0 3px rgba(101, 109, 74, 0.1);
+    outline: none !important;
+    border-color: var(--color-sidebar) !important;
+    box-shadow: 0 0 0 3px rgba(101, 109, 74, 0.1) !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
 }
 
 .review-form textarea {

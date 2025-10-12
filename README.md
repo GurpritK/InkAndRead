@@ -447,6 +447,13 @@ List of bugs and how did you fix them
 
 - A lot of issues using CSS and Bootstrap5 for responsive designing, with grids not displaying the book covers and descriptions clearly. In particular, on a mobile screen device, on the homepage the 'book of the week' section was cut in half. This same issue was not showing for the other pages, and the books were displaying correctly. I had created the book of the week grid differently to the other pages, as it displayed the book cover on the left hand side, and the description and ratings on the right. It was created this way to create a better flow for the homepage, and a more horizontal surface area, instead of vertical like the book collection page. To fix this, I...
 
+
+### Bugs to fix 
+
+- The alert box appears at the top of a page after a particular action, and after closing the box, it leaves behind a small margin at the top of the page. If the page is refreshed, this goes away, but I'd like for it to be gone immediately with the alert box closing.
+
+- Rating input area creates a blue outline around the input type box, and the review textarea creates an outline if the colour I've set it to. Due to default browser settings or Bootstrap class styling, any changes to get the rating input area outline to match the review textarea outline were unsucessful. This is a future fix, as further investigation is required.
+
 ## Deployment
 [Back To The Top](#table-of-contents)
 
