@@ -13,7 +13,7 @@ class BookAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('book_title',)}
     summernote_fields = ('book_description',)
     readonly_fields = ('average_rating', 'total_ratings')
-    
+
     def total_ratings(self, obj):
         """Display total number of ratings for this book"""
         return obj.ratings.count()
@@ -28,7 +28,7 @@ class BookRatingAdmin(admin.ModelAdmin):
     list_editable = ('score',)
     date_hierarchy = 'created_at'
     list_per_page = 50
-    
+
     fieldsets = (
         ('Rating Information', {
             'fields': ('user', 'book', 'score')
@@ -38,13 +38,13 @@ class BookRatingAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
-    
+
     readonly_fields = ('created_at', 'updated_at')
-    
+
     def get_queryset(self, request):
         """Optimize queries by selecting related objects"""
         return super().get_queryset(request).select_related('user', 'book')
-    
+
 
 @admin.register(BookReview)
 class BookReviewAdmin(SummernoteModelAdmin):
@@ -57,7 +57,7 @@ class BookReviewAdmin(SummernoteModelAdmin):
     list_per_page = 50
     summernote_fields = ('review',)
     readonly_fields = ('created_at', 'updated_at')
-    
+
     fieldsets = (
         ('Review Information', {
             'fields': ('user', 'book', 'review', 'approved')
@@ -75,9 +75,7 @@ class BookReviewAdmin(SummernoteModelAdmin):
         clean_text = re.sub('<[^<]+?>', '', obj.review)
         return clean_text[:80] + '...' if len(clean_text) > 80 else clean_text
     review_excerpt.short_description = 'Review Preview'
-    
+
     def get_queryset(self, request):
         """Optimize queries by selecting related objects"""
         return super().get_queryset(request).select_related('user', 'book')
-
-

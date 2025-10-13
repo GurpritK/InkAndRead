@@ -303,6 +303,19 @@ Check compatability with different browsers
 Screenshots of the responsivness, pick few devices
 ### Code Validation
 Validate your code HTML, CSS, JS & Python (all pages/files need to be validated!!!), display screenshots
+
+- HTML Validation Screenshot
+- CSS Validation Screenshot
+- Python (PEP8) Validation using CI Python Linter and Flake8:
+All .py files validated with only two pythong files remaining showing minimal warnings. All other python files in project validated successfully.
+
+Outstanding Warnings:
+
+A specific error for unused env import in settings.py. It's safe to leave it as it, and it doesn't impact the functionality.
+
+There are still minor warnings related to line too long (greater than 79 characters) in models.py and settings.py, but these do not affect the functionality of the project.
+
+
 ### Manual Testing user stories
 Test all your user stories, you an create table 
 User Story |  Test | Pass
