@@ -224,50 +224,242 @@ Add screenshots!
 
 ### Navigation
 
-For larger screens like laptops and desktops, there is a fixed navbar on the left hand side of the website. The navbar is accessible and visible from all screens.
+For larger screens like laptops and desktops, there is a fixed navbar on the left hand side of the website. The navbar is accessible and visible from all screens:
 
-For smaller screens, like mobiles and tablets, there is a fixed navbar the the top of the screen with a hamburger icon for the menu dropdown. This navbar is accessible on all pages.
+<details>
+  <summary>Homepage Navbar</summary>
 
-From the navbar, users can navigate to the book collection and their own profiles. If they are logged in, they have the menu option to 'log out'. If they are not signed in, the navbar updates to provide menu options to 'sign up' and 'log in'.
+  ![Home Page Navbar](static/images/features/home-navbar.jpeg)
+  
+  </details>
+
+For smaller screens, like mobiles and tablets, there is a fixed navbar the the top of the screen with a hamburger icon for the menu dropdown. This navbar is accessible on all pages:
+
+<details>
+  <summary>Mobile Navbar</summary>
+
+  ![Mobile Navbar](static/images/features/mobile-navbar.jpeg)
+  
+  </details>
+
+From the navbar, users can navigate to the book collection and their own profiles. If they are logged in, they have the menu option to 'log out'. If they are not signed in, the navbar updates to provide menu options to 'sign up' and 'log in':
+
+<details>
+  <summary>Smart Navbar</summary>
+
+  ![Smart Navbar](static/images/features/smart-navbar.jpeg)
+  
+  </details>
 
 From the book collection page, users can navigate to individual books to read more about each book, as well as add ratings and reviews. Within each book page, the user can also add the book to a 'wishlist' or mark it as 'read'. 
 
 Similarly, users can navigate to books from their own profile from the navbar.
 
+
 ### Footer
 
 In the footer, there are some quick links to the homepage, and the book collection page. There is a small description about the Ink&Read website, and social media links. Currently there are empty links which simply navigate to the hompages of the social media websites. 
 
+<details>
+  <summary>Footer</summary>
+
+  ![Footer](static/images/features/footer.jpeg)
+  
+  </details>
+
 
 ### Home-page
 
-The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in', the latter two buttons are removed and replaced if the user is logged in to a 'log out' button.
+The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in':
 
-Below the hero section, there is more information about the site and everything you can use the site for. This information is split and displayed in a grid for an easier to digest format.
+<details>
+  <summary>Buttons Logged Out</summary>
 
-Near the bottom of the homepage, there is a section for 'book of the week' which updates according to the most recent highly rated book. 
+  ![Buttons Logged Out](static/images/features/home-buttons-loggedout.jpeg)
+  
+  </details>
+
+The 'sign up' and 'log in'  buttons are removed and replaced if the user is logged in to a 'log out' button:
+
+<details>
+  <summary>Buttons Logged In</summary>
+
+  ![Buttons Logged In](static/images/features/home-buttons-loggedin.jpeg)
+  
+  </details>
+
+Below the hero section, there is more information about the site and everything you can use the site for. This information is split and displayed in a grid for an easier to digest format:
+
+<details>
+  <summary>About Grid</summary>
+
+  ![About Grid](static/images/features/about-grid.jpeg)
+  
+  </details>
+
+Near the bottom of the homepage, there is a section for 'book of the week' which updates according to the most recent highly rated book:
+
+<details>
+  <summary>Featured Book</summary>
+
+  ![Featured Book](static/images/features/featured-book.jpeg)
+  
+  </details>
 
 
 ### Book-collection-page
 
-The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author name is visible. Additionally, a rating display for each book is also visible. It is possible to click on any book, and navigate to the book details page.
+The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author name is visible:
 
-If a book has no ratings, this is also shown in the book card. There is logic here display the average rating score for each book in the individual book card.
+<details>
+  <summary>Book Collection Grid</summary>
+
+  ![Book Collection Grid](static/images/features/books.jpeg)
+  
+  </details>
+
+Additionally, a rating display for each book is also visible:
+
+<details>
+  <summary>Individual Book Rating</summary>
+
+  ![Individual Book Rating](static/images/features/book-rating.jpeg)
+  
+  </details>
+
+
+If a book has no ratings, this is also shown in the book card:
+
+<details>
+  <summary>Individual Book No Rating</summary>
+
+  ![Individual Book No Rating](static/images/features/book-norating.jpeg)
+  
+  </details>
+
+
+Logic is applied to calculate and display the average rating score for each book in the individual book card. It is possible to click on any book, and navigate to the book details page.
+
 
 ### Book-detail-page
 
-The book detail page is where you can see the full description of each book, and also the other details like author and title. On this page, you will find the average rating of a book and reviews left by other users. Logged in users can also give a rating and submit a review. The reviews are only displayed after approval. If the logged in user has previously submitted either a review or rating, it can be updated or deleted from this page too.
+The book detail page is where you can see the full description of each book, book cover and also the other details like author and title:
 
-On this page, logged in users can add a book to their own wishlist, or mark a book as read.
+<details>
+  <summary>Book Details</summary>
+
+  ![Book Details](static/images/features/book-details.jpeg)
+  
+  </details>
+
+
+On this page, you will find the average rating of a book and reviews left by other users:
+
+<details>
+  <summary>Book Detail Average Rating</summary>
+
+  ![Book Detail Average Rating](static/images/features/book-score.jpeg)
+  
+  </details>
+
+
+Logged in users can also give a rating and submit a review. If the logged in user has previously submitted either a review or rating, it can also be updated or deleted from this page:
+
+<details>
+  <summary>Submit Rating or Review</summary>
+
+  ![Submit Rating or Review](static/images/features/submit-rating-or-review.jpeg)
+  
+  </details>
+
+ 
+The reviews are only displayed after approval:
+
+<details>
+  <summary>Review Approval Message</summary>
+
+  ![Review Approval Message](static/images/features/approval-message.jpeg)
+  
+  </details>
+
+
+On this page, logged in users can add a book to their own wishlist, or mark a book as read:
+
+<details>
+  <summary>List Buttons</summary>
+
+  ![List Buttons](static/images/features/list-buttons.jpeg)
+  
+  </details>
+
 
 For logged out users, you can see everything linked to the book but cannot add reviews or ratings, or add the book to a wishlist or mark it as 'read'. In the space of where these buttons are available for logged in users, there is instead a message to 'log in' to 'complete action', where the action represents either of those fuctionalities.
+
+<details>
+  <summary>Limited Functionality</summary>
+
+  ![Limited Functionality](static/images/features/limited-functionality.jpeg)
+  
+  </details>
 
 
 ### User-profile-page
 
-Logged in users have their own member area, which they can navigate to directly from the navbar. The link is personalised with the user's name e.g. "Joe's Profile". Within the user profile, members can view their wishlist of books, and track their reading by viewing books they have marked as 'read'. If there are no books in either list, there is CTA button to 'browse books' so that they can start curating their lists.
+Logged in users have their own member area, which they can navigate to directly from the navbar:
 
-This profile area can be further improved in the future by allowing users to directly manage their lists from this page. However, they can make changes to their lists by clicking on a book from the profile area, and toggling the 'add to wishlist' or 'mark as read' buttons. This change will automatically update and reflect in the user profile page.
+<details>
+  <summary>Profile Area</summary>
+
+  ![Profile Area](static/images/features/profile-section.jpeg)
+  
+  </details>
+
+The link is personalised with the user's name e.g. "Gurprit's Profile":
+
+<details>
+  <summary>Personalised Message</summary>
+
+  ![Personalised Message](static/images/features/personalised-message.jpeg)
+  
+  </details>
+
+There is also a number tracker for their lists:
+
+<details>
+  <summary>List Number Tracker</summary>
+
+  ![List Number Tracker](static/images/features/list-number-tracker.jpeg)
+  
+  </details>
+
+Within the user profile, members can view their wishlist of books:
+
+<details>
+  <summary>Wishlist</summary>
+
+  ![Wishlist](static/images/features/wishlist.jpeg)
+  
+  </details>
+ 
+They can also track their reading by viewing books they have marked as 'read':
+
+<details>
+  <summary>Read List</summary>
+
+  ![Read List](static/images/features/read-list.jpeg)
+  
+  </details>
+ 
+ If there are no books in either list, there is CTA button to 'browse books' so that they can start curating their lists:
+
+ <details>
+  <summary>No Books inn List</summary>
+
+  ![No Books in List](static/images/features/no-books-in-list.jpeg)
+  
+  </details>
+
+**Future Improvement:** This profile area can be further improved in the future by allowing users to directly manage their lists from this page. However, they can make changes to their lists by clicking on a book from the profile area, and toggling the 'add to wishlist' or 'mark as read' buttons. This change will automatically update and reflect in the user profile page.
 
 ### CRUD
 
