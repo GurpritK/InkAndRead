@@ -24,3 +24,6 @@ urlpatterns = [
     path('profile/', include("user_profiles.urls")),
     path('summernote/', include('django_summernote.urls')),
 ]
+
+# Custom error handlers
+handler404 = 'books.views.handler404'

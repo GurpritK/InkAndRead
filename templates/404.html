@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Page Not Found - Ink & Read{% endblock %}
+
+{% block meta_description %}The page you're looking for couldn't be found. Return to Ink & Read to continue your literary journey.{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="error-content text-center">
+                    <div class="error-number">404</div>
+                    <h1 class="error-title">Page Not Found</h1>
+                    <p class="error-message">
+                        Oops! The page you're looking for seems to have gone on its own adventure. 
+                        It might have been moved, deleted, or you may have typed the wrong URL.
+                    </p>
+                    <div class="error-actions">
+                        <a href="{% url 'home' %}" class="btn btn-primary me-3">
+                            <span>Return Home</span>
+                        </a>
+                        <a href="{% url 'books-list' %}" class="btn btn-secondary">
+                            <span>Browse Books</span>
+                        </a>
+                    </div>
+                    <div class="error-illustration mt-4">
+                        <div class="book-stack">
+                            📚
+                        </div>
+                        <p class="small text-muted mt-2">
+                            Don't worry, there are plenty of other pages to explore!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-xxl) 0;
+}
+
+.error-content {
+    padding: var(--spacing-xl);
+}
+
+.error-number {
+    font-size: 8rem;
+    font-family: "Cedarville Cursive", cursive;
+    color: var(--color-sidebar-dark);
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.error-title {
+    font-family: "Cedarville Cursive", cursive;
+    color: var(--color-sidebar-dark);
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.error-message {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xl);
+}
+
+.error-actions {
+    margin-bottom: var(--spacing-xl);
+}
+
+.error-actions .btn {
+    min-width: 150px;
+    margin-bottom: var(--spacing-md);
+}
+
+.book-stack {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .error-number {
+        font-size: 6rem;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+    }
+    
+    .error-actions .btn {
+        display: block;
+        margin: var(--spacing-sm) auto;
+    }
+}
+</style>
+{% endblock %}

@@ -393,3 +393,21 @@ def get_user_book_status(user, book):
     if user.is_authenticated:
         return book.user_lists.filter(user=user).first()
     return None
+
+
+def handler404(request, exception):
+    """
+    Custom 404 error handler.
+    
+    **Context**
+    
+    ``request``
+        The Django request object
+    ``exception``
+        The exception that triggered the 404
+    
+    **Template:**
+    
+    :template:`404.html`
+    """
+    return render(request, '404.html', status=404)
