@@ -61,7 +61,6 @@ Members of the website can also create a wishlist for books they'd like to read 
 
 
 ### User Stories
-Write your user stories in this section
 
   <details>
   <summary>GitHub Project User Stories</summary>
@@ -329,10 +328,8 @@ List of technologies used for your project
 - [CSS Validator](https://jigsaw.w3.org/css-validator/) - Used to validate the JavaScript code.
 - [JShint](https://jshint.com/) - Used to validate the JavaScript code.
 - [CI Python Linted](https://pep8ci.herokuapp.com/) - Used to validate Python code.
-- Chrome Developer Tools - Lighthouse reports
+- Chrome Developer Tools - Lighthouse reports, template responsiveness
 
-
-Important part of your README!!!
 ### Google's Lighthouse Performance
 Screenshots of desktop and mobile lighthouse reports for homepage, books page and profile page.
 
@@ -380,9 +377,92 @@ Screenshots of desktop and mobile lighthouse reports for homepage, books page an
 
 
 ### Browser Compatibility
-Check compatability with different browsers
+
+Compatability check with different browsers
+
+| Browser | Status | 
+|:-------:|:--------| 
+| Google Chrome | Success |
+| Safari | Success |
+| Firefox | Success |
+
+
 ### Responsiveness
-Screenshots of the responsivness, pick few devices
+Responsiveness tested using Chrome Developer Tools, and testing different dimensions.
+
+Screenshots of the responsiveness for mobile, tablet and desktop for the **homepage**:
+
+<details>
+  <summary>Homepage Desktop Screen</summary>
+
+  ![Homepage Desktop Screen](static/images/testing-screenshots/responsiveness-testing/home-desktop.jpeg)
+  
+  </details>
+
+ <details>
+  <summary>Homepage Tablet Screen</summary>
+
+  ![Homepage Tablet Screen](static/images/testing-screenshots/responsiveness-testing/home-tablet.jpeg)
+  
+  </details>
+
+<details>
+  <summary>Homepage Mobile Screen</summary>
+
+  ![Homepage Mobile Screen](static/images/testing-screenshots/responsiveness-testing/home-mobile.jpeg)
+  
+  </details>
+
+
+
+Screenshots of the responsiveness for mobile, tablet and desktop for the **books** page:
+<details>
+  <summary>Books Desktop Screen</summary>
+
+  ![Homepage Desktop Screen](static/images/testing-screenshots/responsiveness-testing/books-desktop.jpeg)
+  
+  </details>
+
+ <details>
+  <summary>Books Tablet Screen</summary>
+
+  ![Homepage Tablet Screen](static/images/testing-screenshots/responsiveness-testing/books-tablet.jpeg)
+  
+  </details>
+
+<details>
+  <summary>Books Mobile Screen</summary>
+
+  ![Homepage Mobile Screen](static/images/testing-screenshots/responsiveness-testing/books-mobile.jpeg)
+  
+  </details>
+
+
+Screenshots of the responsiveness for mobile, tablet and desktop for the **profile** page:
+
+<details>
+  <summary>Profile Desktop Screen</summary>
+
+  ![Profile Desktop Screen](static/images/testing-screenshots/responsiveness-testing/profile-desktop.jpeg)
+  
+  </details>
+
+ <details>
+  <summary>Profile Tablet Screen</summary>
+
+  ![Profile Tablet Screen](static/images/testing-screenshots/responsiveness-testing/profile-tablet.jpeg)
+  
+  </details>
+
+<details>
+  <summary>Profile Mobile Screen</summary>
+
+  ![Profile Mobile Screen](static/images/testing-screenshots/responsiveness-testing/profile-mobile.jpeg)
+  
+  </details>
+
+
+
 ### Code Validation
 HTML, CSS, JS & Python Code Validations
 
@@ -392,8 +472,6 @@ HTML, CSS, JS & Python Code Validations
   ![HTML Validation Screenshot](static/images/testing-screenshots/validator-testing/html-validation.jpeg)
   
   </details>
-
-
 
 
 <details>
@@ -416,12 +494,10 @@ A specific error for unused env import in settings.py. It's safe to leave it as 
 
 There are still minor warnings related to line too long (greater than 79 characters) in models.py and settings.py, but these do not affect the functionality of the project, so leaving as is for now.
 
-
-
 </details>
 
 <details>
-<summary>JavaScript</summary>
+<summary>JavaScript Validation</summary>
 
 Minimal custom JavaScript in project, three small instances only. No errors or warnings using [JShint](https://jshint.com/).
 
@@ -439,120 +515,6 @@ Test all your features, you can use the same approach
 |:-------:|:--------| :--------|
 | description | user steps | &check; |
 attach screenshot
-
-### Manual Testing
-The site was tested on the following browsers for compatibility:
-
-### Chrome ###
-|   Test	|  Expected Result 	|  Actual Result	|
-|---	|---	|---	|
-|   Click Home menu	|  success 	|  success 	|
-|   Click About menu	|  success 	|  success 	|
-|   Click Biogs menu	|  success 	|  success 	|
-|   Click Admin menu	|  success 	|  success 	|
-|   Click Login menu	|  success 	|  success 	|
-|   Click Logout	|  success 	|  success 	|
-|   Click individual blog post	|  success 	|  success 	|
-|   Create, edit, delete a personal comment	|  success 	|  success 	|
-|   Register new account	|  success 	|  success 	|
-|   Create collaboration request	|  success 	|  success 	|
-|   Access admin interface	|  success 	|  success 	|
-|   Responsivity	|  success 	|  success 	|
-|   Open new page from social media links	|  success 	|  success 	|
-
-### Firefox ###
-|   Test	|  Expected Result 	|  Actual Result	|
-|---	|---	|---	|
-|   Click Home menu	|  success 	|  success 	|
-|   Click About menu	|  success 	|  success 	|
-|   Click Biogs menu	|  success 	|  success 	|
-|   Click Admin menu	|  success 	|  success 	|
-|   Click Login menu	|  success 	|  success 	|
-|   Click Logout	|  success 	|  success 	|
-|   Click individual blog post	|  success 	|  success 	|
-|   Create, edit, delete a personal comment	|  success 	|  success 	|
-|   Register new account	|  success 	|  success 	|
-|   Create collaboration request	|  success 	|  success 	|
-|   Access admin interface	|  success 	|  success 	|
-|   Responsivity	|  success 	|  success 	|
-|   Open new page from social media links	|  success 	|  success 	|
-
-### Edge ###
-|   Test	|  Expected Result 	|  Actual Result	|
-|---	|---	|---	|
-|   Click Home menu	|  success 	|  success 	|
-|   Click About menu	|  success 	|  success 	|
-|   Click Biogs menu	|  success 	|  success 	|
-|   Click Admin menu	|  success 	|  success 	|
-|   Click Login menu	|  success 	|  success 	|
-|   Click Logout	|  success 	|  success 	|
-|   Click individual blog post	|  success 	|  success 	|
-|   Create, edit, delete a personal comment	|  success 	|  success 	|
-|   Register new account	|  success 	|  success 	|
-|   Create collaboration request	|  success 	|  success 	|
-|   Access admin interface	|  success 	|  success 	|
-|   Responsivity	|  success 	|  success 	|
-|   Open new page from social media links	|  success 	|  success 	|
-
-### Safari ###
-|   Test	|  Expected Result 	|  Actual Result	|
-|---	|---	|---	|
-|   Click Home menu	|  success 	|  success 	|
-|   Click About menu	|  success 	|  success 	|
-|   Click Biogs menu	|  success 	|  success 	|
-|   Click Admin menu	|  success 	|  success 	|
-|   Click Login menu	|  success 	|  success 	|
-|   Click Logout	|  success 	|  success 	|
-|   Click individual blog post	|  success 	|  success 	|
-|   Create, edit, delete a personal comment	|  success 	|  success 	|
-|   Register new account	|  success 	|  success 	|
-|   Create collaboration request	|  success 	|  success 	|
-|   Access admin interface	|  success 	|  success 	|
-|   Responsivity	|  success 	|  success 	|
-|   Open new page from social media links	|  success 	|  success 	|
-
-### Lighthouse
-The site was tested using Lighthouse with the following results:
-<img width="995" alt="lighthouse" src="" style="width:70%;">
-
-
-### Responsive Testing
-
-Alongside the built in Bootstrap responsive CSS, Chrome dev tools were used frequently to test the site at standard screen sizes and the site was manually viewed on laptops, tablets and phones.
-
-|   Test	|  Mobile Screen Result 	|  Desktop Screen  Result	|
-|---	|---	|---	|
-|   Click Home menu	|  success 	|  success 	|
-|   Click About menu	|  success 	|  success 	|
-
-
-### Validator Testing
-
-- HTML
-
-  - No errors were returned when passing through the official W3C validator
-<img width="1082" alt="w3 validator" src="" style="width:70%;">
-
-
-- CSS
-  - No errors were found with our own CSS code when passing through the official Jigsaw validator.
-<img width="1029" alt="css validator" src="" style="width:70%;">
-
-- Python
-
-  - All Python code was tested for PEP8 compatibility with the Code Institute Linter.
-
-  **The only code that didn't pass was code that was automatically generated by Django**
-  
-  which was then edited in order to pass.
-
-  ![screenshot](static/images/linter.png)
-
-  - Javascript
-
-  - All Javascript code was tested for errors with JSHint. There were no code errors and one error related to imported code, which is outside the domain of the test.
-  
-  ![screenshot](static/images/jshint.png)
 
 
 ## Bugs
