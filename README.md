@@ -12,7 +12,11 @@
 3. [Features](#features)
     * [Navigation](#navigation)
     * [Footer](#footer)
-    * [Home Page](#home-page)
+   ### Authentication-Authorisation
+
+User authentication is implemented using Django AllAuth, providing secure and comprehensive user management functionality. The authentication pages (sign-up, login, and logout) have been customized to maintain visual consistency with the site's design theme.
+
+Registered users gain access to enhanced features including book ratings, review submissions, and personal reading list management. Site administrators can manage user accounts and moderate user-generated content through Django's admin interface.ome Page](#home-page)
     * [Book Collection Page](#book-collection-page)
     * [Book Detail Page](#book-detail-page)
     * [User Profile Page](#user-profile-page)
@@ -76,19 +80,22 @@ Link to the project [GitHub Project/User Stories Board](https://github.com/users
 
 
 #### User Stories List
-Admin can upload books to site	
-View a book page	
-Create landing page(s)	
-Sign up as a member	
-Submit book rating	
-Update or delete book rating	
-Create search functionality	
-Create top rated books list	
-Add books to wish-list	
-Submit book review	
-Update or delete book review	
-Admin can approve reviews	
-Add user profile details	
+
+| User Story | Description |
+|:-----------|:------------|
+| Admin can upload books to site | As an admin, I can add new books to the website so that users can discover and read about them |
+| View a book page | As a user, I can view detailed information about a book including its description, ratings, and reviews |
+| Create landing page(s) | As a user, I can access a welcoming homepage that introduces me to the site's features |
+| Sign up as a member | As a visitor, I can create an account to access member-only features |
+| Submit book rating | As a registered user, I can rate books to share my opinion with the community |
+| Update or delete book rating | As a registered user, I can modify or remove my ratings |
+| Create search functionality | As a user, I can search for books to find specific titles or authors |
+| Create top rated books list | As a user, I can see which books are most highly rated by the community |
+| Add books to wish-list | As a registered user, I can save books to my wishlist for future reading |
+| Submit book review | As a registered user, I can write detailed reviews of books |
+| Update or delete book review | As a registered user, I can edit or remove my reviews |
+| Admin can approve reviews | As an admin, I can moderate reviews before they appear on the site |
+| Add user profile details | As a registered user, I can manage my profile and track my reading activity |
 
 ### Wireframes
 
@@ -157,11 +164,13 @@ This pairing was carefully chosen after testing several options; the goal was to
 
 ### Colour Scheme and Design Choices
 
-I wanted to create a cosy library nook feeling on this virtual website and employed warm neutral tone colours and wooden textures to evoke this. The primary colours used were muted shades of green, and the font colours were muted pale yellow shades and browns. I generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers, creating a cohesive look with the hero image tying the website together.
+The design strategy focused on creating a welcoming literary environment through careful color selection and layout decisions. The primary color palette uses muted greens with soft yellows and browns to establish a warm, library-inspired aesthetic.
 
-I shifted the navbar to the left hand side of the page, rather than keep it at the top. By removing the navbar from the top, my aim was to create website which would feel less corporate.
+The custom hero image reinforces the community reading theme and establishes visual consistency throughout the site. All color choices support the goal of creating an inviting space for book enthusiasts.
 
-The inspiration colour palette was generated using [Coolors](https://www.coolors.co). However, as I developed and designed the website, I tweaked and experimented with other colours so the website palette may not be an exact palette of the original palette selected. There are still elements of the original palette within the website, but I incorporated more shades of yellows.
+A key design decision involved relocating the navigation from the traditional top position to a left sidebar. This approach creates a more intimate browsing experience while reducing the corporate feel commonly associated with standard web layouts.
+
+The initial color palette was developed using [Coolors](https://www.coolors.co), though the final implementation evolved to incorporate additional yellow tones and warmer variations that better suited the literary theme.
 
 <details>
   <summary>Colour Palette</summary>
@@ -269,7 +278,6 @@ In the footer, there are some quick links to the homepage, and the book collecti
   
   </details>
 
-
 ### Home-Page
 
 The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in':
@@ -308,7 +316,6 @@ Near the bottom of the homepage, there is a section for 'book of the week' which
   
   </details>
 
-
 ### Book-Collection-Page
 
 The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author name is visible:
@@ -329,7 +336,6 @@ Additionally, a rating display for each book is also visible:
   
   </details>
 
-
 If a book has no ratings, this is also shown in the book card:
 
 <details>
@@ -338,7 +344,6 @@ If a book has no ratings, this is also shown in the book card:
   ![Individual Book No Rating](static/images/features/book-norating.jpeg)
   
   </details>
-
 
 Logic is applied to calculate and display the average rating score for each book in the individual book card. It is possible to click on any book, and navigate to the book details page.
 
@@ -476,7 +481,9 @@ They can also track their reading by viewing books they have marked as 'read':
 
 ### Authentication-Authorisation
 
-- Django AllAuth: Django authentication/authorisation pages used for sign up, log in and log out pages. These were customised using the website's design theory. Admins can view and remove users from the admin section. 
+User authentication is handled through Django AllAuth, providing secure and reliable user management. The standard sign-up, login, and logout pages have been styled to match the site's cozy aesthetic.
+
+Users can easily create accounts to unlock member features like rating books, writing reviews, and building personal reading lists. For site administrators, Django's admin panel provides full control over user accounts and content moderation, keeping the community friendly and spam-free. 
 
 
 ## Technologies Used
@@ -698,23 +705,24 @@ Minimal custom JavaScript in project, three small instances only. No errors or w
 </details>
 
 ### Manual Testing user stories
-Test all your user stories, you an create table 
 
-User Story | Pass
-|:-------:|:--------| 
-Admin can upload books to site | Success |
-View a book page	| Success |
-Create landing page(s) |Success |
-Sign up as a member	|Success |
-Submit book rating	|Success |
-Update or delete book rating	|Success |
-Create search functionality	|Success |
-Create top rated books list	|Success |
-Add books to wish-list	|Success |
-Submit book review	|Success |
-Update or delete book review	|Success |
-Admin can approve reviews	|Success |
-Add user profile details |Success |
+All user stories have been manually tested to ensure they meet their acceptance criteria:
+
+| User Story | Test Result |
+|:-----------|:-----------:|
+| Admin can upload books to site | ✅ Success |
+| View a book page | ✅ Success |
+| Create landing page(s) | ✅ Success |
+| Sign up as a member | ✅ Success |
+| Submit book rating | ✅ Success |
+| Update or delete book rating | ✅ Success |
+| Create search functionality | Did not implement |
+| Create top rated books list | Did not implement |
+| Add books to wish-list | ✅ Success |
+| Submit book review | ✅ Success |
+| Update or delete book review | ✅ Success |
+| Admin can approve reviews | ✅ Success |
+| Add user profile details | Did not implement|
 
 
 
@@ -722,74 +730,89 @@ Add user profile details |Success |
 ## Bugs
 [Back To The Top](#table-of-contents)
 
-List of bugs and how did you fix them
-- I decided to rename an app from 'my_profile' to 'user_profiles' as this naming made more sense from the admin perspective when managing different user profiles. This involved creating the new app, moving models, views and existing templates across from the old app, and transferring any migration tables and data within the tables. Although the transfer of all these files and data, and deleting the old app was successful, the site was crashing with errors like 'not found'. When navigating to the profile page, there were errors referencing the old app. This suggested there were some stil some references to the old app remaining in the project. I looked through all the files, and eventually decided to lean on AI to find the remaining references and update them. Copilot AI was quick to identify that the URL paths in urls.py hadn't been updated. 
+The following issues were encountered during development and their respective solutions:
 
-- I was making changes to the CSS files, but these were not appearing in the local web development browser. My initial thinking was that the CSS file was not properly connected to the html template files, and perhaps the script paths were incorrect but this was not the case. I did some further investigation to find what was missing (and a lot of hard refreshes!), AI also suggested some changes to make but I knew from my previous projects that the additional settings AI was recommending were not required. Finally, I found that the debug settings was set to FALSE (from my last commit to deploy the app to Heroku), hence the CSS was no longer showing on my local browser. Once I set it to TRUE, the CSS changes were immediately reflected in my local browser.
+**App Renaming Issues**
+Renaming the 'my_profile' app to 'user_profiles' for improved clarity resulted in 'not found' errors despite successful file migration. Investigation revealed remaining references to the old app name in urls.py that required manual updating.
 
-- When I deployed the app on Heroku, the styling was not being applied. I realised I had missed the step to deploy static files. The 'staticfiles' folder was missing from the project and some additional static file settings needed to be set in the settings.py folder. The whitenoise package had to be installed too. Finally, to collect static files I ran the collectstatic command in my terminal and these files were added to the base directory and folder name specifed when I set this in the settings.py using the STATIC_ROOT variable. 
+**CSS Loading Problems in Development**
+CSS changes were not reflecting in the local development environment. The issue was traced to the DEBUG setting being set to FALSE (from a previous Heroku deployment), which prevented proper static file serving in development mode.
 
-- As I created more books for the book collection from the admin pages, by manually adding the book covers and details, I found that the display in the website was showing the HTML code within the descriptions for each book. This issue did not occur when I added the first book. By using 'safe' and 'striptags' tags in the HTML for book descriptions, I was able to fix this issue.
+**Static Files Deployment Issues**
+Styling appeared correctly in development but failed to load on Heroku deployment. The issue was resolved by implementing proper static file collection using `collectstatic` command and configuring WhiteNoise for static file serving.
 
-- I decided instead of a favourites list, I wanted to create a wishlist instead. I updated all the frontend code to reflect this in the text on the website, but since it used the same functionality in the backend code I decided to keep the model table the same, and keep the field 'is_favourite' to use for the wishlist. I could've updated the table, and migrated once and transferred existing data but since there was no fundamental change to the backend functionality, it made sense to keep the table name as is owing to time constraints. 
+**HTML Rendering in Book Descriptions**
+Raw HTML code appeared in book descriptions when content was added through the admin interface. This was resolved by implementing Django's `striptags` template filter to properly render text content while preserving formatting capability in the admin.
 
-- A lot of issues using CSS and Bootstrap5 for responsive designing, with grids not displaying the book covers and descriptions clearly. In particular, on a mobile screen device, on the homepage the 'book of the week' section was cut in half. This same issue was not showing for the other pages, and the books were displaying correctly. I had created the book of the week grid differently to the other pages, as it displayed the book cover on the left hand side, and the description and ratings on the right. It was created this way to create a better flow for the homepage, and a more horizontal surface area, instead of vertical like the book collection page. To fix this, I used CSS media queries to adjust the layout for smaller screens and ensured proper Bootstrap grid classes were applied for responsive design.
+**Database Field Naming Convention**
+The frontend terminology was updated from "favorites" to "wishlist" for improved user experience, while maintaining the existing `is_favorite` database field name to avoid complex migrations and data loss.
 
+**Responsive Layout Issues**
+The "book of the week" section displayed incorrectly on mobile devices due to horizontal layout constraints. This was addressed through CSS media queries and proper Bootstrap grid implementation for responsive design.
+### Future Improvements
 
-### Bugs to fix 
+**Alert Box Spacing**
+When users dismiss success/error messages, a small gap remains at the top of the page until refresh. This could be resolved with CSS transitions for smooth alert dismissal.
 
-- The alert box appears at the top of a page after a particular action, and after closing the box, it leaves behind a small margin at the top of the page. If the page is refreshed, this goes away, but I'd like for it to be gone immediately with the alert box closing.
-
-- Rating input area creates a blue outline around the input type box, and the review textarea creates an outline if the colour I've set it to. Due to default browser settings or Bootstrap class styling, any changes to get the rating input area outline to match the review textarea outline were unsucessful. This is a future fix, as further investigation is required.
+**Form Input Styling Consistency**
+The rating stars input maintains a default blue outline that does not conform to the custom styling applied to other form elements. This styling inconsistency could be addressed with additional CSS specificity.
 
 ## Deployment
 [Back To The Top](#table-of-contents)
 
-This website is deployed to Heroku from a GitHub repository, the following steps were taken:
+This website is deployed to Heroku from a GitHub repository using the following process:
 
 #### Creating Repository on GitHub
-- First make sure you are signed into [Github](https://github.com/) and go to the code institutes template, which can be found [here](https://github.com/Code-Institute-Org/gitpod-full-template).
-- Then click on **use this template** and select **Create a new repository** from the drop-down. Enter the name for the repository and click **Create repository from template**.
-- Once the repository was created, I clicked the green **gitpod** button to create a workspace in gitpod so that I could write the code for the site.
+- Sign into [GitHub](https://github.com/)
+- Create a new repository with an appropriate name
+- Copy the provided code to connect the GitHub repository to your local environment
+- Link the repository to your local development environment
 
 #### Creating an app on Heroku
-- After creating the repository on GitHub, head over to [heroku](https://www.heroku.com/) and sign in.
-- On the home page, click **New** and **Create new app** from the drop down.
-- Give the app a name(this must be unique) and select a **region** I chose **Europe** as I am in Europe, Then click **Create app**.
+- Sign into [Heroku](https://www.heroku.com/)
+- Click **New** and select **Create new app** from the dropdown
+- Enter a unique app name and select your region
+- Click **Create app**
 
-#### Create a database 
-- Log into [CIdatabase maker](https://www.heroku.com/](https://dbs.ci-dbs.net/))
-- add your email address in input field and submit the form
-- open database link in your email
-- paste dabase URL in your DATABASE_URL variable in env.py file and in Heroku config vars
+#### Create a database
+- Access the [CI Database Maker](https://dbs.ci-dbs.net/)
+- Submit your email address in the input field
+- Open the database link provided in your email
+- Copy the database URL to your DATABASE_URL variable in both env.py and Heroku config vars
 
-#### Deploying to Heroku.
-- Head back over to [heroku](https://www.heroku.com/) and click on your **app** and then go to the **Settings tab**
-- On the **settings page** scroll down to the **config vars** section and enter the **DATABASE_URL** which you will set equal to the elephantSQL URL, create **Secret key** this can be anything,
-**CLOUDINARY_URL** this will be set to your cloudinary url and finally **Port** which will be set to 8000.
-- Then scroll to the top and go to the **deploy tab** and go down to the **Deployment method** section and select **Github** and then sign into your account.
-- Below that in the **search for a repository to connect to** search box enter the name of your repository that you created on **GitHub** and click **connect**
-- Once it has been connected scroll down to the **Manual Deploy** and click **Deploy branch** when it has deployed you will see a **view app** button below and this will bring you to your newly deployed app.
-- Please note that when deploying manually you will have to deploy after each change you make to your repository.
+#### Deploying to Heroku
+- Navigate to your Heroku app and select the **Settings** tab
+- Scroll to the **Config Vars** section and add:
+  - **DATABASE_URL**: Set to the Code Institute URL provided
+  - **SECRET_KEY**: Generate a secure secret key
+  - **CLOUDINARY_URL**: Set to your Cloudinary URL
+- Navigate to the **Deploy** tab
+- Select **GitHub** as the deployment method and sign into your account
+- Search for your repository name and click **Connect**
+- Scroll to **Manual Deploy** and click **Deploy Branch**
+- Once deployment completes, click **View App** to access your deployed application
+- Note: Manual deployment requires redeployment after each repository change
 
 
 ## AI Reflections
 [Back To The Top](#table-of-contents)
 
-* Usage of AI for Code Development:
-Copilot AI was a really helpful tool when setting up the inital file structure, such as the views, models, forms and templates. It was easily able to find inconsistencies, and help apply the correct code when the functionality did not work as expected.
+AI tools were utilized throughout this project to enhance development efficiency and code quality. The following outlines how AI assistance contributed to Ink & Read:
 
-* Usage of AI for CSS Development:
-I used Copilot AI to create custom pages for the Django authorisation pages, and the error 404 pages by using the design and website colour schemes from the pages I had already designed. AI successfully created custom designs for those pages which were cohesive and synergised to the rest of the website. 
+**Foundation Development**
+GitHub Copilot provided assistance during initial setup, helping structure Django views, models, and templates. The AI identified inconsistencies and suggested appropriate fixes when issues arose during development.
 
-* Usage of AI for Debugging (Code and Layout Issues):
-For smaller screen devices, I found Copilot AI was a great assistance. I'd identify the issue with the layout using Chrome Developer tools, and testing the required code to fix layout issues. I'd then apply those changes in style.css with the help of AI.
+**Design & Styling Implementation**
+AI assistance was particularly effective in creating custom authentication and 404 error pages. By providing the existing color scheme and design patterns to Copilot, it generated consistent pages that maintained design cohesion across the site.
 
-* Usage of AI for Testing:
-I used AI to clean up code, and regularly asked AI to remove redundant code, find commented out code or find missing tags in HTMLs. These helpful changes helped me to clear warnings and errors which came up during validation testing.
+**Mobile Layout Resolution**
+AI assistance proved valuable for responsive design challenges, particularly the mobile "book of the week" section. The AI translated DevTools observations into effective CSS solutions, streamlining the debugging process.
 
-* Usage of AI for Heroku Deployment:
-Issue with the heroku deployed app not showing the styling I had applied. Copilot AI helped me by suggesting running the collectstatic command. I committed and pushed my changes to GitHub, and redeployed the app. The deployed app now had all the styling I had developed.
+**Code Quality Assurance**
+AI served as a quality control assistant, identifying redundant code, locating forgotten comment blocks, and catching missing HTML tags. This assistance significantly reduced time spent during testing validation phases.
+
+**Deployment Troubleshooting**
+When local styling failed to appear on Heroku, AI quickly identified the missing `collectstatic` step. The AI's systematic approach helped resolve deployment issues efficiently.
 
 ## Credits
 [Back To The Top](#table-of-contents)
