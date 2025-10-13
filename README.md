@@ -22,6 +22,7 @@
 6. [Testing](#testing)
 7. [Bugs](#bugs)
 8. [Deployment](#deployment)
+8. [AI Reflection](#ai-reflection)
 9. [Credits](#credits)
 
 ## About
@@ -62,6 +63,8 @@ Members of the website can also create a wishlist for books they'd like to read 
 
 ### User Stories
 
+Link to the project [GitHub Project/User Stories Board](https://github.com/users/GurpritK/projects/9/views/1) 
+
   <details>
   <summary>GitHub Project User Stories</summary>
 
@@ -71,19 +74,20 @@ Members of the website can also create a wishlist for books they'd like to read 
 
 
 
-#### User Stories - Site Visitors 
-ADDING STRUCTURE EXAMPLE HERE - UPDATE WITH OWN USER STORIES!
-- **List added books:**
-  - As a Site Visitor, I can see added books compiled in a list (with a picture of the book and author name) so that I can easily see which books have been added.
-- **View information about a book:**
-  - As a Site Visitor, I can click on a book so that I can get more information about it.
-
-#### User Stories - Administrator(s)
-- **Manage content:**
-  - As Site Administrator, I can add, read, update, and delete books so that I can manage the site's content.
-- **Approve comments:**
-  - As a Site Administrator, I can approve or disapprove comments so that I can filter comments that, for example, contain offensive language.
-
+#### User Stories List
+Admin can upload books to site	
+View a book page	
+Create landing page(s)	
+Sign up as a member	
+Submit book rating	
+Update or delete book rating	
+Create search functionality	
+Create top rated books list	
+Add books to wish-list	
+Submit book review	
+Update or delete book review	
+Admin can approve reviews	
+Add user profile details	
 
 ### Wireframes
 
@@ -218,9 +222,7 @@ I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Rela
 ## Features:
 [Back To The Top](#table-of-contents)
 
-Explain your features on the website,(navigation, pages, links, forms, input fields, CRUD....)
- 
-Add screenshots! 
+Screenshots of features below:
 
 ### Navigation
 
@@ -697,16 +699,24 @@ Minimal custom JavaScript in project, three small instances only. No errors or w
 
 ### Manual Testing user stories
 Test all your user stories, you an create table 
-User Story |  Test | Pass
---- | --- | :---:
-paste here you user story | what is visible to the user and what action they should perform | &check;
-attach screenshot
-### Manual Testing features
-Test all your features, you can use the same approach 
-| Feature | Action | Status | 
-|:-------:|:--------| :--------|
-| description | user steps | &check; |
-attach screenshot
+
+User Story | Pass
+|:-------:|:--------| 
+Admin can upload books to site | Success |
+View a book page	| Success |
+Create landing page(s) |Success |
+Sign up as a member	|Success |
+Submit book rating	|Success |
+Update or delete book rating	|Success |
+Create search functionality	|Success |
+Create top rated books list	|Success |
+Add books to wish-list	|Success |
+Submit book review	|Success |
+Update or delete book review	|Success |
+Admin can approve reviews	|Success |
+Add user profile details |Success |
+
+
 
 
 ## Bugs
@@ -761,6 +771,26 @@ This website is deployed to Heroku from a GitHub repository, the following steps
 - Below that in the **search for a repository to connect to** search box enter the name of your repository that you created on **GitHub** and click **connect**
 - Once it has been connected scroll down to the **Manual Deploy** and click **Deploy branch** when it has deployed you will see a **view app** button below and this will bring you to your newly deployed app.
 - Please note that when deploying manually you will have to deploy after each change you make to your repository.
+
+
+## Al Reflections
+[Back To The Top](#table-of-contents)
+
+* Usage of AI for Code Development:
+Copilot AI was a really helpful tool when setting up the inital file structure, such as the views, models, forms and templates. It was easily able to find inconsistencies, and help apply the correct code when the functionality did not work as expected.
+
+* Usage of AI for CSS Development:
+I used Copilot AI to create custom pages for the Django authorisation pages, and the error 404 pages by using the design and website colour schemes from the pages I had already designed. AI successfully created custom designs for those pages which were cohesive and synergised to the rest of the website. 
+
+* Usage of AI for Debugging (Code and Layout Issues):
+For smaller screen devices, I found Copilot AI was a great assistance. I'd identify the issue with the layout using Chrome Developer tools, and testing the required code to fix layout issues. I'd then apply those changes in style.css with the help of AI.
+
+* Usage of AI for Testing:
+I used AI to clean up code, and regularly asked AI to remove redundant code, find commented out code or find missing tags in HTMLs. These helpful changes helped me to clear warnings and errors which came up during validation testing.
+
+* Usage of AI for Heroku Deployment:
+Issue with the heroku deployed app not showing the styling I had applied. Copilot AI helped me by suggesting running the collectstatic command. I committed and pushed my changes to GitHub, and redeployed the app. The deployed app now had all the styling I had developed.
+
 ## Credits
 [Back To The Top](#table-of-contents)
 
