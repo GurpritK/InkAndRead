@@ -86,7 +86,7 @@
     </nav>
 
     <!-- Navigation -->
-    <header class="site-header" role="banner">
+    <header class="site-header">
         {% block header %}
             <!-- Desktop Sidebar Navigation -->
             <nav class="main-nav d-none d-lg-block" aria-label="Main navigation">
@@ -139,7 +139,7 @@
 
     
     <!-- Main Content -->
-    <main id="main-content" role="main" class="main-content">
+    <main id="main-content" class="main-content">
         
             <!-- Messages -->
             {% if messages %}
@@ -158,7 +158,7 @@
     </main>
     
     <!-- Footer -->
-    <footer class="site-footer" role="contentinfo">
+    <footer class="site-footer">
         {% block footer %}
             <div class="container">
                 <div class="footer-content">
@@ -168,9 +168,8 @@
                     </div>
                     
                     <div class="footer-section">
-                        
+                        <h4>Quick Links</h4>
                         <ul class="footer-links">
-                            <h4>Quick Links</h4>
                             <li><a href="/">Home</a></li>
                             <li><a href="/books/">Book Collection</a></li>
                         </ul>
@@ -202,7 +201,6 @@
                 <div class="footer-bottom">
                     <p>&copy; {% now "Y" %} Ink & Read. All rights reserved.</p>
                 </div>
-            </div>
         {% endblock %}
     </footer>
     

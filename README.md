@@ -174,7 +174,7 @@ I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Rela
 <details>
   <summary>Entity Relationship Diagram</summary>
 
-  ![Image of Entity Relationship Diagram](static/images/readme-images/ERD.png)
+  ![Image of Entity Relationship Diagram](static/images/readme-images/ERD.jpeg)
   
   </details>
 

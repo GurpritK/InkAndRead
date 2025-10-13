@@ -1167,13 +1167,6 @@ p {
     line-height: 1.2;
 }
 
-.hero-subtitle {
-    font-size: 1.8rem;
-    color: #f5e0b5;
-    margin-bottom: 1.5rem;
-    font-style: bold;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-}
 
 .hero-description {
     font-size: 1.2rem;

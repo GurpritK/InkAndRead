@@ -91,14 +91,16 @@
                             <p class="book-author-featured">by {{ book_of_week.author }}</p>
                             <div class="book-rating-featured">
                                 {% if book_of_week.average_rating and book_of_week.average_rating > 0 %}
-                                    <span class="stars" aria-label="Rating: {{ book_of_week.average_rating }} out of 5 stars">
+                                    <span class="sr-only">Rating: {{ book_of_week.average_rating }} out of 5 stars</span>
+                                    <span class="stars" aria-hidden="true">
                                         {% for i in "12345" %}
                                             {% if book_of_week.average_rating >= forloop.counter %}★{% else %}☆{% endif %}
                                         {% endfor %}
                                     </span>
                                     <span class="rating-text">{{ book_of_week.average_rating }}/5</span>
                                 {% else %}
-                                    <span class="stars" aria-label="No ratings yet">
+                                    <span class="sr-only">No ratings yet</span>
+                                    <span class="stars" aria-hidden="true">
                                         {% for i in "12345" %}
                                             ☆
                                         {% endfor %}
@@ -106,7 +108,7 @@
                                     <span class="rating-text">No ratings yet</span>
                                 {% endif %}
                             </div>
-                            <p class="book-description-featured">{{ book_of_week.book_description|safe|truncatewords:35 }}</p>
+                            <p class="book-description-featured">{{ book_of_week.book_description|striptags|truncatewords:35 }}</p>
                             <div class="book-cta">
                                 <span class="btn btn-primary">Click to read more →</span>
                             </div>
