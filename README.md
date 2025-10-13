@@ -12,11 +12,7 @@
 3. [Features](#features)
     * [Navigation](#navigation)
     * [Footer](#footer)
-   ### Authentication-Authorisation
-
-User authentication is implemented using Django AllAuth, providing secure and comprehensive user management functionality. The authentication pages (sign-up, login, and logout) have been customized to maintain visual consistency with the site's design theme.
-
-Registered users gain access to enhanced features including book ratings, review submissions, and personal reading list management. Site administrators can manage user accounts and moderate user-generated content through Django's admin interface.ome Page](#home-page)
+    * [Home Page](#home-page)
     * [Book Collection Page](#book-collection-page)
     * [Book Detail Page](#book-detail-page)
     * [User Profile Page](#user-profile-page)
@@ -168,7 +164,7 @@ The design strategy focused on creating a welcoming literary environment through
 
 The custom hero image reinforces the community reading theme and establishes visual consistency throughout the site. All color choices support the goal of creating an inviting space for book enthusiasts.
 
-A key design decision involved relocating the navigation from the traditional top position to a left sidebar. This approach creates a more intimate browsing experience while reducing the corporate feel commonly associated with standard web layouts.
+A key design decision involved relocating the navigation from the traditional top position to a left sidebar. This approach creates a more personal browsing experience while reducing the corporate feel commonly associated with standard web layouts.
 
 The initial color palette was developed using [Coolors](https://www.coolors.co), though the final implementation evolved to incorporate additional yellow tones and warmer variations that better suited the literary theme.
 
@@ -278,6 +274,7 @@ In the footer, there are some quick links to the homepage, and the book collecti
   
   </details>
 
+
 ### Home-Page
 
 The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in':
@@ -316,6 +313,7 @@ Near the bottom of the homepage, there is a section for 'book of the week' which
   
   </details>
 
+
 ### Book-Collection-Page
 
 The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author name is visible:
@@ -336,6 +334,7 @@ Additionally, a rating display for each book is also visible:
   
   </details>
 
+
 If a book has no ratings, this is also shown in the book card:
 
 <details>
@@ -344,6 +343,7 @@ If a book has no ratings, this is also shown in the book card:
   ![Individual Book No Rating](static/images/features/book-norating.jpeg)
   
   </details>
+
 
 Logic is applied to calculate and display the average rating score for each book in the individual book card. It is possible to click on any book, and navigate to the book details page.
 
@@ -411,6 +411,63 @@ For logged out users, you can see everything linked to the book but cannot add r
 
 
 ### User-Profile-Page
+
+Logged in users have their own member area, which they can navigate to directly from the navbar:
+
+<details>
+  <summary>Profile Area</summary>
+
+  ![Profile Area](static/images/features/profile-section.jpeg)
+  
+  </details>
+
+The link is personalised with the user's name e.g. "Gurprit's Profile":
+
+<details>
+  <summary>Personalised Message</summary>
+
+  ![Personalised Message](static/images/features/personalised-message.jpeg)
+  
+  </details>
+
+There is also a number tracker for their lists:
+
+<details>
+  <summary>List Number Tracker</summary>
+
+  ![List Number Tracker](static/images/features/list-number-tracker.jpeg)
+  
+  </details>
+
+Within the user profile, members can view their wishlist of books:
+
+<details>
+  <summary>Wishlist</summary>
+
+  ![Wishlist](static/images/features/wishlist.jpeg)
+  
+  </details>
+ 
+They can also track their reading by viewing books they have marked as 'read':
+
+<details>
+  <summary>Read List</summary>
+
+  ![Read List](static/images/features/read-list.jpeg)
+  
+  </details>
+ 
+ If there are no books in either list, there is CTA button to 'browse books' so that they can start curating their lists:
+
+ <details>
+  <summary>No Books in List</summary>
+
+  ![No Books in List](static/images/features/no-books-in-list.jpeg)
+  
+  </details>
+
+**Future Improvement:** This profile area can be further improved in the future by allowing users to directly manage their lists from this page. However, they can make changes to their lists by clicking on a book from the profile area, and toggling the 'add to wishlist' or 'mark as read' buttons. This change will automatically update and reflect in the user profile page.
+
 
 Logged in users have their own member area, which they can navigate to directly from the navbar:
 
@@ -749,10 +806,8 @@ The frontend terminology was updated from "favorites" to "wishlist" for improved
 
 **Responsive Layout Issues**
 The "book of the week" section displayed incorrectly on mobile devices due to horizontal layout constraints. This was addressed through CSS media queries and proper Bootstrap grid implementation for responsive design.
-### Future Improvements
 
-**Alert Box Spacing**
-When users dismiss success/error messages, a small gap remains at the top of the page until refresh. This could be resolved with CSS transitions for smooth alert dismissal.
+### Future Improvements
 
 **Form Input Styling Consistency**
 The rating stars input maintains a default blue outline that does not conform to the custom styling applied to other form elements. This styling inconsistency could be addressed with additional CSS specificity.
@@ -831,8 +886,3 @@ When local styling failed to appear on Heroku, AI quickly identified the missing
 * FontAwesome for icons used within website
 * All the shared projects on GitHub to guide the project including code file structuring, and readme.md structuring including [BookWormsPlace](https://github.com/AlexandraH-code/ms3-thebookwormsplace)
 * YouTube tutorial for implementing review and rating systems [link here](https://www.youtube.com/watch?v=Zkmu93lMLPs)
-
-
-
-
-List of used resources for your website (text, images, snippets of code, projects....)
