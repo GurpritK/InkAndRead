@@ -816,11 +816,11 @@ When local styling failed to appear on Heroku, AI quickly identified the missing
 * Goodreads for book descriptions
 * Eraser.io for ERD generation
 * Copilot AI with development, testing and debugging assistance with the project
-* Coolors.co for colour palette selection
+* Coolors.co for ready-made colour palettes
 * Miro board by Marko Tot for comprehensive and helpful tools, lists, guides, project examples and tutorial videos
 * Django Setup & Deployment Guidebook 2025 by CodeInstitute [link here](https://docs.google.com/document/d/16UKi7H0DSL2ih-OSz_VixomKxY2wp1DIoGUO8EZaRyU/edit?tab=t.0#heading=h.5s9novsydyp1)
 * Django cheat sheet [link here](https://codeinstitute.s3.eu-west-1.amazonaws.com/PDF/Django%2BCheat%2BSheet.pdf)
-* Bootstrap5 to create responsive designs and layouts
+* Bootstrap5 documentation to create responsive designs and layouts
 * Google Fonts for fonts used within website
 * FontAwesome for icons used within website
 * All the shared projects on GitHub to guide the project including code file structuring, and readme.md structuring including [BookWormsPlace](https://github.com/AlexandraH-code/ms3-thebookwormsplace)
