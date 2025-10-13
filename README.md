@@ -258,10 +258,6 @@ From the navbar, users can navigate to the book collection and their own profile
   
   </details>
 
-From the book collection page, users can navigate to individual books to read more about each book, as well as add ratings and reviews. Within each book page, the user can also add the book to a 'wishlist' or mark it as 'read'. 
-
-Similarly, users can navigate to books from their own profile from the navbar.
-
 
 ### Footer
 
@@ -411,63 +407,6 @@ For logged out users, you can see everything linked to the book but cannot add r
 
 
 ### User-Profile-Page
-
-Logged in users have their own member area, which they can navigate to directly from the navbar:
-
-<details>
-  <summary>Profile Area</summary>
-
-  ![Profile Area](static/images/features/profile-section.jpeg)
-  
-  </details>
-
-The link is personalised with the user's name e.g. "Gurprit's Profile":
-
-<details>
-  <summary>Personalised Message</summary>
-
-  ![Personalised Message](static/images/features/personalised-message.jpeg)
-  
-  </details>
-
-There is also a number tracker for their lists:
-
-<details>
-  <summary>List Number Tracker</summary>
-
-  ![List Number Tracker](static/images/features/list-number-tracker.jpeg)
-  
-  </details>
-
-Within the user profile, members can view their wishlist of books:
-
-<details>
-  <summary>Wishlist</summary>
-
-  ![Wishlist](static/images/features/wishlist.jpeg)
-  
-  </details>
- 
-They can also track their reading by viewing books they have marked as 'read':
-
-<details>
-  <summary>Read List</summary>
-
-  ![Read List](static/images/features/read-list.jpeg)
-  
-  </details>
- 
- If there are no books in either list, there is CTA button to 'browse books' so that they can start curating their lists:
-
- <details>
-  <summary>No Books in List</summary>
-
-  ![No Books in List](static/images/features/no-books-in-list.jpeg)
-  
-  </details>
-
-**Future Improvement:** This profile area can be further improved in the future by allowing users to directly manage their lists from this page. However, they can make changes to their lists by clicking on a book from the profile area, and toggling the 'add to wishlist' or 'mark as read' buttons. This change will automatically update and reflect in the user profile page.
-
 
 Logged in users have their own member area, which they can navigate to directly from the navbar:
 
