@@ -41,7 +41,6 @@ Members of the website can also create a wishlist for books they'd like to read 
 #### Site Owner Goals
 - Display a website with information on books
 - Manage ratings and reviews for books
-- Manage the About page
 - Manage a list of highly rated books
 - Create a responsive and intuitive design
 
@@ -51,14 +50,14 @@ Members of the website can also create a wishlist for books they'd like to read 
 - Log in securely
 - Edit saved user details
 - Submit reviews on books
-- Edit and delete reviews
+- Update and delete reviews
 - Rate books using a star rating system
-- Enquire/register for upcoming book events
 
 #### External Non-Registered User Goals
 - Read detailed book information
 - View reviews on books
 - View ratings on books
+- View the featured book of the week
 
 
 ### User Stories
@@ -133,7 +132,7 @@ I  used [Balsamiq](https://balsamiq.com/) to make wireframes for different scree
   
 
 ### Agile Methodology
-Explain your agile approach to your project and insert screenshoots of your Kanban board (itterations, user stories, tasks,acceptance criteria, labels, story points...)
+Explain your agile approach to your project and insert screenshoots of your Kanban board (iterations, user stories, tasks,acceptance criteria, labels, story points...)
 
 The agile approach for my project was to create a kanban board to track the status of the issues for the project. Each issue was prioritised using the MoSCow labels (Must Have, Should Have, Could Have) to streamline the issues, and focus on completing the issues with higher priority first. Each issue correlated to a user story, with an acceptance criteria list of what it would require for each user story to be considered complete. 
 
@@ -155,11 +154,11 @@ This pairing was carefully chosen after testing several options; the goal was to
 
 ### Colour Scheme and Design Choices
 
-I wanted to create a cosy library nook feeling on this virtual website and employed warm neutral tone colours and wooden textures to evoke this. The primary colours used were browns, and the font colours were creams and contrasted against the browns. I generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers, with elements of all those colours in one image to tie the website together.
+I wanted to create a cosy library nook feeling on this virtual website and employed warm neutral tone colours and wooden textures to evoke this. The primary colours used were muted shades of green, and the font colours were muted pale yellow shades and browns. I generated an AI image with prompts to bring my vision to life of a welcoming reading area for a community of readers, creating a cohesive look with the hero image tying the website together.
 
-I shifted the navbar to the left hand side of the page, rather than keep it at the top, to create the imagery of a bookshelf. By removing the navbar from the top, my aim was to create website which would feel less corporate.
+I shifted the navbar to the left hand side of the page, rather than keep it at the top. By removing the navbar from the top, my aim was to create website which would feel less corporate.
 
-The colour palette was generated using [Coolors](https://www.coolors.co).
+The inspiration colour palette was generated using [Coolors](https://www.coolors.co). However, as I developed and designed the website, I tweaked and experimented with other colours so the website palette may not be an exact palette of the original palette selected. There are still elements of the original palette within the website, but I incorporated more shades of yellows.
 
 <details>
   <summary>Colour Palette</summary>
@@ -169,7 +168,7 @@ The colour palette was generated using [Coolors](https://www.coolors.co).
   </details>
 
 ### Entity Relationship Diagram
-I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Relationship Diagram (ERD). The relationships between the tables are drawn. The About table is completely independent (they have no connection to any other table). A picture of the ERD is below.
+I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Relationship Diagram (ERD). The relationships between the tables are drawn. 
 
 <details>
   <summary>Entity Relationship Diagram</summary>
@@ -177,6 +176,44 @@ I used [Eraser](https://www.eraser.io/ai/erd-generator) to create an Entity Rela
   ![Image of Entity Relationship Diagram](static/images/readme-images/ERD.jpeg)
   
   </details>
+
+### Model Descriptions
+
+#### User (Django's Built-in)
+- **Purpose**: Manages user authentication and basic profile information
+- **Key Features**: Username, email, authentication fields
+- **Relationships**: Central entity connected to all user-generated content
+
+#### Book
+- **Purpose**: Stores book information including metadata and cover images
+- **Key Features**: 
+  - Unique title and slug for SEO-friendly URLs
+  - Cloudinary integration for cover image storage
+  - Author information and rich text descriptions
+- **Methods**: `average_rating()`, `is_favorited_by()`, `is_read_by()`
+
+#### BookRating
+- **Purpose**: Stores user ratings for books (1-5 stars)
+- **Key Features**:
+  - One rating per user per book (unique constraint)
+  - Timestamp tracking for creation and updates
+  - Validation for score range (1-5)
+- **Related Name**: `ratings` (accessible via `book.ratings.all()`)
+
+#### BookReview
+- **Purpose**: Stores detailed user reviews for books
+- **Key Features**:
+  - One review per user per book (unique constraint)
+  - Admin approval system with `approved` flag
+  - Rich text content support
+- **Related Names**: `reviewer` (user), `reviewed_book` (book)
+
+#### UserBookList
+- **Purpose**: Manages user's personal book library and reading status
+- **Key Features**:
+  - Favorite and read status tracking
+  - Personal notes for each book
+  - Timestamp tracking for library management
 
 
 ## Features:
@@ -192,11 +229,11 @@ For larger screens like laptops and desktops, there is a fixed navbar on the lef
 
 For smaller screens, like mobiles and tablets, there is a fixed navbar the the top of the screen with a hamburger icon for the menu dropdown. This navbar is accessible on all pages.
 
-From the navbar, users can navigate to the book collection and their own profiles. If they are logged in, they have the link to 'log out'. If they are not signed in, the navbar updates to provide links to 'sign up' and 'log in'.
+From the navbar, users can navigate to the book collection and their own profiles. If they are logged in, they have the menu option to 'log out'. If they are not signed in, the navbar updates to provide menu options to 'sign up' and 'log in'.
 
 From the book collection page, users can navigate to individual books to read more about each book, as well as add ratings and reviews. Within each book page, the user can also add the book to a 'wishlist' or mark it as 'read'. 
 
-Similarly, users can navigate to books from their own profile. 
+Similarly, users can navigate to books from their own profile from the navbar.
 
 ### Footer
 
@@ -205,15 +242,18 @@ In the footer, there are some quick links to the homepage, and the book collecti
 
 ### Home-page
 
-The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in', these update if the user is logged in.
+The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in', the latter two buttons are removed and replaced if the user is logged in to a 'log out' button.
 
-Below the hero section, there is a section for 'book of the week' which updates according to the most recent highly rated book. 
+Below the hero section, there is more information about the site and everything you can use the site for. This information is split and displayed in a grid for an easier to digest format.
 
-Near the bottom of the homepage, there is more information about the site and everything you can use the site for. This information is split and displayed in cards.
+Near the bottom of the homepage, there is a section for 'book of the week' which updates according to the most recent highly rated book. 
+
 
 ### Book-collection-page
 
-The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author is visible. Additionally, a rating display for each book is also visible. It is possible to click on any book, and navigate to the book details page.
+The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author name is visible. Additionally, a rating display for each book is also visible. It is possible to click on any book, and navigate to the book details page.
+
+If a book has no ratings, this is also shown in the book card. There is logic here display the average rating score for each book in the individual book card.
 
 ### Book-detail-page
 
@@ -221,10 +261,12 @@ The book detail page is where you can see the full description of each book, and
 
 On this page, logged in users can add a book to their own wishlist, or mark a book as read.
 
+For logged out users, you can see everything linked to the book but cannot add reviews or ratings, or add the book to a wishlist or mark it as 'read'. In the space of where these buttons are available for logged in users, there is instead a message to 'log in' to 'complete action', where the action represents either of those fuctionalities.
+
 
 ### User-profile-page
 
-Logged in users have their own member area, which they can navigate to directly from the navbar. The link is personalised with the user's name e.g. "Joe's Profile". Within the user profile, members can view their wishlist of books, and track their reading by viewing books they have marked as 'read'. 
+Logged in users have their own member area, which they can navigate to directly from the navbar. The link is personalised with the user's name e.g. "Joe's Profile". Within the user profile, members can view their wishlist of books, and track their reading by viewing books they have marked as 'read'. If there are no books in either list, there is CTA button to 'browse books' so that they can start curating their lists.
 
 This profile area can be further improved in the future by allowing users to directly manage their lists from this page. However, they can make changes to their lists by clicking on a book from the profile area, and toggling the 'add to wishlist' or 'mark as read' buttons. This change will automatically update and reflect in the user profile page.
 
@@ -241,10 +283,8 @@ This profile area can be further improved in the future by allowing users to dir
 
 ### Authentication-Authorisation 
 
-- Django AllAuth used...
+- Django AllAuth: Django authentication/authorisation pages used for sign up, log in and log out pages. These were customised using the website's design theory. Admins can view and remove users from the admin section. 
 
-Admin users, and registered user are authenticated? authorised?
-Admin can remove users from the admin page.
 
 ## Technologies Used
 [Back To The Top](#table-of-contents)
@@ -261,13 +301,13 @@ List of technologies used for your project
 
 ### Frameworks, Libraries, and Tools
 
-* **Django**: The main web framework used for building the application.
-* **Bootstrap**: For responsive design and styling.
+* **Django**: The main web framework used for building the application
+* **Bootstrap**: For responsive design and styling
 * **AllAuth**: For user authentication
 * **Crispy Forms**: For all forms
-* **Heroku**: For application deployment.
-* **Git**: For version control.
-* **Visual Studio Code**
+* **Heroku**: For application deployment
+* **Git**: For version control
+* **Visual Studio Code** For code development and local testing
 * **Cloudinary**: Dynamic assets hosting (images)
 * **Favicon.io**: For manifest and favicon creation
 * **Balsamiq**: Wireframes creation
@@ -276,7 +316,7 @@ List of technologies used for your project
 
 ### AI tools
 * **Gemini** : AI image generation
-* **ChatGPT** : Coding with Django steps to follow
+* **ChatGPT** : Coding with Django research 
 * **Eraser.io** : ERD generation
 * **Copilot** : Code development and debugging assistance
 
@@ -285,36 +325,107 @@ List of technologies used for your project
 [Back To The Top](#table-of-contents)
 
 ### Testing tools
-- [Responsinator](http://www.responsinator.com/) - Used to check how the site looks on different devices and how responsive it is.
-- [Am I Responsive](https://ui.dev/amiresponsive) - Used to check how the site looks on different devices and how responsive it is.
-- [Responsive Web Design Checker](https://responsivedesignchecker.com/) - Used to see how my website looks on different types of devices and screen sizes.
 - [HTML Validator](https://validator.w3.org/nu/) - Used to validate the HTML files.
 - [CSS Validator](https://jigsaw.w3.org/css-validator/) - Used to validate the JavaScript code.
-- [Site24x7's JavaScript validator](https://www.site24x7.com/tools/javascript-validator.html) - Used to validate the JavaScript code.
-- [JShint](https://jshint.com/) - Used to validate the JavaScript Code.
-- [ColorMagic Contrast Checker](https://colormagic.app/contrast-checker) - Was used to check the constrast of the colors that I have chosen
+- [JShint](https://jshint.com/) - Used to validate the JavaScript code.
+- [CI Python Linted](https://pep8ci.herokuapp.com/) - Used to validate Python code.
+- Chrome Developer Tools - Lighthouse reports
+
 
 Important part of your README!!!
 ### Google's Lighthouse Performance
-Screenshots of certain pages and scores (mobile and desktop)
+Screenshots of desktop and mobile lighthouse reports for homepage, books page and profile page.
+
+<details>
+  <summary>Homepage Desktop Lighthouse Report</summary>
+
+  ![Home Page - Desktop](static/images/testing-screenshots/lighthouse-reports/homepage-desktop.jpeg)
+  
+  </details>
+
+<details>
+  <summary>Homepage Mobile Lighthouse Report</summary>
+
+  ![Home Page - Mobile](static/images/testing-screenshots/lighthouse-reports/homepage-mobile.jpeg)
+  
+  </details>
+
+  <details>
+  <summary>Book Collection Desktop Lighthouse Report</summary>
+
+  ![Books Page - Desktop](static/images/testing-screenshots/lighthouse-reports/books-desktop.jpeg)
+  
+  </details>
+
+<details>
+  <summary>Book Collection Mobile Lighthouse Report</summary>
+
+  ![Books Page - Mobile](static/images/testing-screenshots/lighthouse-reports/books-mobile.jpeg)
+  
+  </details>
+
+  <details>
+  <summary>Profile Page Desktop Lighthouse Report</summary>
+
+  ![Books Page - Desktop](static/images/testing-screenshots/lighthouse-reports/profile-desktop.jpeg)
+  
+  </details>
+
+<details>
+  <summary>Profile Page Mobile Lighthouse Report</summary>
+
+  ![Books Page - Mobile](static/images/testing-screenshots/lighthouse-reports/profile-mobile.jpeg)
+  
+  </details>
+
+
 ### Browser Compatibility
 Check compatability with different browsers
 ### Responsiveness
 Screenshots of the responsivness, pick few devices
 ### Code Validation
-Validate your code HTML, CSS, JS & Python (all pages/files need to be validated!!!), display screenshots
+HTML, CSS, JS & Python Code Validations
 
-- HTML Validation Screenshot
-- CSS Validation Screenshot
-- Python (PEP8) Validation using CI Python Linter and Flake8:
-All .py files validated with only two pythong files remaining showing minimal warnings. All other python files in project validated successfully.
+  <details>
+  <summary>HTML Validation Screenshot</summary>
+
+  ![HTML Validation Screenshot](static/images/testing-screenshots/validator-testing/html-validation.jpeg)
+  
+  </details>
+
+
+
+
+<details>
+  <summary>CSS Validation Screenshot</summary>
+
+  ![CSS Validation Screenshot](static/images/testing-screenshots/validator-testing/css-validation.jpeg)
+  
+  </details>
+
+<details>
+
+<summary>Python Validation</summary>
+
+Python (PEP8) Validation using [CI Python Linted](https://pep8ci.herokuapp.com/) and Flake8 in local development environment:
+All .py files validated with only two python files remaining showing minimal warnings. All other python files in project validated successfully.
 
 Outstanding Warnings:
 
 A specific error for unused env import in settings.py. It's safe to leave it as it, and it doesn't impact the functionality.
 
-There are still minor warnings related to line too long (greater than 79 characters) in models.py and settings.py, but these do not affect the functionality of the project.
+There are still minor warnings related to line too long (greater than 79 characters) in models.py and settings.py, but these do not affect the functionality of the project, so leaving as is for now.
 
+
+
+</details>
+
+<details>
+<summary>JavaScript</summary>
+
+Minimal custom JavaScript in project, three small instances only. No errors or warnings using [JShint](https://jshint.com/).
+
+</details>
 
 ### Manual Testing user stories
 Test all your user stories, you an create table 
