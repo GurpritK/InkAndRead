@@ -15,9 +15,6 @@ class Book(models.Model):
     cover_image = CloudinaryField('image', default='placeholder')
     cover_image_alt = models.CharField(max_length=150)
 
-    # class Meta:
-    #     ordering = [""]
-
     def __str__(self):
         return self.book_title
 
