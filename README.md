@@ -1,28 +1,29 @@
 ## Table Of Contents:
 1. [About](#about)
-2. [Design & Planning](#design-&-planning)
-    * [User Stories](#user-stories)
+2. [Design & Planning](#design--planning)
     * [User Goals](#user-goals)
+    * [User Stories](#user-stories)
     * [Wireframes](#wireframes)
     * [Agile Methodology](#agile-methodology)
     * [Typography](#typography)
-    * [Colour Scheme](#colour-scheme)
-    * [Entity Relationship Diagram Diagram](#entity-relationship-diagram)    
+    * [Colour Scheme](#colour-scheme-and-design-choices)
+    * [Entity Relationship Diagram](#entity-relationship-diagram)    
     
 3. [Features](#features)
-    * [Navigation](#Navigation)
-    * [Footer](#Footer)
-    * [Home page](#Home-page)
-    * [add your pages](#)
-    * [CRUD](#CRUD)
-    * [Authentication & Authorisation](#Authentication-Authorisation )
+    * [Navigation](#navigation)
+    * [Footer](#footer)
+    * [Home Page](#home-page)
+    * [Book Collection Page](#book-collection-page)
+    * [Book Detail Page](#book-detail-page)
+    * [User Profile Page](#user-profile-page)
+    * [CRUD](#crud)
+    * [Authentication & Authorisation](#authentication-authorisation)
 
 4. [Technologies Used](#technologies-used)
-5. [Libraries](#libraries-used)
-6. [Testing](#testing)
-7. [Bugs](#bugs)
-8. [Deployment](#deployment)
-8. [AI Reflection](#ai-reflection)
+5. [Testing](#testing)
+6. [Bugs](#bugs)
+7. [Deployment](#deployment)
+8. [AI Reflection](#ai-reflections)
 9. [Credits](#credits)
 
 ## About
@@ -135,7 +136,6 @@ I  used [Balsamiq](https://balsamiq.com/) to make wireframes for different scree
   
 
 ### Agile Methodology
-Explain your agile approach to your project and insert screenshoots of your Kanban board (iterations, user stories, tasks,acceptance criteria, labels, story points...)
 
 The agile approach for my project was to create a kanban board to track the status of the issues for the project. Each issue was prioritised using the MoSCow labels (Must Have, Should Have, Could Have) to streamline the issues, and focus on completing the issues with higher priority first. Each issue correlated to a user story, with an acceptance criteria list of what it would require for each user story to be considered complete. 
 
@@ -270,7 +270,7 @@ In the footer, there are some quick links to the homepage, and the book collecti
   </details>
 
 
-### Home-page
+### Home-Page
 
 The homepage displays a beautiful and inviting hero image which creates a warm, welcoming inviting for readers. Here you have some CTA buttons to 'explore books' or 'sign up' or 'log in':
 
@@ -309,7 +309,7 @@ Near the bottom of the homepage, there is a section for 'book of the week' which
   </details>
 
 
-### Book-collection-page
+### Book-Collection-Page
 
 The book collection page displays all the book included in the website in a grid display. Within each book grid/card, the book cover, book title, a truncated description of the book and author name is visible:
 
@@ -343,7 +343,7 @@ If a book has no ratings, this is also shown in the book card:
 Logic is applied to calculate and display the average rating score for each book in the individual book card. It is possible to click on any book, and navigate to the book details page.
 
 
-### Book-detail-page
+### Book-Detail-Page
 
 The book detail page is where you can see the full description of each book, book cover and also the other details like author and title:
 
@@ -405,7 +405,7 @@ For logged out users, you can see everything linked to the book but cannot add r
   </details>
 
 
-### User-profile-page
+### User-Profile-Page
 
 Logged in users have their own member area, which they can navigate to directly from the navbar:
 
@@ -455,7 +455,7 @@ They can also track their reading by viewing books they have marked as 'read':
  If there are no books in either list, there is CTA button to 'browse books' so that they can start curating their lists:
 
  <details>
-  <summary>No Books inn List</summary>
+  <summary>No Books in List</summary>
 
   ![No Books in List](static/images/features/no-books-in-list.jpeg)
   
@@ -474,7 +474,7 @@ They can also track their reading by viewing books they have marked as 'read':
 - Similarly, as part of the personalised user experience, registered users can navigate to a book page and mark the book as 'read'. This will add the book to their 'read' books collection in their personal profile section. Users can easily mark the same book as 'unread' by toggling the 'read' button on the book details page. The change is reflected immediately on the book page. The user is notified for each action. This feature is available to logged in users only.
 
 
-### Authentication-Authorisation 
+### Authentication-Authorisation
 
 - Django AllAuth: Django authentication/authorisation pages used for sign up, log in and log out pages. These were customised using the website's design theory. Admins can view and remove users from the admin section. 
 
@@ -519,7 +519,7 @@ List of technologies used for your project
 
 ### Testing tools
 - [HTML Validator](https://validator.w3.org/nu/) - Used to validate the HTML files.
-- [CSS Validator](https://jigsaw.w3.org/css-validator/) - Used to validate the JavaScript code.
+- [CSS Validator](https://jigsaw.w3.org/css-validator/) - Used to validate the CSS code.
 - [JShint](https://jshint.com/) - Used to validate the JavaScript code.
 - [CI Python Linted](https://pep8ci.herokuapp.com/) - Used to validate Python code.
 - Chrome Developer Tools - Lighthouse reports, template responsiveness
@@ -733,7 +733,7 @@ List of bugs and how did you fix them
 
 - I decided instead of a favourites list, I wanted to create a wishlist instead. I updated all the frontend code to reflect this in the text on the website, but since it used the same functionality in the backend code I decided to keep the model table the same, and keep the field 'is_favourite' to use for the wishlist. I could've updated the table, and migrated once and transferred existing data but since there was no fundamental change to the backend functionality, it made sense to keep the table name as is owing to time constraints. 
 
-- A lot of issues using CSS and Bootstrap5 for responsive designing, with grids not displaying the book covers and descriptions clearly. In particular, on a mobile screen device, on the homepage the 'book of the week' section was cut in half. This same issue was not showing for the other pages, and the books were displaying correctly. I had created the book of the week grid differently to the other pages, as it displayed the book cover on the left hand side, and the description and ratings on the right. It was created this way to create a better flow for the homepage, and a more horizontal surface area, instead of vertical like the book collection page. To fix this, I...
+- A lot of issues using CSS and Bootstrap5 for responsive designing, with grids not displaying the book covers and descriptions clearly. In particular, on a mobile screen device, on the homepage the 'book of the week' section was cut in half. This same issue was not showing for the other pages, and the books were displaying correctly. I had created the book of the week grid differently to the other pages, as it displayed the book cover on the left hand side, and the description and ratings on the right. It was created this way to create a better flow for the homepage, and a more horizontal surface area, instead of vertical like the book collection page. To fix this, I used CSS media queries to adjust the layout for smaller screens and ensured proper Bootstrap grid classes were applied for responsive design.
 
 
 ### Bugs to fix 
@@ -773,7 +773,7 @@ This website is deployed to Heroku from a GitHub repository, the following steps
 - Please note that when deploying manually you will have to deploy after each change you make to your repository.
 
 
-## Al Reflections
+## AI Reflections
 [Back To The Top](#table-of-contents)
 
 * Usage of AI for Code Development:
@@ -806,7 +806,7 @@ Issue with the heroku deployed app not showing the styling I had applied. Copilo
 * Bootstrap5 to create responsive designs and layouts
 * Google Fonts for fonts used within website
 * FontAwesome for icons used within website
-* All the shared projects on GitHub to guide the project including code file structuring, and readme.md structuring
+* All the shared projects on GitHub to guide the project including code file structuring, and readme.md structuring including [BookWormsPlace](https://github.com/AlexandraH-code/ms3-thebookwormsplace)
 * YouTube tutorial for implementing review and rating systems [link here](https://www.youtube.com/watch?v=Zkmu93lMLPs)
 
 
